@@ -24,3 +24,7 @@ export const getItemsForTags = async tags => {
 export const getTags = async (limit = 10) => {
   return request('tags')({ limit, sort: 'numItems', direction: 'desc' });
 };
+
+export const searchItems = async ({ q, tag }) => {
+  return request('items')({ q, tag: tag.join(' || ') });
+};

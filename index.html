@@ -9,7 +9,13 @@
 <body>
   <main>
     <h1>calculated:control</h1>
-    <ul id="tag-list"></ul>
+    <form id="search-form" role="search">
+      <input type="search" placeholder="Suche" name="q" autocomplete="off">
+      <ul id="tag-list"></ul>
+      <input type="submit" value="Suchen">
+    </form>
+    <hr />
+    <ul id="results"></ul>
   </main>
 </body>
 </html>
