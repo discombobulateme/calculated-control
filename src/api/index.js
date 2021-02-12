@@ -1,4 +1,4 @@
-import { API_BASE_URL, API_KEY, GROUP_ID } from './constants.js';
+import { API_BASE_URL, API_KEY, GROUP_ID } from '@/constants.js';
 
 const headers = {
   Authorization: `Bearer ${API_KEY}`,
@@ -9,7 +9,7 @@ const request = thing => async (params = {}) => {
   url.pathname = `/groups/${GROUP_ID}/${thing}`;
 
   for (const [key, value] of Object.entries(params)) {
-    url.searchParams.set(key, value);
+    if (value !== undefined) url.searchParams.set(key, value);
   }
 
   const response = await fetch(url.toString(), { headers });
@@ -25,6 +25,6 @@ export const getTags = async (limit = 10) => {
   return request('tags')({ limit, sort: 'numItems', direction: 'desc' });
 };
 
-export const searchItems = async ({ q, tag }) => {
-  return request('items')({ q, tag: tag.join(' || ') });
+export const searchItems = async ({ q, tags }) => {
+  return request('items')({ q, tag: tags?.join(' || ') });
 };
