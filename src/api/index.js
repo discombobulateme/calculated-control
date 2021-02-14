@@ -21,10 +21,26 @@ export const getItemsForTags = async tags => {
   return request('items')({ tag: tags.join(' || ')});
 };
 
-export const getTags = async (limit = 10) => {
+export const getTags = async ({ limit = 20 }) => {
   return request('tags')({ limit, sort: 'numItems', direction: 'desc' });
 };
 
-export const searchItems = async ({ q, tags }) => {
-  return request('items')({ q, tag: tags?.join(' || ') });
+export const getTagsForItemTags = async ({ limit = 20, tags = [], q }) => {
+  return request('items/top/tags')({
+    itemQ: q,
+    limit,
+    sort: 'numItems',
+    direction: 'desc',
+    itemTag: tags.join(),
+    itemQMode: 'titleCreatorYear',
+  });
 };
+
+export const searchItems = async ({ q, tags }) => {
+  return request('items')({ q, tag: tags?.join(' || '), qmode: 'titleCreatorYear' });
+};
+
+export const getItem = async ({ key }) => {
+  return request(`items/${key}`)();
+};
+

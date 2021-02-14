@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { getTags, searchItems } from '@/api';
+import { getTagsForItemTags, searchItems } from '@/api';
 import ItemsList from '@/components/items-list';
 import SearchForm from '@/components/search-form';
 
@@ -31,6 +31,10 @@ export default {
       type: String,
       default: '',
     },
+    searchTags: {
+      type: Array,
+      default: () => [],
+    },
   },
   watch: {
     $route() {
@@ -42,23 +46,23 @@ export default {
     items: [],
     loading: true,
   }),
-  async created() {
+  created() {
     this.fetchData();
-    const tagResponse = await getTags();
-    this.tags = tagResponse.map(({ tag }) => tag);
+    this.fetchTags();
   },
   methods: {
     async fetchData() {
       this.loading = true;
       const { tags, q } = this.$route.query;
-      const data = await searchItems({
+      this.items = await searchItems({
         tags: typeof tags === 'string' ? [tags] : tags,
         q
       });
-
-      this.items = data.map(({ data }) => data);
       this.loading = false;
     },
+    async fetchTags() {
+      this.tags = await getTagsForItemTags({ tags: this.searchTags, q: this.query });
+    }
   },
 };
 </script>

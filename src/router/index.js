@@ -1,7 +1,8 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-import Archive from '../views/Archive.vue'
+import Vue from 'vue';
+import VueRouter from 'vue-router';
+import Home from '../views/Home.vue';
+import Archive from '../views/Archive.vue';
+import Item from '../views/Item.vue';
 
 Vue.use(VueRouter)
 
@@ -17,6 +18,15 @@ const routes = [
     component: Archive,
     props: route => ({
       query: route.query.q,
+      searchTags: Array.isArray(route.query.tags) ? route.query.tags : [route.query.tags],
+    }),
+  },
+  {
+    path: '/item/:key',
+    name: 'Item',
+    component: Item,
+    props: route => ({
+      id: route.params.key,
     }),
   }
 ]

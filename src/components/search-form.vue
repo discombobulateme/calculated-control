@@ -3,15 +3,15 @@
     <input class="search-form__input" type="search" placeholder="Suche" name="q" :value="query" @input="onInput">
     <fieldset class="search-form__tags">
       <label
-        v-for="tag in tags"
-        :key="tag"
+        v-for="({ tag, meta }, index) in tags"
+        :key="tag + index"
         :class="{
           'search-form__tag': true,
           'search-form__tag--selected': selectedTags.includes(tag),
         }"
       >
         <input type="checkbox" name="tag" :value="tag" v-model="selectedTags" class="search-form__tag-input">
-        {{ tag }}
+        #{{ tag }} ({{ meta.numItems }})
       </label>
     </fieldset>
   </form>
@@ -34,11 +34,12 @@ export default {
       default: '',
     },
   },
-  data: ({ tags, query }) => ({
+  data: ({ query, $route }) => ({
     currentQuery: query,
-    selectedTags: tags,
+    selectedTags: Array.isArray($route.query.tags) ? [$route.query.tags] : ($route.query.tags || []),
   }),
   created() {
+    console.log(this.selectedTags);
     this.search = debounce(() => {
       const query = { q: this.currentQuery, tags: this.selectedTags };
       this.$router.push({ query });
@@ -49,12 +50,12 @@ export default {
       this.search();
     },
     selectedTags() {
+      console.log(this.selectedTags);
       this.search();
     },
   },
   methods: {
     onInput(event) {
-      console.log(event.target.value);
       this.currentQuery = event.target.value;
     },
   },
@@ -106,6 +107,7 @@ export default {
 .search-form__tag:hover,
 .search-form__tag:focus-within {
   background: black;
+  border-color: black;
   color: white;
 }
 
