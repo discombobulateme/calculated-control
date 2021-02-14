@@ -1,7 +1,7 @@
 <template>
-  <ul class="items-list">
+  <ul class="items-list" tabindex="0">
     <li v-for="(item, index) in items" :key="index" class="items-list__item">
-      <ItemPreview :item="item" />
+      <ItemPreview ref="item" :item="item" />
     </li>
   </ul>
 </template>
@@ -19,6 +19,9 @@ export default {
       type: Array,
       default: () => [],
     }
+  },
+  mounted() {
+    this.$refs.item[0].$el.focus();
   }
 }
 </script>

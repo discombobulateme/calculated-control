@@ -1,15 +1,16 @@
 <template>
   <main class="main">
     <section class="section navigation">
+      <router-link :to="{ name: 'Home' }">&lt; Home</router-link>
       <h1 class="page-title">calculated:control - Archiv</h1>
-      <SearchForm :tags="tags" :query="query" />
+      <SearchForm :tags="tags" :query="query"/>
     </section>
     <section class="section content">
       <div v-if="loading">
         Loading...
       </div>
       <div v-else>
-        <ItemsList :items="items" />
+        <ItemsList ref="items" :items="items" />
       </div>
     </section>
   </main>
@@ -62,7 +63,7 @@ export default {
     },
     async fetchTags() {
       this.tags = await getTagsForItemTags({ tags: this.searchTags, q: this.query });
-    }
+    },
   },
 };
 </script>
@@ -85,6 +86,6 @@ export default {
 }
 
 .page-title {
-  margin-top: 0;
+  margin-top: 10px;
 }
 </style>

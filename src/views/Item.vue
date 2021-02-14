@@ -205,6 +205,7 @@ export default {
 .tags__tag:hover,
 .tags__tag:focus-within {
   background: black;
+  border-color: black;
   color: white;
 }
 </style>

@@ -3,6 +3,7 @@ import VueRouter from 'vue-router';
 import Home from '../views/Home.vue';
 import Archive from '../views/Archive.vue';
 import Item from '../views/Item.vue';
+import Page from '../views/Page.vue';
 
 Vue.use(VueRouter)
 
@@ -11,6 +12,22 @@ const routes = [
     path: '/',
     name: 'Home',
     component: Home
+  },
+  {
+    path: '/about',
+    name: 'About',
+    component: Page,
+    props: {
+      id: 'Z5G3CTNR',
+    },
+  },
+  {
+    path: '/team',
+    name: 'Team',
+    component: Page,
+    props: {
+      id: 'GDUG6QQS',
+    },
   },
   {
     path: '/archive',

@@ -1,17 +1,17 @@
 <template>
   <form class="search-form" role="search">
     <input class="search-form__input" type="search" placeholder="Suche" name="q" :value="query" @input="onInput">
-    <fieldset class="search-form__tags">
+    <fieldset v-if="tags && tags.length" class="search-form__tags">
       <label
         v-for="({ tag, meta }, index) in tags"
         :key="tag + index"
         :class="{
           'search-form__tag': true,
-          'search-form__tag--selected': selectedTags.includes(tag),
+          'search-form__tag--selected': selectedTags && selectedTags.includes(tag),
         }"
       >
         <input type="checkbox" name="tag" :value="tag" v-model="selectedTags" class="search-form__tag-input">
-        #{{ tag }} ({{ meta.numItems }})
+        #{{ tag }}
       </label>
     </fieldset>
   </form>
@@ -36,21 +36,24 @@ export default {
   },
   data: ({ query, $route }) => ({
     currentQuery: query,
-    selectedTags: Array.isArray($route.query.tags) ? [$route.query.tags] : ($route.query.tags || []),
+    selectedTags: !Array.isArray($route.query.tags) ? [$route.query.tags] : ($route.query.tags || []),
   }),
   created() {
-    console.log(this.selectedTags);
     this.search = debounce(() => {
-      const query = { q: this.currentQuery, tags: this.selectedTags };
+      const query = { q: this.currentQuery };
+      if (this.selectedTags) query.tags = this.selectedTags;
       this.$router.push({ query });
     }, DEBOUNCE_WAIT);
+  },
+  mounted() {
+    this.selectedTags = !Array.isArray(this.$route.query.tags) ? [this.$route.query.tags] : (this.$route.query.tags || []);
+    console.log(this.selectedTags)
   },
   watch: {
     currentQuery() {
       this.search();
     },
     selectedTags() {
-      console.log(this.selectedTags);
       this.search();
     },
   },
