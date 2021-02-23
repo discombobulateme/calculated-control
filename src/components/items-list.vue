@@ -22,11 +22,12 @@ export default {
     }
   },
   mounted() {
-    this.$refs.item[0].$el.focus();
     this.startInfiniteScroll();
+    if (this.$refs.item) this.$refs.item[0].$el.focus();
   },
   watch: {
     async items() {
+      if (!this.$refs.item) return;
       const lastItem = this.$refs.item[this.$refs.item.length - 1].$el;
       if (lastItem) {
         await sleep(1000);

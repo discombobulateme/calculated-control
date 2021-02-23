@@ -22,7 +22,7 @@ export default {
     titleText() {
       const { title, note } = this.item.data;
       const text = title || note || '';
-      return text.slice(0, NOTE_SLICE_LENGTH);
+      return text.length > NOTE_SLICE_LENGTH ? text.slice(0, NOTE_SLICE_LENGTH) + '...' : text;
     }
   }
 };
