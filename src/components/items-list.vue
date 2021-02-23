@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import { sleep } from '@/utils';
 import ItemPreview from './item-preview';
 
 export default {
@@ -22,28 +23,54 @@ export default {
   },
   mounted() {
     this.$refs.item[0].$el.focus();
+    this.startInfiniteScroll();
+  },
+  watch: {
+    async items() {
+      const lastItem = this.$refs.item[this.$refs.item.length - 1].$el;
+      if (lastItem) {
+        await sleep(1000);
+        this.intersectionObserver.observe(lastItem);
+      }
+    },
+  },
+  methods: {
+    onInfiniteScroll([ entry ]) {
+      if (entry.isIntersecting) {
+        this.intersectionObserver.unobserve(entry.target);
+        this.$emit('infinite-scroll');
+      }
+    },
+    startInfiniteScroll() {
+      this.intersectionObserver = new IntersectionObserver(this.onInfiniteScroll);
+    },
   }
 }
 </script>
 
 <style lang="css" scoped>
 .items-list {
+  border: solid 1px black;
+  display: grid;
   list-style-type: none;
   padding: 0;
   margin: 0;
+  grid-template-columns: repeat(6, 1fr);
+  grid-auto-flow: row dense;
 }
 
 .items-list__item {
-  border: solid 3px #ddd;
-  padding: 10px;
+  border: solid 1px black;
 }
 
-.items-list__item:focus-within,
-.items-list__item:hover {
-  border-color: black;
+.items-list__item:first-of-type,
+.items-list__item:nth-of-type(2),
+.items-list__item:nth-of-type(8n),
+.items-list__item:nth-of-type(8n + 1) {
+  grid-column: span 3;
 }
 
-.items-list__item + .items-list__item {
-  margin-top: 10px;
+.items-list__item:nth-of-type(4n) {
+  grid-column: span 2;
 }
 </style>

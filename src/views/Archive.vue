@@ -1,16 +1,16 @@
 <template>
   <main class="main">
-    <section class="section navigation">
+    <section v-show="false" class="section navigation">
       <router-link :to="{ name: 'Home' }">&lt; Home</router-link>
       <h1 class="page-title">calculated:control - Archiv</h1>
       <SearchForm :tags="tags" :query="query"/>
     </section>
     <section class="section content">
-      <div v-if="loading">
+      <div v-if="loading && this.items.length === 0">
         Loading...
       </div>
       <div v-else>
-        <ItemsList ref="items" :items="items" />
+        <ItemsList ref="items" :items="items" @infinite-scroll="fetchData" />
       </div>
     </section>
   </main>
@@ -49,16 +49,18 @@ export default {
   }),
   created() {
     this.fetchData();
-    this.fetchTags();
+    // this.fetchTags();
   },
   methods: {
     async fetchData() {
       this.loading = true;
       const { tags, q } = this.$route.query;
-      this.items = await searchItems({
+      const newItems = await searchItems({
         tags: typeof tags === 'string' ? [tags] : tags,
-        q
+        start: this.items.length,
+        q,
       });
+      this.items.push(...newItems);
       this.loading = false;
     },
     async fetchTags() {
@@ -69,23 +71,5 @@ export default {
 </script>
 
 <style scoped>
-.main {
-  display: grid;
-  gap: 10px;
-}
 
-@media screen and (min-width: 1024px) {
-  .main {
-    grid-template-columns: 1fr 2fr;
-  }
-}
-
-.section {
-  border: solid 3px black;
-  padding: 10px;
-}
-
-.page-title {
-  margin-top: 10px;
-}
 </style>

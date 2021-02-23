@@ -25,7 +25,7 @@ export const getTags = async ({ limit = 20 }) => {
   return request('tags')({ limit, sort: 'numItems', direction: 'desc' });
 };
 
-export const getTagsForItemTags = async ({ limit = 20, tags = [], q }) => {
+export const getTagsForItemTags = async ({ limit = 25, tags = [], q }) => {
   return request('items/top/tags')({
     itemQ: q,
     limit,
@@ -36,8 +36,15 @@ export const getTagsForItemTags = async ({ limit = 20, tags = [], q }) => {
   });
 };
 
-export const searchItems = async ({ q, tags }) => {
-  return request('items')({ q, tag: tags?.join(' || '), qmode: 'titleCreatorYear' });
+export const searchItems = async ({ q, tags, start = 0, limit = 30 }) => {
+  return request('items')({
+    q,
+    tag: tags?.join(' || '),
+    qmode: 'titleCreatorYear',
+    limit,
+    start,
+    itemType: '-attachment',
+  });
 };
 
 export const getItem = async ({ key }) => {

@@ -76,6 +76,10 @@ export default {
   src: url('assets/font/font.woff2') format('woff2'), url('assets/font/font.woff') format('woff');
 }
 
+* {
+  box-sizing: border-box;
+}
+
 html,
 body {
   margin: 0;
