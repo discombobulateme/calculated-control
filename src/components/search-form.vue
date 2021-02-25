@@ -1,19 +1,16 @@
 <template>
-  <form class="search-form" role="search">
-    <input class="search-form__input" type="search" placeholder="Suche" name="q" :value="query" @input="onInput">
-    <fieldset v-if="tags && tags.length" class="search-form__tags">
-      <label
-        v-for="({ tag, meta }, index) in tags"
-        :key="tag + index"
-        :class="{
-          'search-form__tag': true,
-          'search-form__tag--selected': selectedTags && selectedTags.includes(tag),
-        }"
-      >
-        <input type="checkbox" name="tag" :value="tag" v-model="selectedTags" class="search-form__tag-input">
-        #{{ tag }}
-      </label>
-    </fieldset>
+  <form :class="{
+      'search-form': true,
+      'search-form--expanded': expanded,
+    }"
+    role="search"
+    @click="onExpand"
+    @submit.prevent="search"
+  >
+    <div class="search-form__content">
+      <input ref="input" class="search-form__input" type="search" placeholder="Search" name="q" :value="$route.query.q" @input="onInput">
+    </div>
+    🔍
   </form>
 </template>
 
@@ -35,6 +32,7 @@ export default {
     },
   },
   data: ({ query, $route }) => ({
+    expanded: false,
     currentQuery: query,
     selectedTags: !Array.isArray($route.query.tags) ? [$route.query.tags] : ($route.query.tags || []),
   }),
@@ -47,82 +45,60 @@ export default {
   },
   mounted() {
     this.selectedTags = !Array.isArray(this.$route.query.tags) ? [this.$route.query.tags] : (this.$route.query.tags || []);
-    console.log(this.selectedTags)
-  },
-  watch: {
-    currentQuery() {
-      this.search();
-    },
-    selectedTags() {
-      this.search();
-    },
+    if (this.$route.query.q && this.$route.query.q.length > 0) {
+      this.expanded = true;
+    }
   },
   methods: {
     onInput(event) {
       this.currentQuery = event.target.value;
+    },
+    onExpand() {
+      if (!this.expanded) {
+        this.expanded = true;
+        if (this.$refs.input) {
+          this.$refs.input.focus();
+        }
+      }
     },
   },
 };
 </script>
 
 <style lang="css" scoped>
+.search-form {
+  background: var(--color-prime-green);
+  border-radius: var(--border-radius);
+  display: flex;
+  filter: drop-shadow(2px 2px 12px rgba(0, 0, 0, 0.25));
+  font-size: var(--font-size-large);
+  padding: 0 30px;
+  position: relative;
+}
+
+.search-form__content {
+  display: inline-block;
+  height: 100%;
+  width: 0;
+  overflow: hidden;
+  transition: width 500ms;
+}
+
+.search-form--expanded .search-form__content {
+  width: 18vw;
+  min-width: 200px;
+}
+
 .search-form__input {
   font: inherit;
-  border: solid 3px #ddd;
-  border-radius: 0;
-  font-size: 1.25rem;
-  margin: 10px 0;
-  padding: 10px;
-  width: 100%;
+  border: none;
+  background: transparent;
+  color: inherit;
 }
 
 .search-form__input:hover,
 .search-form__input:focus {
   border-color: black;
   outline: none;
-}
-
-.search-form__tags {
-  border: solid 3px #ddd;
-  display: flex;
-  flex-wrap: wrap;
-  margin-left: 0;
-  padding: 5px;
-}
-
-.search-form__tags:hover,
-.search-form__tags:focus-within {
-  border-color: black;
-}
-
-.search-form__tag {
-  align-items: center;
-  background: #ddd;
-  border: solid 3px #ddd;
-  cursor: pointer;
-  display: inline-flex;
-  flex-grow: 1;
-  justify-content: center;
-  margin: 2px;
-  padding: 5px;
-}
-
-.search-form__tag:hover,
-.search-form__tag:focus-within {
-  background: black;
-  border-color: black;
-  color: white;
-}
-
-.search-form__tag-input {
-  appearance: none;
-  height: 0;
-  margin: 0;
-  opacity: 0;
-  width: 0;
-}
-
-.search-form__tag--selected {
-  border: solid 3px black;
 }
 </style>

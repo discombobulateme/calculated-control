@@ -7,7 +7,8 @@
         :class="{
           nav__list: true,
           'base-grid': true,
-          'nav__list--blurred': isBlurred,
+          blurrable: true,
+          'blurred': isBlurred,
         }"
       >
         <li v-show="!isPage('about')" class="nav__item nav__item--main" style="grid-area: a;">
@@ -22,16 +23,16 @@
           <router-link class="nav__link" :to="{ name: 'Archive' }">archive</router-link>
         </li>
         <li class="nav__item" style="grid-area: b;">
-          <router-link class="nav__link" :to="{ name: 'Archive', query: { tags: ['exhibition'] } }">#exhibition</router-link>
+          <router-link class="nav__link" :to="{ name: 'Node', params: { node: 'exhibition' } }">#exhibition</router-link>
         </li>
         <li class="nav__item" style="grid-area: h;">
-          <router-link class="nav__link" :to="{ name: 'Archive', query: { tags: ['participants'] } }">#participants</router-link>
+          <router-link class="nav__link" :to="{ name: 'Node', params: { node: 'journal' } }">#journal</router-link>
         </li>
         <li class="nav__item" style="grid-area: g;">
-          <router-link class="nav__link" :to="{ name: 'Archive', query: { tags: ['symposium'] } }">#symposium</router-link>
+          <router-link class="nav__link" :to="{ name: 'Node', params: { node: 'symposium' } }">#symposium</router-link>
         </li>
         <li class="nav__item" style="grid-area: c;">
-          <router-link class="nav__link" :to="{ name: 'Archive', query: { tags: ['unconference'] } }">#unconference</router-link>
+          <router-link class="nav__link" :to="{ name: 'Node', params: { node: 'unconference' } }">#unconference</router-link>
         </li>
         <li class="nav__item nav__item--page" style="grid-area: d;">
           <router-link class="nav__link" :to="{ name: 'Team' }">team</router-link>
@@ -92,6 +93,7 @@ html {
   --color-prime-olive: rgb(109, 93, 56);
   --color-prime-light-grey: rgb(225, 225, 225);
 
+  --font-size-small: 24px;
   --font-size-medium: 2vw;
   --font-size-large: 39px;
   --font-size-xl: 5vw;
@@ -125,11 +127,6 @@ h1, h2, h3, h4, h5 {
                        "c c d b b b"
                        "c c e g g h"
                        "c c f g g i";
-  transition: filter 1s;
-}
-
-.nav__list--blurred {
-  filter: blur(64px);
 }
 
 .nav__item {
@@ -160,5 +157,13 @@ h1, h2, h3, h4, h5 {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.blurrable {
+  transition: filter 1s;
+}
+
+.blurred {
+  filter: blur(64px);
 }
 </style>

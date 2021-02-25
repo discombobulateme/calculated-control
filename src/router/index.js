@@ -51,6 +51,16 @@ const routes = [
     }),
   },
   {
+    path: '/node/:node',
+    name: 'Node',
+    component: Archive,
+    props: route => ({
+      query: route.query.q,
+      searchTags: Array.isArray(route.query.tags) ? route.query.tags : [route.query.tags],
+      node: route.params.node,
+    }),
+  },
+  {
     path: '/item/:key',
     name: 'Item',
     component: Item,

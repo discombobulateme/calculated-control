@@ -14,7 +14,7 @@ const request = thing => async (params = {}) => {
 
   const response = await fetch(url.toString(), { headers });
   if (!response.ok) throw new Error(`Could not send request with params ${params}`);
-  return response.json();
+  return response;
 };
 
 export const getItemsForTags = async tags => {
@@ -36,8 +36,8 @@ export const getTagsForItemTags = async ({ limit = 25, tags = [], q }) => {
   });
 };
 
-export const searchItems = async ({ q, tags, start = 0, limit = 30 }) => {
-  return request('items')({
+export const searchItems = async ({ q, tags, start = 0, limit = 24 }) => {
+  const response = await request('items')({
     q,
     tag: tags?.join(' || '),
     qmode: 'titleCreatorYear',
@@ -45,6 +45,12 @@ export const searchItems = async ({ q, tags, start = 0, limit = 30 }) => {
     start,
     itemType: '-attachment',
   });
+
+  const totalResults = response.headers.get('Total-Results');
+  return {
+    items: await response.json(),
+    totalResults,
+  }
 };
 
 export const getItem = async ({ key }) => {

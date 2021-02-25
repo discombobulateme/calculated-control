@@ -1,37 +1,59 @@
 <template>
   <main class="main">
-    <section v-show="filtersOpen" class="section filters">
-      <router-link :to="{ name: 'Home' }">&lt; Home</router-link>
-      <h1 class="page-title">calculated:control - Archiv</h1>
-      <SearchForm :tags="tags" :query="query"/>
+    <section v-show="filtersOpen" class="archive__filters">
+      <ArchiveTags :total-results="totalResults" @close="filtersOpen = false"/>
     </section>
-    <section class="section content">
-      <div v-if="loading && this.items.length === 0">
-        Loading...
+    <div :class="{ blurrable: true, 'blurred': filtersOpen }">
+      <section class="section content">
+        <div v-if="loading && this.items.length === 0">
+          Loading...
+        </div>
+        <div v-else>
+          <header class="archive__header">
+            <ArchiveAbout :primary="isPrimaryNode" />
+            <div class="archive__meta">{{ totalResults }} results</div>
+          </header>
+          <ItemsList ref="items" :items="items" />
+          <button v-if="thereIsMore" class="archive__load-more" :disabled="loading" @click="fetchData">
+            <span v-if="loading">loading...</span>
+            <span v-else>load more entries</span>
+          </button>
+        </div>
+      </section>
+      <div class="archive__filters-switch">
+        <SearchForm class="archive__filters-search" />
+        <button
+          class="archive__filters-link nav__item nav__item--highlight"
+          @click="filtersOpen = true"
+        >
+          add category
+        </button>
       </div>
-      <div v-else>
-        <ItemsList ref="items" :items="items" @infinite-scroll="fetchData" />
+      <div class="archive__home">
+        <router-link
+          :to="{ name: 'Home' }"
+          class="archive__home-link nav__item"
+        >
+          home
+        </router-link>
       </div>
-    </section>
-    <div class="archive__filters">
-      <button
-        class="archive__filters-link nav__item nav__item--highlight"
-        @click="filtersOpen = true"
-      >
-        add category
-      </button>
     </div>
   </main>
 </template>
 
 <script>
-import { getTagsForItemTags, searchItems } from '@/api';
+import { searchItems } from '@/api';
+import { primaryTags } from '@/tags';
+import ArchiveAbout from '@/components/archive-about';
+import ArchiveTags from '@/components/archive-tags';
 import ItemsList from '@/components/items-list';
 import SearchForm from '@/components/search-form';
 
 export default {
   name: 'Archive',
   components: {
+    ArchiveAbout,
+    ArchiveTags,
     ItemsList,
     SearchForm,
   },
@@ -44,10 +66,14 @@ export default {
       type: Array,
       default: () => [],
     },
+    node: {
+      type: String,
+      default: '',
+    },
   },
   watch: {
     $route() {
-      this.fetchData();
+      this.fetchData(true);
     },
   },
   data: () => ({
@@ -55,42 +81,61 @@ export default {
     items: [],
     loading: true,
     filtersOpen: false,
+    totalResults: 0,
   }),
   created() {
     this.fetchData();
-    // this.fetchTags();
+  },
+  computed: {
+    thereIsMore() {
+      return this.totalResults > this.items.length;
+    },
+    isPrimaryNode() {
+      return primaryTags.includes(this.node);
+    },
   },
   methods: {
-    async fetchData() {
+    async fetchData(wipe = false) {
       this.loading = true;
+      if (wipe) this.items = [];
+
       const { tags, q } = this.$route.query;
-      const newItems = await searchItems({
-        tags: typeof tags === 'string' ? [tags] : tags,
+      const selectedTags = typeof tags !== 'object' ? [tags].filter(tag => !!tag) : tags;
+      const { items: newItems, totalResults } = await searchItems({
+        tags: selectedTags.concat(this.node ? [this.node] : []),
         start: this.items.length,
         q,
       });
+
       this.items.push(...newItems);
+      this.totalResults = parseInt(totalResults, 10);
       this.loading = false;
-    },
-    async fetchTags() {
-      this.tags = await getTagsForItemTags({ tags: this.searchTags, q: this.query });
     },
   },
 };
 </script>
 
 <style scoped>
-.archive__filters {
+.archive__filters-switch,
+.archive__home {
   position: fixed;
   top: 60%;
   left: calc(100% / 3);
+  z-index: 3;
 }
 
-.archive__filters-link {
+.archive__home {
+  top: 50%;
+  left: 50%;
+}
+
+.archive__filters-link,
+.archive__home-link {
   appearance: none;
   border: none;
   color: inherit;
   cursor: pointer;
+  filter: drop-shadow(2px 2px 12px rgba(0, 0, 0, 0.25));
   position: absolute;
   top: 15vh;
   left: calc(100vw / 6 / 2);
@@ -100,11 +145,48 @@ export default {
   width: max-content;
 }
 
-.filters {
+.archive__filters-search {
+  right: 40px;
+  top: 15vh;
+  position: absolute;
+  transform: translateY(-50%);
+}
+
+.archive__home-link {
+  top: 0;
+  left: 0;
+}
+
+.archive__load-more {
+  background: var(--color-prime-light-grey);
+  border: none;
+  border-radius: var(--border-radius);
+  color: inherit;
+  cursor: pointer;
+  font-size: var(--font-size-large);
+  padding: 2em 0;
+  width: 100%;
+}
+
+.archive__header {
+  position: sticky;
+  top: 0;
+  z-index: 4;
+}
+
+.archive__meta {
+  background: black;
+  color: white;
+  font-size: var(--font-size-small);
+  padding: 10px 15px;
+}
+
+.archive__filters {
   position: fixed;
   top: 0;
   left: 0;
-  height: 100vh;
-  width: 100vw;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
 }
 </style>

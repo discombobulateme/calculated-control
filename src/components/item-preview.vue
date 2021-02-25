@@ -8,7 +8,7 @@
 </template>
 
 <script>
-const NOTE_SLICE_LENGTH = 50;
+const NOTE_SLICE_LENGTH = 60;
 
 export default {
   name: 'ItemPreview',
