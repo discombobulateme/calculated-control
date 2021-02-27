@@ -1,44 +1,47 @@
 <template>
-  <main class="main">
-    <section v-show="filtersOpen" class="archive__filters">
-      <ArchiveTags :total-results="totalResults" @close="filtersOpen = false"/>
-    </section>
-    <div :class="{ blurrable: true, 'blurred': filtersOpen }">
-      <section class="section content">
-        <div v-if="loading && this.items.length === 0">
-          Loading...
-        </div>
-        <div v-else>
-          <header class="archive__header">
-            <ArchiveAbout :primary="isPrimaryNode" />
-            <div class="archive__meta">{{ totalResults }} results</div>
-          </header>
-          <ItemsList ref="items" :items="items" />
-          <button v-if="thereIsMore" class="archive__load-more" :disabled="loading" @click="fetchData">
-            <span v-if="loading">loading...</span>
-            <span v-else>load more entries</span>
+  <div>
+    <main class="main">
+      <section v-show="filtersOpen" class="archive__filters">
+        <ArchiveTags :total-results="totalResults" @close="filtersOpen = false"/>
+      </section>
+      <div :class="{ blurrable: true, 'blurred': filtersOpen }">
+        <section class="section content">
+          <div v-if="loading && this.items.length === 0">
+            Loading...
+          </div>
+          <div v-else>
+            <header class="archive__header">
+              <ArchiveAbout :primary="isPrimaryNode" />
+              <div class="archive__meta">{{ totalResults }} results</div>
+            </header>
+            <ItemsList ref="items" :items="items" />
+            <button v-if="thereIsMore" class="blob archive__load-more" :disabled="loading" @click="fetchData()">
+              <span v-if="loading">loading...</span>
+              <span v-else>load more entries</span>
+            </button>
+          </div>
+        </section>
+        <div class="archive__filters-switch">
+          <SearchForm class="archive__filters-search" />
+          <button
+            class="blob blob--green blob--shadow archive__filters-link"
+            @click="filtersOpen = true"
+          >
+            add category
           </button>
         </div>
-      </section>
-      <div class="archive__filters-switch">
-        <SearchForm class="archive__filters-search" />
-        <button
-          class="archive__filters-link nav__item nav__item--highlight"
-          @click="filtersOpen = true"
-        >
-          add category
-        </button>
+        <div class="archive__home">
+          <router-link
+            :to="{ name: 'Home' }"
+            class="blob blob--pink blob--shadow archive__home-link"
+          >
+            home
+          </router-link>
+        </div>
       </div>
-      <div class="archive__home">
-        <router-link
-          :to="{ name: 'Home' }"
-          class="archive__home-link nav__item"
-        >
-          home
-        </router-link>
-      </div>
-    </div>
-  </main>
+    </main>
+    <SiteFooter />
+  </div>
 </template>
 
 <script>
@@ -48,6 +51,7 @@ import ArchiveAbout from '@/components/archive-about';
 import ArchiveTags from '@/components/archive-tags';
 import ItemsList from '@/components/items-list';
 import SearchForm from '@/components/search-form';
+import SiteFooter from '@/components/site-footer';
 
 export default {
   name: 'Archive',
@@ -56,6 +60,7 @@ export default {
     ArchiveTags,
     ItemsList,
     SearchForm,
+    SiteFooter,
   },
   props: {
     query: {
@@ -132,10 +137,8 @@ export default {
 .archive__filters-link,
 .archive__home-link {
   appearance: none;
-  border: none;
   color: inherit;
   cursor: pointer;
-  filter: drop-shadow(2px 2px 12px rgba(0, 0, 0, 0.25));
   position: absolute;
   top: 15vh;
   left: calc(100vw / 6 / 2);
@@ -158,12 +161,8 @@ export default {
 }
 
 .archive__load-more {
-  background: var(--color-prime-light-grey);
-  border: none;
-  border-radius: var(--border-radius);
   color: inherit;
   cursor: pointer;
-  font-size: var(--font-size-large);
   padding: 2em 0;
   width: 100%;
 }

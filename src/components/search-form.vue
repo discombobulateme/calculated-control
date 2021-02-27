@@ -1,5 +1,8 @@
 <template>
   <form :class="{
+      'blob': true,
+      'blob--green': true,
+      'blob--shadow': true,
       'search-form': true,
       'search-form--expanded': expanded,
     }"
@@ -67,11 +70,7 @@ export default {
 
 <style lang="css" scoped>
 .search-form {
-  background: var(--color-prime-green);
-  border-radius: var(--border-radius);
   display: flex;
-  filter: drop-shadow(2px 2px 12px rgba(0, 0, 0, 0.25));
-  font-size: var(--font-size-large);
   padding: 0 30px;
   position: relative;
 }

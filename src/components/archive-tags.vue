@@ -9,18 +9,18 @@
     <button class="archive-tags__reset">reset all categories</button>
     <div class="archive-tags__content">
       <ul class="archive-tags__list archive-tags__list--primary" aria-label="Primary tags">
-        <li v-for="primaryTag in primaryTags" :key="primaryTag" class="archive-tags__item">
+        <li v-for="primaryTag in primaryTags" :key="primaryTag" class="blob blob--shadow blob--pink archive-tags__item">
           #{{ primaryTag }}
         </li>
       </ul>
       <ul class="archive-tags__list archive-tags__list--curated" aria-label="curated tags">
-        <li v-for="curatedTag in curatedTags" :key="curatedTag" class="archive-tags__item">
+        <li v-for="curatedTag in curatedTags" :key="curatedTag" class="blob blob--shadow archive-tags__item">
           #{{ curatedTag }}
         </li>
       </ul>
     </div>
     <button
-      class="archive-tags__submit"
+      class="blob blob--green blob--shadow archive-tags__submit"
       @click="$emit('close', $event)"
     >
       show {{ totalResults }} results
@@ -56,7 +56,6 @@ export default {
 
 <style scoped>
 .archive-tags {
-  font-size: var(--font-size-large);
   overflow: hidden;
   overscroll-behavior: contain;
   height: 100vh;
@@ -106,10 +105,7 @@ export default {
 }
 
 .archive-tags__item {
-  background: var(--color-prime-light-grey);
-  border-radius: var(--border-radius);
   display: flex;
-  filter: drop-shadow(2px 2px 12px rgba(0, 0, 0, 0.25));
   justify-content: center;
   align-items: center;
   height: min-content;
@@ -117,7 +113,6 @@ export default {
 }
 
 .archive-tags__list--primary .archive-tags__item {
-  background: var(--color-prime-pink);
   flex-grow: 1;
 }
 
@@ -140,12 +135,8 @@ export default {
 }
 
 .archive-tags__submit {
-  background: var(--color-prime-green);
-  border: none;
-  border-radius: var(--border-radius);
   color: inherit;
   cursor: pointer;
-  filter: drop-shadow(2px 2px 12px rgba(0, 0, 0, 0.25));
   font: inherit;
   padding: 15px;
   width: 100%;
