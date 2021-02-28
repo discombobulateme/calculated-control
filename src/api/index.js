@@ -54,6 +54,16 @@ export const searchItems = async ({ q, tags, start = 0, limit = 24 }) => {
 };
 
 export const getItem = async ({ key }) => {
-  return request(`items/${key}`)();
+  const response = await request(`items/${key}`)();
+  return response.json();
+};
+
+export const getRelatedItems = async ({ keys, limit = 10 }) => {
+  const response = await request('items')({
+    itemKey: keys.join(),
+    limit,
+    itemType: '-attachment',
+  });
+  return response.json();
 };
 

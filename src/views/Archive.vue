@@ -14,19 +14,7 @@
               <ArchiveAbout :primary="isPrimaryNode" />
               <div class="archive__meta">{{ totalResults }} results</div>
               <nav class="archive__home">
-                <router-link
-                  :to="{ name: 'Home' }"
-                  class="blob blob--pink blob--shadow archive__home-link"
-                  aria-label="Home"
-                >
-                  <svg width="108" height="70" viewBox="0 0 108 70" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                    <g fill="rgba(255,255,255,0.5)">
-                      <rect width="108" height="14"/>
-                      <rect y="28" width="108" height="14"/>
-                      <rect y="56" width="108" height="14"/>
-                    </g>
-                  </svg>
-                </router-link>
+                <HomeButton class="archive__home-link" aria-label="Home" />
               </nav>
             </header>
             <ItemsList ref="items" :items="items" />
@@ -59,6 +47,7 @@ import { searchItems } from '@/api';
 import { primaryTags } from '@/tags';
 import ArchiveAbout from '@/components/archive-about';
 import ArchiveTags from '@/components/archive-tags';
+import HomeButton from '@/components/home-button';
 import ItemsList from '@/components/items-list';
 import SearchForm from '@/components/search-form';
 import SiteFooter from '@/components/site-footer';
@@ -68,6 +57,7 @@ export default {
   components: {
     ArchiveAbout,
     ArchiveTags,
+    HomeButton,
     ItemsList,
     SearchForm,
     SiteFooter,
@@ -173,10 +163,6 @@ export default {
   height: 60px;
   position: absolute;
   transform: translateY(-50%);
-}
-
-.archive__home-link {
-  padding: 30px 35px;
 }
 
 .archive__load-more {
