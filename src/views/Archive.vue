@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <main class="main">
+  <div class="archive">
+    <main class="archive__main">
       <section v-show="filtersOpen" class="archive__filters">
         <ArchiveTags :total-results="totalResults" @close="filtersOpen = false"/>
       </section>
@@ -13,6 +13,21 @@
             <header class="archive__header">
               <ArchiveAbout :primary="isPrimaryNode" />
               <div class="archive__meta">{{ totalResults }} results</div>
+              <nav class="archive__home">
+                <router-link
+                  :to="{ name: 'Home' }"
+                  class="blob blob--pink blob--shadow archive__home-link"
+                  aria-label="Home"
+                >
+                  <svg width="108" height="70" viewBox="0 0 108 70" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <g fill="rgba(255,255,255,0.5)">
+                      <rect width="108" height="14"/>
+                      <rect y="28" width="108" height="14"/>
+                      <rect y="56" width="108" height="14"/>
+                    </g>
+                  </svg>
+                </router-link>
+              </nav>
             </header>
             <ItemsList ref="items" :items="items" />
             <button v-if="thereIsMore" class="blob archive__load-more" :disabled="loading" @click="fetchData()">
@@ -21,22 +36,17 @@
             </button>
           </div>
         </section>
-        <div class="archive__filters-switch">
+        <div v-if="!loading && this.items.length >= 0" class="archive__controls">
           <SearchForm class="archive__filters-search" />
           <button
             class="blob blob--green blob--shadow archive__filters-link"
+            aria-label="filter by tags"
             @click="filtersOpen = true"
           >
-            add category
+            <svg width="43" height="46" viewBox="0 0 43 46" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M18.5 23.2158L2.5 2.5H40.5L24.5 23.2158V40.0474L18.5 43.5V23.2158Z" stroke="#6D5D38" stroke-width="4" stroke-linejoin="bevel"/>
+            </svg>
           </button>
-        </div>
-        <div class="archive__home">
-          <router-link
-            :to="{ name: 'Home' }"
-            class="blob blob--pink blob--shadow archive__home-link"
-          >
-            home
-          </router-link>
         </div>
       </div>
     </main>
@@ -121,8 +131,11 @@ export default {
 </script>
 
 <style scoped>
-.archive__filters-switch,
-.archive__home {
+.archive__main {
+  min-height: calc(100vh - 390px);
+}
+
+.archive__controls {
   position: fixed;
   top: 60%;
   left: calc(100% / 3);
@@ -130,8 +143,9 @@ export default {
 }
 
 .archive__home {
-  top: 50%;
-  left: 50%;
+  position: absolute;
+  right: 35px;
+  top: calc(100% + 30px);
 }
 
 .archive__filters-link,
@@ -139,25 +153,30 @@ export default {
   appearance: none;
   color: inherit;
   cursor: pointer;
-  position: absolute;
-  top: 15vh;
-  left: calc(100vw / 6 / 2);
-  transform: translateY(-50%) translateX(-50%);
+  display: flex;
   text-decoration: inherit;
-  padding: 7px 35px;
   width: max-content;
 }
 
-.archive__filters-search {
-  right: 40px;
+.archive__filters-link {
+  height: 60px;
+  left: calc(100vw / 6 / 2);
+  padding: 7px 35px;
+  position: absolute;
   top: 15vh;
+  transform: translateY(-50%) translateX(-50%);
+}
+
+.archive__filters-search {
+  left: calc(100vw / 6 / 2 + 70px);
+  top: 15vh;
+  height: 60px;
   position: absolute;
   transform: translateY(-50%);
 }
 
 .archive__home-link {
-  top: 0;
-  left: 0;
+  padding: 30px 35px;
 }
 
 .archive__load-more {
@@ -171,11 +190,11 @@ export default {
   position: sticky;
   top: 0;
   z-index: 4;
+  border-bottom: solid 2px black;
 }
 
 .archive__meta {
-  background: black;
-  color: white;
+  background: var(--color-prime-light-grey);
   font-size: var(--font-size-small);
   padding: 10px 15px;
 }

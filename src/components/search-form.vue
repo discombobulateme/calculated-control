@@ -71,12 +71,13 @@ export default {
 <style lang="css" scoped>
 .search-form {
   display: flex;
-  padding: 0 30px;
+  padding: 7px 35px;
   position: relative;
 }
 
 .search-form__content {
   display: inline-block;
+  padding-right: 10px;
   height: 100%;
   width: 0;
   overflow: hidden;
@@ -93,6 +94,8 @@ export default {
   border: none;
   background: transparent;
   color: inherit;
+  height: 100%;
+  width: 100%;
 }
 
 .search-form__input:hover,
