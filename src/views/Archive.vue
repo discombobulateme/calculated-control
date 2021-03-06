@@ -35,7 +35,7 @@
         </section>
       </div>
     </main>
-    <SiteFooter />
+    <SiteFooter :class="{ blurrable: true, 'blurred': filtersOpen }" />
   </div>
 </template>
 

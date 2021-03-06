@@ -7,18 +7,52 @@
       Close
     </CloseButton>
     <button class="archive-tags__reset">reset all categories</button>
-    <div class="archive-tags__content">
-      <ul class="archive-tags__list archive-tags__list--primary" aria-label="Primary tags">
-        <li v-for="primaryTag in primaryTags" :key="primaryTag" class="blob blob--shadow blob--pink archive-tags__item">
-          #{{ primaryTag }}
-        </li>
-      </ul>
-      <ul class="archive-tags__list archive-tags__list--curated" aria-label="curated tags">
-        <li v-for="curatedTag in curatedTags" :key="curatedTag" class="blob blob--shadow archive-tags__item">
-          #{{ curatedTag }}
-        </li>
-      </ul>
-    </div>
+    <form class="archive-tags__content">
+      <section class="archive-tags__list archive-tags__list--primary" aria-label="Primary tags">
+        <label
+          v-for="primaryTag in primaryTags"
+          :key="primaryTag"
+          :class="{
+            blob: true,
+            'blob--shadow': true,
+            'blob--pink': true,
+            'archive-tags__item': true,
+            'archive-tags__item--selected': selectedTags && selectedTags.includes(primaryTag),
+          }"
+        >
+          <input
+            class="archive-tags__input"
+            name="tag"
+            type="checkbox"
+            :value="primaryTag"
+            v-model="selectedTags"
+          />
+          {{ primaryTag }}
+          <Checkmark v-if="isSelected(primaryTag)" class="archive-tags__checkmark" role="presentation"/>
+        </label>
+      </section>
+      <section class="archive-tags__list archive-tags__list--curated" aria-label="curated tags">
+        <label
+          v-for="curatedTag in curatedTags"
+          :key="curatedTag"
+          :class="{
+            blob: true,
+            'blob--shadow': true,
+            'archive-tags__item': true,
+          }"
+        >
+          <input
+            class="archive-tags__input"
+            name="tag"
+            type="checkbox"
+            :value="curatedTag"
+            v-model="selectedTags"
+          />
+          {{ curatedTag }}
+          <Checkmark v-if="isSelected(curatedTag)" class="archive-tags__checkmark" role="presentation"/>
+        </label>
+      </section>
+    </form>
     <button
       class="blob blob--green blob--shadow archive-tags__submit"
       @click="$emit('close', $event)"
@@ -29,12 +63,18 @@
 </template>
 
 <script>
+import debounce from 'lodash.debounce';
+
 import CloseButton from '@/components/close-button';
+import Checkmark from '@/components/icons/check';
 import { primaryTags, curatedTags } from '@/tags.js';
+
+const DEBOUNCE_WAIT = 1000;
 
 export default {
   name: 'ArchiveTags',
   components: {
+    Checkmark,
     CloseButton,
   },
   props: {
@@ -43,6 +83,32 @@ export default {
       default: 0,
     },
   },
+  data: ({ $route }) => ({
+    selectedTags: $route.query.tags && !Array.isArray($route.query.tags)
+      ? [$route.query.tags]
+      : ($route.query.tags || []),
+  }),
+  watch: {
+    selectedTags(newTags, oldTags) {
+      if (!newTags.every(tag => oldTags.includes(tag))) {
+        console.log(newTags, oldTags);
+        this.search();
+      }
+    },
+  },
+  mounted() {
+    this.selectedTags = this.$route.query.tags && !Array.isArray(this.$route.query.tags)
+      ? [this.$route.query.tags]
+      : (this.$route.query.tags || []);
+  },
+  created() {
+    this.search = debounce(() => {
+      const { query } = this.$route;
+      if (this.selectedTags) query.tags = this.selectedTags;
+      console.log(query);
+      this.$router.push({ name: 'Archive', query });
+    }, DEBOUNCE_WAIT);
+  },
   computed: {
     primaryTags() {
       return primaryTags;
@@ -50,12 +116,18 @@ export default {
     curatedTags() {
       return curatedTags;
     },
-  }
+  },
+  methods: {
+    isSelected(tag) {
+      return this.selectedTags && this.selectedTags.includes(tag);
+    },
+  },
 }
 </script>
 
 <style scoped>
 .archive-tags {
+  font-size: var(--font-size-medium);
   overflow: hidden;
   overscroll-behavior: contain;
   height: 100vh;
@@ -105,6 +177,7 @@ export default {
 }
 
 .archive-tags__item {
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -120,10 +193,19 @@ export default {
   margin-top: 10px;
 }
 
+.archive-tags__input {
+  appearance: none;
+  height: 0;
+  margin: 0;
+  opacity: 0;
+  width: 0;
+}
+
 .archive-tags__close {
   position: absolute;
   top: 0;
   right: 0;
+  z-index: 2;
 }
 
 .archive-tags__reset {
@@ -141,5 +223,10 @@ export default {
   padding: 15px;
   width: 100%;
   margin-top: 40px;
+}
+
+.archive-tags__checkmark {
+  display: inline-block;
+  margin-left: 15px;
 }
 </style>

@@ -16,10 +16,6 @@
 </template>
 
 <script>
-import debounce from 'lodash.debounce';
-
-const DEBOUNCE_WAIT = 1000;
-
 export default {
   name: 'SearchForm',
   props: {
@@ -32,26 +28,19 @@ export default {
       default: '',
     },
   },
-  data: ({ query, $route }) => ({
+  data: ({ query }) => ({
     currentQuery: query,
-    selectedTags: !Array.isArray($route.query.tags) ? [$route.query.tags] : ($route.query.tags || []),
   }),
-  created() {
-    this.search = debounce(() => {
-      const query = { q: this.currentQuery };
-      if (this.selectedTags) query.tags = this.selectedTags;
-      this.$router.push({ query });
-    }, DEBOUNCE_WAIT);
-  },
   mounted() {
     this.selectedTags = !Array.isArray(this.$route.query.tags) ? [this.$route.query.tags] : (this.$route.query.tags || []);
-    if (this.$route.query.q && this.$route.query.q.length > 0) {
-      this.expanded = true;
-    }
   },
   methods: {
     onInput(event) {
       this.currentQuery = event.target.value;
+    },
+    search() {
+      const query = { q: this.currentQuery };
+      this.$router.push({ query });
     },
   },
 };
