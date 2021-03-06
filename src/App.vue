@@ -26,6 +26,7 @@ export default {
   --color-prime-green: rgb(156, 250, 111);
   --color-prime-pink: rgb(220, 182, 189);
   --color-prime-olive: rgb(109, 93, 56);
+  --color-prime-olive-half: rgb(109, 93, 56, 0.5);
   --color-prime-light-grey: rgb(225, 225, 225);
 
   --font-size-small: 24px;

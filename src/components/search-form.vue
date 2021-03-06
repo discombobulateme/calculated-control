@@ -4,14 +4,12 @@
       'blob--green': true,
       'blob--shadow': true,
       'search-form': true,
-      'search-form--expanded': expanded,
     }"
     role="search"
-    @click="onExpand"
     @submit.prevent="search"
   >
     <div class="search-form__content">
-      <input ref="input" class="search-form__input" type="search" placeholder="Search" name="q" :value="$route.query.q" @input="onInput">
+      <input ref="input" class="search-form__input" type="search" placeholder="search..." name="q" :value="$route.query.q" @input="onInput">
     </div>
     🔍
   </form>
@@ -35,7 +33,6 @@ export default {
     },
   },
   data: ({ query, $route }) => ({
-    expanded: false,
     currentQuery: query,
     selectedTags: !Array.isArray($route.query.tags) ? [$route.query.tags] : ($route.query.tags || []),
   }),
@@ -56,14 +53,6 @@ export default {
     onInput(event) {
       this.currentQuery = event.target.value;
     },
-    onExpand() {
-      if (!this.expanded) {
-        this.expanded = true;
-        if (this.$refs.input) {
-          this.$refs.input.focus();
-        }
-      }
-    },
   },
 };
 </script>
@@ -79,14 +68,10 @@ export default {
   display: inline-block;
   padding-right: 10px;
   height: 100%;
-  width: 0;
-  overflow: hidden;
-  transition: width 500ms;
-}
-
-.search-form--expanded .search-form__content {
   width: 18vw;
   min-width: 200px;
+  overflow: hidden;
+  transition: width 500ms;
 }
 
 .search-form__input {

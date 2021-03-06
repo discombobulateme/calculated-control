@@ -1,14 +1,14 @@
 <template>
   <router-link
     :to="{ name: 'Home' }"
-    class="blob blob--pink blob--shadow home-button"
+    class="blob blob--shadow home-button"
     aria-label="Home"
   >
-    <svg width="108" height="70" viewBox="0 0 108 70" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <g fill="rgba(255,255,255,0.5)">
-        <rect width="108" height="14"/>
-        <rect y="28" width="108" height="14"/>
-        <rect y="56" width="108" height="14"/>
+    <svg width="41" height="35" viewBox="0 0 41 35" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <g fill="currentColor">
+        <rect width="41" height="4"/>
+        <rect y="15" width="41" height="4"/>
+        <rect y="30" width="41" height="4"/>
       </g>
     </svg>
   </router-link>
@@ -16,7 +16,8 @@
 
 <style scoped>
 .home-button {
+  color: var(--color-prime-olive);
   display: flex;
-  padding: 30px 35px;
+  padding: 15px 30px;
 }
 </style>
