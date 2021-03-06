@@ -121,20 +121,24 @@ export default {
 }
 
 .archive__controls {
-  position: sticky;
-  display: flex;
-  justify-content: flex-end;
   align-items: flex-end;
-  height: 0;
   bottom: 0;
+  display: flex;
+  height: 0;
+  position: sticky;
+  flex-direction: column;
+  padding: 0 15px;
+  justify-content: flex-end;
   right: 0;
   z-index: 3;
 }
 
 .archive__filters-link,
 .archive__filters-search {
+  justify-content: center;
+  margin: 15px 0;
   height: 60px;
-  margin: 15px;
+  width: 100%;
 }
 
 .archive__filters-link {
@@ -142,10 +146,26 @@ export default {
   color: inherit;
   cursor: pointer;
   display: inline-flex;
-  margin-right: 0;
+  margin-bottom: 0;
   padding: 7px 35px;
   text-decoration: inherit;
-  width: max-content;
+}
+
+@media screen and (min-width: 768px) {
+  .archive__controls {
+    flex-direction: row;
+    padding: 0;
+  }
+
+  .archive__filters-link,
+  .archive__filters-search {
+    margin: 15px;
+    width: max-content;
+  }
+
+  .archive__filters-link {
+    margin-right: 0;
+  }
 }
 
 .archive__load-more {

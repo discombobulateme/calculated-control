@@ -71,7 +71,6 @@ export default {
   width: 18vw;
   min-width: 200px;
   overflow: hidden;
-  transition: width 500ms;
 }
 
 .search-form__input {

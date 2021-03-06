@@ -4,7 +4,7 @@
       'archive-header--node': isPrimaryNode,
     }"
   >
-    <h2 class="archive-header__title">calculating:control</h2>
+    <h2 class="archive-header__title">calculated:control</h2>
     <div class="archive-header__meta">
       <span>{{ node || 'archive' }}</span> ({{ totalResults }})
     </div>

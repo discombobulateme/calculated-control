@@ -17,7 +17,7 @@
         :src="youtubeEmbed"
         frameborder="0"></iframe>
       <div v-else-if="item && item.itemType === 'note'">
-        <div v-html="item.note"></div>
+        <div class="note" v-html="item.note"></div>
       </div>
     </section>
     <section class="section content">
@@ -325,5 +325,9 @@ export default {
   padding: 7px 35px;
   top: 60%;
   left: calc(100% / 3);
+}
+
+.note {
+  font-size: var(--font-size-medium);
 }
 </style>
