@@ -3,7 +3,9 @@
     <article class="item-preview" tabindex="0">
       <p class="item-preview__type">{{ mainTag }}</p>
       <h2 class="item-preview__title" v-safe-html="titleText"></h2>
-      <div v-if="highlightTag" class="item-preview__highlight blob blob--green">#{{ highlightTag }}</div>
+      <div v-if="highlightTag" class="item-preview__highlight blob blob--green">
+        <span class="hash">#</span>{{ highlightTag }}
+      </div>
     </article>
   </router-link>
 </template>
@@ -52,6 +54,11 @@ export default {
   width: 100%;
   word-wrap: anywhere;
   position: relative;
+  transition: background-color var(--transition-time);
+}
+
+.item-preview-link:hover {
+  background: var(--color-prime-light-grey);
 }
 
 .item-preview:focus {

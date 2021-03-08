@@ -1,18 +1,12 @@
 <template>
   <div id="app">
-    <SiteNav />
     <router-view/>
   </div>
 </template>
 
 <script>
-import SiteNav from '@/components/site-nav';
-
 export default {
   name: 'CalculatedControl',
-  components: {
-    SiteNav,
-  },
 };
 </script>
 
@@ -23,20 +17,23 @@ export default {
 }
 
 :root {
-  --color-prime-green: rgb(156, 250, 111);
+  --color-prime-green: #92FF5F;
   --color-prime-pink: rgb(220, 182, 189);
   --color-prime-rose-darker: #B57380;
   --color-prime-olive: rgb(109, 93, 56);
   --color-prime-olive-half: rgb(109, 93, 56, 0.5);
   --color-prime-light-grey: rgb(225, 225, 225);
 
+  --font-size-xs: 20px;
   --font-size-small: 24px;
   --font-size-medium-small: 30px;
   --font-size-medium: 2vw;
   --font-size-large: 39px;
   --font-size-xl: 42px;
+  --font-size-xxl: 52px;
 
   --border-radius: 30px;
+  --transition-time: 400ms;
 }
 
 * {
@@ -62,9 +59,8 @@ h1, h2, h3, h4, h5 {
 }
 
 .base-grid {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: 3fr 3fr 3fr 1fr;
+  grid-template-columns: repeat(3, 1fr) 1.5fr 0.5fr 0.5fr;
+  grid-template-rows: repeat(6, 1fr);
 }
 
 .blurrable {
@@ -82,6 +78,7 @@ h1, h2, h3, h4, h5 {
   color: var(--color-prime-olive);
   font-size: var(--font-size-large);
   text-align: center;
+  overflow: hidden;
 }
 
 .blob--shadow {
@@ -104,5 +101,9 @@ h1, h2, h3, h4, h5 {
 
 .link:hover {
   text-decoration: underline;
+}
+
+.hash {
+  font-family: Helvetica, Arial, sans-serif;
 }
 </style>

@@ -25,12 +25,9 @@ const request = thing => async (params = {}) => {
   return response;
 };
 
-export const getItemsForTags = async tags => {
-  return request('items')({ tag: tags.join(' || ')});
-};
-
-export const getTags = async ({ limit = 20 }) => {
-  return request('tags')({ limit, sort: 'numItems', direction: 'desc' });
+export const getItemsForTag = async ({ tag, limit = 1 }) => {
+  const response = await request('items/top')({ tag, limit });
+  return response.json();
 };
 
 export const getTagsForItemTags = async ({ limit = 25, tags = [], q }) => {
