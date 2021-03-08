@@ -10,4 +10,10 @@ export const curatedTags = [
   'Kybernetik',
   'GDR',
   'Architektur',
-]
+];
+
+export const highlightTags = [
+  'new',
+  'ongoing',
+  'live',
+];
