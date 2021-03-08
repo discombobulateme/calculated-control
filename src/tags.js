@@ -2,7 +2,8 @@ export const primaryTags = [
   'exhibition',
   'symposium',
   'unconference',
-  'journal'
+  'journal',
+  'person',
 ];
 
 export const curatedTags = [

@@ -5,7 +5,7 @@
       <div class="item__meta">Archive: Entry #{{ id }}</div>
       <HomeButton class="item__home" aria-label="Home" />
     </header>
-    <main class="main">
+    <main v-if="item" class="main">
       <router-link
         :to="{ name: 'Archive' }"
         class="blob blob--green blob--shadow archive-button"
@@ -31,9 +31,9 @@
           <h2 class="item__note-label">#abstract</h2>
           <div v-html="item.abstractNote"></div>
         </div>
-        <div v-else class="item__pullout-header">
+        <div v-else-if="item" class="item__pullout-header">
           <div class="item__type">
-            #{{ item.itemType }}
+            #{{ mainTag }}
           </div>
           <div v-if="creators && creators.length > 0" class="item__authors">
             <router-link
@@ -158,6 +158,7 @@
 <script>
 import { getItem, getRelatedItems } from '@/api';
 import { primaryTags } from '@/tags';
+import { getMainTag } from '@/utils';
 import HomeButton from '@/components/home-button';
 import ItemPreview from '@/components/item-preview';
 
@@ -218,6 +219,9 @@ export default {
       }
 
       return this.item && this.item.rights;
+    },
+    mainTag() {
+      return this.item && getMainTag(this.item);
     },
   },
   methods: {

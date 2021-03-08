@@ -1,13 +1,15 @@
 <template>
   <router-link class="item-preview-link" :to="{ name: 'Item', params: { key: item.key } }">
     <article class="item-preview" tabindex="0">
-      <p class="item-preview__type">{{ item.data.itemType }}</p>
+      <p class="item-preview__type">{{ mainTag }}</p>
       <h2 class="item-preview__title" v-safe-html="titleText"></h2>
     </article>
   </router-link>
 </template>
 
 <script>
+import { getMainTag } from '@/utils';
+
 const NOTE_SLICE_LENGTH = 60;
 
 export default {
@@ -19,6 +21,9 @@ export default {
     },
   },
   computed: {
+    mainTag() {
+      return this.item && getMainTag(this.item.data);
+    },
     titleText() {
       const { title, note } = this.item.data;
       const text = title || note || '';
