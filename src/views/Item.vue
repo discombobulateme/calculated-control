@@ -1,116 +1,129 @@
 <template>
-  <main class="main">
-    <HomeButton class="home-button" aria-label="Home" />
-    <router-link
-      :to="{ name: 'Archive' }"
-      class="blob blob--green blob--shadow archive-button"
-    >
-      ← archive
-    </router-link>
-    <section class="section media">
-      <iframe
-        v-if="youtubeEmbed"
-        class="media-embed"
-        type="text/html"
-        width="640"
-        height="360"
-        :src="youtubeEmbed"
-        frameborder="0"></iframe>
-      <div v-else-if="item && item.itemType === 'note'">
-        <div class="note" v-html="item.note"></div>
-      </div>
-    </section>
-    <section class="section content">
-      <div v-if="loading">
-        Loading...
-      </div>
-      <div v-else-if="item" class="item__info">
-        <div v-show="!showArchiveConnections" class="item__fields">
-          <div v-if="item.title" class="field">
-            <span class="field__label">title</span>
-            {{ item.title }}
-          </div>
-          <div v-if="item.itemType" class="field">
-            <span class="field__label">type</span>
-            {{ item.itemType }}
-          </div>
-          <div v-if="creators && creators.length > 0" class="field">
-            <span class="field__label">author(s)</span>
-            {{ creators }}
-          </div>
-          <div v-if="item.date" class="field">
-            <span class="field__label">date</span>
-            {{ formatDate(item.date) }}
-          </div>
-          <div v-if="item.accessDate" class="field">
-            <span class="field__label">accessDate</span>
-            {{ formatDate(item.accessDate) }}
-          </div>
-          <div v-if="item.dateAdded" class="field">
-            <span class="field__label">dateAdded</span>
-            {{ formatDate(item.dateAdded) }}
-          </div>
-          <div v-if="item.publisher" class="field">
-            <span class="field__label">publisher</span>
-            {{ item.publisher }}
-          </div>
-          <div v-if="item.ISBN" class="field">
-            <span class="field__label">isbn</span>
-            {{ item.ISBN }}
-          </div>
-          <div v-if="item.language" class="field">
-            <span class="field__label">language</span>
-            {{ item.language }}
-          </div>
-          <div v-if="item.numPages" class="field">
-            <span class="field__label">pages</span>
-            {{ item.numPages }}
-          </div>
-          <div v-if="item.archive" class="field">
-            <span class="field__label">archive</span>
-            {{ item.archive }}
-          </div>
-          <div v-if="item.libraryCatalog" class="field">
-            <span class="field__label">catalog</span>
-            {{ item.libraryCatalog }}
-          </div>
-          <div v-if="item.abstractNote" class="field field--long">
-            <span class="field__label">abstract</span>
-            <pre class="field__pre">{{ item.abstractNote }}</pre>
-          </div>
+  <div class="item">
+    <header class="item__header">
+      <h1 class="item__title">calculated:control</h1>
+      <div class="item__meta">Archive: Entry #{{ id }}</div>
+      <HomeButton class="item__home" aria-label="Home" />
+    </header>
+    <main class="main">
+      <router-link
+        :to="{ name: 'Archive' }"
+        class="blob blob--green blob--shadow archive-button"
+      >
+        ← archive
+      </router-link>
+      <section class="section media">
+        <iframe
+          v-if="youtubeEmbed"
+          class="media-embed"
+          type="text/html"
+          width="640"
+          height="360"
+          :src="youtubeEmbed"
+          frameborder="0"></iframe>
+        <figure v-if="image" class="item__image">
+          <img :src="image" />
+        </figure>
+        <div v-else-if="item && item.itemType === 'note'">
+          <div class="note" v-html="item.note"></div>
         </div>
-        <div class="archive-connections">
-          <div v-show="showArchiveConnections" class="tags">
-            <ul class="tags__list">
-              <li v-for="{ tag } in item.tags" :key="tag" class="tags__item">
-                <router-link
-                  :class="{
-                    'tags__tag': true,
-                    'blob': true,
-                    'blob--pink': isPrimary(tag)
-                  }"
-                  :to="{ name: 'Archive', query: { tags: [tag] } }"
-                >
-                  #{{ tag }}
-                </router-link>
-              </li>
-            </ul>
-            <div v-if="relations" class="relations">
-              <ul class="relations__list">
-                <li v-for="relation in relations" :key="relation.key" class="relations__item">
-                  <ItemPreview :item="relation" />
-                </li>
-              </ul>
+        <div v-else-if="item && item.abstractNote" class="note">
+          <h2 class="item__title">#abstract</h2>
+          <div v-html="item.abstractNote"></div>
+        </div>
+      </section>
+      <section class="section content">
+        <div v-if="loading">
+          Loading...
+        </div>
+        <div v-else-if="item" class="item__info">
+          <div v-show="!showArchiveConnections" class="item__fields">
+            <div v-if="item.title" class="field">
+              <span class="field__label">title</span>
+              {{ item.title }}
+            </div>
+            <div v-if="item.itemType" class="field">
+              <span class="field__label">type</span>
+              {{ item.itemType }}
+            </div>
+            <div v-if="creators && creators.length > 0" class="field">
+              <span class="field__label">author(s)</span>
+              {{ creators }}
+            </div>
+            <div v-if="item.date" class="field">
+              <span class="field__label">date</span>
+              {{ formatDate(item.date) }}
+            </div>
+            <div v-if="item.accessDate" class="field">
+              <span class="field__label">accessDate</span>
+              {{ formatDate(item.accessDate) }}
+            </div>
+            <div v-if="item.dateAdded" class="field">
+              <span class="field__label">dateAdded</span>
+              {{ formatDate(item.dateAdded) }}
+            </div>
+            <div v-if="item.publisher" class="field">
+              <span class="field__label">publisher</span>
+              {{ item.publisher }}
+            </div>
+            <div v-if="item.ISBN" class="field">
+              <span class="field__label">isbn</span>
+              {{ item.ISBN }}
+            </div>
+            <div v-if="item.language" class="field">
+              <span class="field__label">language</span>
+              {{ item.language }}
+            </div>
+            <div v-if="item.numPages" class="field">
+              <span class="field__label">pages</span>
+              {{ item.numPages }}
+            </div>
+            <div v-if="item.archive" class="field">
+              <span class="field__label">archive</span>
+              {{ item.archive }}
+            </div>
+            <div v-if="item.libraryCatalog" class="field">
+              <span class="field__label">catalog</span>
+              {{ item.libraryCatalog }}
+            </div>
+            <div v-if="image && item.abstractNote" class="field field--long">
+              <span class="field__label">abstract</span>
+              <pre class="field__pre">{{ item.abstractNote }}</pre>
             </div>
           </div>
-          <button class="blob blob--green archive-connections__show" @click="toggleArchiveConnections">
-            {{ showArchiveConnections ? 'hide' : 'show' }} archive connections
-          </button>
         </div>
+        <div v-else>Error</div>
+      </section>
+      <div class="archive-connections">
+        <div v-show="showArchiveConnections" class="tags">
+          <ul class="tags__list">
+            <li v-for="{ tag } in item.tags" :key="tag" class="tags__item">
+              <router-link
+                :class="{
+                  'tags__tag': true,
+                  'blob': true,
+                  'blob--pink': isPrimary(tag)
+                }"
+                :to="{ name: 'Archive', query: { tags: [tag] } }"
+              >
+                #{{ tag }}
+              </router-link>
+            </li>
+          </ul>
+          <div v-if="relations" class="relations">
+            <ul class="relations__list">
+              <li v-for="relation in relations" :key="relation.key" class="relations__item">
+                <ItemPreview :item="relation" />
+              </li>
+            </ul>
+          </div>
+        </div>
+        <button class="blob blob--green archive-connections__show" @click="toggleArchiveConnections">
+          {{ showArchiveConnections ? 'hide' : 'show' }} archive connections
+        </button>
       </div>
-      <div v-else>Error</div>
-    </section>
-  </main>
+    </main>
+  </div>
 </template>
 
 <script>
@@ -165,7 +178,18 @@ export default {
       embedUrl.pathname = embedUrl.pathname + watchUrl.searchParams.get('v');
 
       return embedUrl.toString();
-    }
+    },
+    image() {
+      if (!this.item) return null;
+
+      try {
+        new URL(this.item.rights);
+      } catch(err) {
+        return null;
+      }
+
+      return this.item && this.item.rights;
+    },
   },
   methods: {
     async fetchData() {
@@ -200,6 +224,32 @@ export default {
 </script>
 
 <style scoped>
+.item {
+  background: var(--color-prime-light-grey);
+}
+
+.item__header {
+  font-size: var(--font-size-large);
+  height: 100px;
+  padding: 5px 15px;
+  position: relative;
+}
+
+.item__title {
+  font-size: inherit;
+  margin: 0;
+}
+
+.item__meta {
+  color: var(--color-prime-olive-half);
+}
+
+.item__home {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
 .main {
   display: grid;
   border: solid 1px black;
@@ -209,7 +259,7 @@ export default {
 @media screen and (min-width: 1024px) {
   .main {
     grid-template-columns: 1fr 1fr;
-    height: 100vh;
+    height: calc(100vh - 100px);
   }
 
   .item__fields {
@@ -220,6 +270,8 @@ export default {
 
 .section {
   border: solid 1px black;
+  height: 100%;
+  overflow: auto;
 }
 
 .item__info {
@@ -258,6 +310,7 @@ export default {
   display: flex;
   flex-grow: 1;
   flex-direction: column;
+  grid-column: span 2;
 }
 
 .archive-connections__show {
@@ -310,14 +363,8 @@ export default {
   height: 200px;
 }
 
-.home-button,
 .archive-button {
   position: absolute;
-}
-
-.home-button {
-  top: 30px;
-  left: 35px;
 }
 
 .archive-button {
@@ -329,5 +376,18 @@ export default {
 
 .note {
   font-size: var(--font-size-medium);
+  padding: 15px 5px;
+}
+
+.item__image {
+  margin: 0;
+  width: 100%;
+}
+
+.item__image img {
+  width: 100%;
+  object-fit: contain;
+  object-position: center;
+  max-height: calc(100vh - 100px);
 }
 </style>
