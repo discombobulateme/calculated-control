@@ -2,7 +2,11 @@
   <div class="archive">
     <main class="archive__main">
       <section v-show="filtersOpen" class="archive__filters">
-        <ArchiveTags :total-results="totalResults" @close="filtersOpen = false"/>
+        <ArchiveTags
+          :available-tags="this.availableTags"
+          :total-results="totalResults"
+          @close="filtersOpen = false"
+        />
       </section>
       <div :class="{ blurrable: true, 'blurred': filtersOpen }">
         <section class="section content">
@@ -40,7 +44,7 @@
 </template>
 
 <script>
-import { searchItems } from '@/api';
+import { searchItems, getTagsForItemTags } from '@/api';
 import ArchiveHeader from '@/components/archive-header';
 import ArchiveTags from '@/components/archive-tags';
 import ItemsList from '@/components/items-list';
@@ -76,7 +80,7 @@ export default {
     },
   },
   data: () => ({
-    tags: [],
+    availableTags: null,
     items: [],
     loading: true,
     filtersOpen: false,
@@ -106,6 +110,12 @@ export default {
       this.items.push(...newItems);
       this.totalResults = parseInt(totalResults, 10);
       this.loading = false;
+
+      if (selectedTags && selectedTags.length) {
+        this.availableTags = await getTagsForItemTags({ q, tags: selectedTags });
+      } else {
+        this.availableTags = null;
+      }
     },
   },
 };

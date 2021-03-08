@@ -7,7 +7,7 @@
       Close
     </CloseButton>
     <button class="archive-tags__reset">reset all categories</button>
-    <form class="archive-tags__content">
+    <form class="archive-tags__content" @submit.prevent="() => {}">
       <section class="archive-tags__list archive-tags__list--primary" aria-label="Primary tags">
         <label
           v-for="primaryTag in primaryTags"
@@ -17,7 +17,7 @@
             'blob--shadow': true,
             'blob--pink': true,
             'archive-tags__item': true,
-            'archive-tags__item--selected': selectedTags && selectedTags.includes(primaryTag),
+            'archive-tags__item--disabled': !isSelected(primaryTag) && isDisabled(primaryTag),
           }"
         >
           <input
@@ -39,6 +39,7 @@
             blob: true,
             'blob--shadow': true,
             'archive-tags__item': true,
+            'archive-tags__item--disabled': !isSelected(curatedTag) && isDisabled(curatedTag),
           }"
         >
           <input
@@ -57,7 +58,7 @@
       class="blob blob--green blob--shadow archive-tags__submit"
       @click="$emit('close', $event)"
     >
-      show {{ totalResults }} results
+      show {{ totalResults }} {{ totalResults === 1 ? 'result' : 'results' }}
     </button>
   </div>
 </template>
@@ -82,6 +83,10 @@ export default {
       type: Number,
       default: 0,
     },
+    availableTags: {
+      type: [Array, null],
+      default: null,
+    },
   },
   data: ({ $route }) => ({
     selectedTags: $route.query.tags && !Array.isArray($route.query.tags)
@@ -90,8 +95,7 @@ export default {
   }),
   watch: {
     selectedTags(newTags, oldTags) {
-      if (!newTags.every(tag => oldTags.includes(tag))) {
-        console.log(newTags, oldTags);
+      if (newTags.length !== oldTags.length || !newTags.every(tag => oldTags.includes(tag))) {
         this.search();
       }
     },
@@ -103,10 +107,14 @@ export default {
   },
   created() {
     this.search = debounce(() => {
-      const { query } = this.$route;
-      if (this.selectedTags) query.tags = this.selectedTags;
-      console.log(query);
-      this.$router.push({ name: 'Archive', query });
+      console.log('searching');
+      const query = {};
+      if (this.selectedTags) query.tags = Array.from(this.selectedTags);
+      if (this.$route.query.q) query.q = this.$route.query.q;
+      this.$router.push({
+        path: '/archive',
+        query: query,
+      });
     }, DEBOUNCE_WAIT);
   },
   computed: {
@@ -121,6 +129,9 @@ export default {
     isSelected(tag) {
       return this.selectedTags && this.selectedTags.includes(tag);
     },
+    isDisabled(tag) {
+      return this.availableTags && !this.availableTags.includes(tag.toLowerCase());
+    }
   },
 }
 </script>
@@ -183,6 +194,11 @@ export default {
   align-items: center;
   height: min-content;
   padding: 15px;
+}
+
+.archive-tags__item--disabled {
+  pointer-events: none;
+  opacity: 0.5;
 }
 
 .archive-tags__list--primary .archive-tags__item {

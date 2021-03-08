@@ -9,9 +9,17 @@ const request = thing => async (params = {}) => {
   url.pathname = `/groups/${GROUP_ID}/${thing}`;
 
   for (const [key, value] of Object.entries(params)) {
-    if (value !== undefined) url.searchParams.set(key, value);
+    if (value === undefined) continue;
+    if (Array.isArray(value)) {
+      for (const arrayItem of value) {
+        url.searchParams.append(key, arrayItem);
+      }
+      continue;
+    }
+    url.searchParams.set(key, value);
   }
 
+  console.log(url.toString());
   const response = await fetch(url.toString(), { headers });
   if (!response.ok) throw new Error(`Could not send request with params ${params}`);
   return response;
@@ -26,7 +34,7 @@ export const getTags = async ({ limit = 20 }) => {
 };
 
 export const getTagsForItemTags = async ({ limit = 25, tags = [], q }) => {
-  return request('items/top/tags')({
+  const response = await request('items/top/tags')({
     itemQ: q,
     limit,
     sort: 'numItems',
@@ -34,17 +42,22 @@ export const getTagsForItemTags = async ({ limit = 25, tags = [], q }) => {
     itemTag: tags.join(),
     itemQMode: 'titleCreatorYear',
   });
+
+  const data = await response.json();
+  return data.map(({ tag }) => tag.toLowerCase());
 };
 
 export const searchItems = async ({ q, tags, start = 0, limit = 24 }) => {
-  const response = await request('items')({
+  const query = {
     q,
-    tag: tags?.join(' || '),
+    tag: tags,
     qmode: 'titleCreatorYear',
     limit,
-    start,
     itemType: '-attachment',
-  });
+  };
+
+  if (start) query.start = start;
+  const response = await request('items/top')(query);
 
   const totalResults = response.headers.get('Total-Results');
   return {
