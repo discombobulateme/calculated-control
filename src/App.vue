@@ -25,14 +25,16 @@ export default {
 :root {
   --color-prime-green: rgb(156, 250, 111);
   --color-prime-pink: rgb(220, 182, 189);
+  --color-prime-rose-darker: #B57380;
   --color-prime-olive: rgb(109, 93, 56);
   --color-prime-olive-half: rgb(109, 93, 56, 0.5);
   --color-prime-light-grey: rgb(225, 225, 225);
 
   --font-size-small: 24px;
+  --font-size-medium-small: 30px;
   --font-size-medium: 2vw;
   --font-size-large: 39px;
-  --font-size-xl: 5vw;
+  --font-size-xl: 42px;
 
   --border-radius: 30px;
 }
@@ -92,5 +94,15 @@ h1, h2, h3, h4, h5 {
 
 .blob--pink {
   background-color: var(--color-prime-pink);
+}
+
+.link,
+.link:visited {
+  color: var(--color-prime-rose-darker);
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
 }
 </style>

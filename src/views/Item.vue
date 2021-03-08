@@ -1,7 +1,7 @@
 <template>
   <div class="item">
     <header class="item__header">
-      <h1 class="item__title">calculated:control</h1>
+      <h1 class="item__page-title">calculated:control</h1>
       <div class="item__meta">Archive: Entry #{{ id }}</div>
       <HomeButton class="item__home" aria-label="Home" />
     </header>
@@ -28,8 +28,27 @@
           <div class="note" v-html="item.note"></div>
         </div>
         <div v-else-if="item && item.abstractNote" class="note">
-          <h2 class="item__title">#abstract</h2>
+          <h2 class="item__note-label">#abstract</h2>
           <div v-html="item.abstractNote"></div>
+        </div>
+        <div v-else class="item__pullout-header">
+          <div class="item__type">
+            #{{ item.itemType }}
+          </div>
+          <div v-if="creators && creators.length > 0" class="item__authors">
+            <router-link
+              :to="{
+                name: 'Archive',
+                query: { tags: 'person', q: creators }
+              }"
+              class="link"
+            >
+              {{ creators }}
+            </router-link>
+          </div>
+          <h2 v-if="item.title" class="item__title">
+            {{ item.title }}
+          </h2>
         </div>
       </section>
       <section class="section content">
@@ -38,18 +57,20 @@
         </div>
         <div v-else-if="item" class="item__info">
           <div v-show="!showArchiveConnections" class="item__fields">
-            <div v-if="item.title" class="field">
-              <span class="field__label">title</span>
-              {{ item.title }}
-            </div>
-            <div v-if="item.itemType" class="field">
-              <span class="field__label">type</span>
-              {{ item.itemType }}
-            </div>
-            <div v-if="creators && creators.length > 0" class="field">
-              <span class="field__label">author(s)</span>
-              {{ creators }}
-            </div>
+            <template v-if="image || youtubeEmbed || item.itemType === 'note' || item.abstractNote">
+              <div v-if="item.title" class="field">
+                <span class="field__label">title</span>
+                {{ item.title }}
+              </div>
+              <div v-if="creators && creators.length > 0" class="field">
+                <span class="field__label">author(s)</span>
+                {{ creators }}
+              </div>
+              <div v-if="item.itemType" class="field">
+                <span class="field__label">type</span>
+                {{ item.itemType }}
+              </div>
+            </template>
             <div v-if="item.date" class="field">
               <span class="field__label">date</span>
               {{ formatDate(item.date) }}
@@ -65,6 +86,10 @@
             <div v-if="item.publisher" class="field">
               <span class="field__label">publisher</span>
               {{ item.publisher }}
+            </div>
+            <div v-if="item.DOI" class="field">
+              <span class="field__label">doi</span>
+              {{ item.DOI }}
             </div>
             <div v-if="item.ISBN" class="field">
               <span class="field__label">isbn</span>
@@ -85,6 +110,10 @@
             <div v-if="item.libraryCatalog" class="field">
               <span class="field__label">catalog</span>
               {{ item.libraryCatalog }}
+            </div>
+            <div v-if="item.url" class="field">
+              <span class="field__label">url</span>
+              <a :href="item.url" class="link one-line">{{ item.url }}</a>
             </div>
             <div v-if="image && item.abstractNote" class="field field--long">
               <span class="field__label">abstract</span>
@@ -204,7 +233,9 @@ export default {
     },
     formatDate(date) {
       if (!date) return null;
-      return new Date(date).toLocaleString();
+      const dateObject = new Date(date);
+      if (isNaN(dateObject)) return date;
+      return dateObject.toLocaleString();
     },
     async toggleArchiveConnections() {
       this.showArchiveConnections = !this.showArchiveConnections;
@@ -229,15 +260,29 @@ export default {
 }
 
 .item__header {
-  font-size: var(--font-size-large);
-  height: 100px;
+  font-size: var(--font-size-medium-small);
+  height: 80px;
   padding: 5px 15px;
   position: relative;
+}
+
+.item__page-title {
+  font-size: inherit;
+  margin: 0;
+}
+
+.item__pullout-header {
+  font-size: var(--font-size-xl);
+  padding: 5px 15px;
 }
 
 .item__title {
   font-size: inherit;
   margin: 0;
+}
+
+.item__authors {
+  color: var(--color-prime-rose-darker);
 }
 
 .item__meta {
@@ -246,20 +291,21 @@ export default {
 
 .item__home {
   position: absolute;
-  top: 15px;
+  top: 7px;
   right: 15px;
 }
 
 .main {
-  display: grid;
   border: solid 1px black;
   overflow: hidden;
+  min-height: calc(100vh - 80px);
 }
 
 @media screen and (min-width: 1024px) {
   .main {
+    display: grid;
     grid-template-columns: 1fr 1fr;
-    height: calc(100vh - 100px);
+    height: calc(100vh - 80px);
   }
 
   .item__fields {
@@ -314,6 +360,7 @@ export default {
 }
 
 .archive-connections__show {
+  padding: 30px 0;
   cursor: pointer;
   height: 100%;
   width: 100%;
@@ -375,8 +422,13 @@ export default {
 }
 
 .note {
-  font-size: var(--font-size-medium);
+  font-size: var(--font-size-xl);
   padding: 15px 5px;
+}
+
+.item__note-label {
+  font-size: inherit;
+  margin: 0;
 }
 
 .item__image {
