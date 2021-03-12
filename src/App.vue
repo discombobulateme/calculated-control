@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'CalculatedControl',
+  name: 'CalculatingControl',
 };
 </script>
 
@@ -18,17 +18,20 @@ export default {
 
 :root {
   --color-prime-green: #92FF5F;
+  --color-prime-green-hover: #A4FF79;
   --color-prime-pink: rgb(220, 182, 189);
+  --color-prime-pink-hover: #F0D2D8;
   --color-prime-rose-darker: #B57380;
   --color-prime-olive: rgb(109, 93, 56);
   --color-prime-olive-half: rgb(109, 93, 56, 0.5);
   --color-prime-light-grey: rgb(225, 225, 225);
+  --color-prime-light-grey-hover: rgb(233,233,233);
 
   --font-size-xs: 20px;
   --font-size-small: 24px;
   --font-size-medium-small: 30px;
   --font-size-medium: 2vw;
-  --font-size-large: 39px;
+  --font-size-large: 30px;
   --font-size-xl: 42px;
   --font-size-xxl: 52px;
 
@@ -79,27 +82,48 @@ h1, h2, h3, h4, h5 {
   font-size: var(--font-size-large);
   text-align: center;
   overflow: hidden;
+  transition: background-color var(--transition-time), filter var(--transition-time);
+}
+
+.blob:hover {
+  background: var(--color-prime-light-grey-hover);
+  filter: drop-shadow(2px 2px 12px rgba(0, 0, 0, 0.25));
 }
 
 .blob--shadow {
-  filter: drop-shadow(2px 2px 12px rgba(0, 0, 0, 0.25));;
+  filter: drop-shadow(2px 2px 12px rgba(0, 0, 0, 0.25));
+}
+
+.blob--shadow:hover {
+  filter: drop-shadow(2px 2px 25px rgba(0, 0, 0, 0.3));
 }
 
 .blob--green {
   background-color: var(--color-prime-green);
 }
 
+.blob--green:hover {
+  background-color: var(--color-prime-green-hover);
+}
+
 .blob--pink {
   background-color: var(--color-prime-pink);
 }
 
+.blob--pink:hover {
+  background-color: var(--color-prime-pink-hover);
+}
+
 .link,
-.link:visited {
+.link:visited,
+.note a,
+.note a:visited {
   color: var(--color-prime-rose-darker);
   text-decoration: none;
 }
 
-.link:hover {
+.link:hover,
+.note a:hover {
   text-decoration: underline;
 }
 

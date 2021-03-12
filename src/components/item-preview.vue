@@ -2,6 +2,8 @@
   <router-link class="item-preview-link" :to="{ name: 'Item', params: { key: item.key } }">
     <article class="item-preview" tabindex="0">
       <p class="item-preview__type">{{ mainTag }}</p>
+      <time v-if="item.data.date" class="item-preview__date">{{ item.data.date }}</time>
+      <p v-if="author" class="item-preview__author">{{ author }}</p>
       <h2 class="item-preview__title" v-safe-html="titleText"></h2>
       <div v-if="highlightTag" class="item-preview__highlight blob blob--green">
         <span class="hash">#</span>{{ highlightTag }}
@@ -12,7 +14,7 @@
 
 <script>
 import { highlightTags } from '@/tags';
-import { getMainTag } from '@/utils';
+import { getMainTag, getItemAuthor } from '@/utils';
 
 const NOTE_SLICE_LENGTH = 60;
 
@@ -40,6 +42,9 @@ export default {
       if (highlightTag) return highlightTag.tag;
       return null;
     },
+    author() {
+      return getItemAuthor(this.item.data);
+    },
   }
 };
 </script>
@@ -47,6 +52,7 @@ export default {
 <style scoped>
 .item-preview-link {
   color: inherit;
+  font-size: var(--font-size-large);
   display: block;
   height: 100%;
   padding: 15px;
@@ -66,9 +72,10 @@ export default {
 }
 
 .item-preview__title,
-.item-preview__type {
+.item-preview__type,
+.item-preview__author {
   margin: 0;
-  font-size: var(--font-size-large);
+  font-size: inherit;
 }
 
 .item-preview__type {

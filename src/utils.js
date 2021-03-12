@@ -17,3 +17,11 @@ export const getTagsFromRoute = route => {
   }
   return [];
 };
+
+export const getItemAuthor = item => {
+  if (!item || !item.creators) return null;
+      return item.creators
+        .map(({ firstName, lastName, name }) => [firstName, lastName, name].join(' '))
+        .join(', ')
+        .trim();
+}

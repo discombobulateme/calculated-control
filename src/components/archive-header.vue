@@ -5,7 +5,7 @@
     }"
   >
     <div class="archive-header__text">
-      <h2 class="archive-header__title">calculated:control</h2>
+      <h2 class="archive-header__title">calculating:control</h2>
       <div class="archive-header__meta">
         <span>{{ node || 'archive' }}</span> ({{ totalResults }})
       </div>
@@ -58,7 +58,7 @@ export default {
   display: grid;
   background: var(--color-prime-green);
   font-size: var(--font-size-large);
-  height: 100px;
+  height: 80px;
   transition: transform 500ms, height 500ms;
   overflow: hidden;
   padding: 5px 15px;
@@ -91,6 +91,6 @@ export default {
 .archive-header__home {
   margin-right: 0;
   margin-left: auto;
-  margin-top: 15px;
+  margin-top: 5px;
 }
 </style>

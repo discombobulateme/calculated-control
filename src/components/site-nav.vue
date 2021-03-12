@@ -12,7 +12,7 @@
       >
         <li v-show="!isPage('about')" class="blob blob--pink nav__item nav__item--main" style="--grid-area: a;">
           <router-link class="nav__link" :to="{ name: 'About' }">
-            <h1 class="nav__title">calculated control:<br/>
+            <h1 class="nav__title">calculating control:<br/>
             (netz)kunst und kybernetik</h1>
             <div class="nav__subtitle">20/02/-31/10/2021<br/>
             haus der statistik &amp; panke.gallery</div>

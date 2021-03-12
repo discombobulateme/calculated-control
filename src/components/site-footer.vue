@@ -18,7 +18,7 @@
       </nav>
     </section>
     <section class="site-footer__section site-footer__logo">
-      <img src="../assets/images/zfn_logo.svg" alt="Zentrum für Netzkunst logo" />
+      <img class="site-footer__logo" src="../assets/images/zfn_logo.svg" alt="Zentrum für Netzkunst logo" />
     </section>
     <section class="site-footer__section site-footer__socials">
       <ul class="site-footer__list">
@@ -87,5 +87,9 @@ export default {
   flex-direction: column;
   height: 100%;
   justify-content: space-between;
+}
+
+.site-footer__logo {
+  width: 100%;
 }
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="item">
     <header class="item__header">
-      <h1 class="item__page-title">calculated:control</h1>
+      <h1 class="item__page-title">calculating:control</h1>
       <div class="item__meta">Archive: Entry #{{ id }}</div>
       <HomeButton class="item__home" aria-label="Home" />
     </header>
@@ -32,12 +32,12 @@
           <div class="note" v-html="item.note"></div>
         </div>
         <div v-else-if="item && item.abstractNote" class="note">
-          <h2 class="item__note-label">#abstract</h2>
+          <h2 class="item__note-label"><span class="hash">#</span>abstract</h2>
           <div v-html="item.abstractNote"></div>
         </div>
         <div v-else-if="item" class="item__pullout-header">
           <div class="item__type">
-            #{{ mainTag }}
+            <span class="hash">#</span>{{ mainTag }}
           </div>
           <div v-if="creators && creators.length > 0" class="item__authors">
             <router-link
@@ -145,7 +145,7 @@
               }"
               :to="{ name: 'Archive', query: { tags: [tag] } }"
             >
-              #{{ tag }}
+              {{ tag }}
             </router-link>
           </li>
         </ul>
@@ -161,7 +161,7 @@
 <script>
 import { getItem, getRelatedItems } from '@/api';
 import { primaryTags } from '@/tags';
-import { getMainTag } from '@/utils';
+import { getMainTag, getItemAuthor } from '@/utils';
 import HomeButton from '@/components/home-button';
 import ItemPreview from '@/components/item-preview';
 import Loader from '@/components/icons/loader';
@@ -197,11 +197,7 @@ export default {
   },
   computed: {
     creators() {
-      if (!this.item || !this.item.creators) return null;
-      return this.item.creators
-        .map(({ firstName, lastName, name }) => [firstName, lastName, name].join(' '))
-        .join(', ')
-        .trim();
+      return getItemAuthor(this.item);
     },
     youtubeEmbed() {
       if (!this.item || !this.item.url) return;
