@@ -31,7 +31,7 @@
         <div v-else-if="item && item.itemType === 'note'">
           <div class="note" v-html="item.note"></div>
         </div>
-        <div v-else-if="item && item.abstractNote" class="note">
+        <div v-else-if="item && item.abstractNote && !isPerson" class="note">
           <h2 class="item__note-label"><span class="hash">#</span>abstract</h2>
           <div v-html="item.abstractNote"></div>
         </div>
@@ -41,10 +41,7 @@
           </div>
           <div v-if="creators && creators.length > 0" class="item__authors">
             <router-link
-              :to="{
-                name: 'Archive',
-                query: { tags: 'person', q: creators }
-              }"
+              :to="authorRoute"
               class="link"
             >
               {{ creators }}
@@ -60,7 +57,10 @@
           Loading...
         </div>
         <div v-else-if="item" class="item__info">
-          <div v-show="!showArchiveConnections" class="item__fields">
+          <div v-if="isPerson" class="item__bio note">
+            {{ item.abstractNote }}
+          </div>
+          <div v-else class="item__fields">
             <template v-if="image || youtubeEmbed || item.itemType === 'note' || item.abstractNote">
               <div v-if="item.title" class="field">
                 <span class="field__label">title</span>
@@ -199,6 +199,21 @@ export default {
     creators() {
       return getItemAuthor(this.item);
     },
+    authorRoute() {
+      const authorIDTag = this.item.tags.find(({ tag }) => tag.startsWith('id_'));
+      if (authorIDTag) {
+        return {
+          name: 'Item',
+          params: {
+            key: authorIDTag.tag.replace('id_', ''),
+          },
+        }
+      }
+      return {
+        name: 'Archive',
+        query: { tags: 'person', q: this.creators }
+      };
+    },
     youtubeEmbed() {
       if (!this.item || !this.item.url) return;
 
@@ -223,6 +238,9 @@ export default {
     },
     mainTag() {
       return this.item && getMainTag(this.item);
+    },
+    isPerson() {
+      return this.mainTag === 'person';
     },
   },
   methods: {
@@ -431,8 +449,9 @@ export default {
 }
 
 .note {
-  font-size: var(--font-size-xl);
-  padding: 15px 5px;
+  font-size: var(--font-size-small);
+  padding: 15px 15px;
+  white-space: pre-wrap;
 }
 
 .item__note-label {

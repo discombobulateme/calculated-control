@@ -76,7 +76,7 @@ const getAboutConfig = (node) => {
     case 'symposium':
       return {
         aboutPage: 'SymposiumAbout',
-        aboutPageText: 'About the symposium',
+        aboutPageText: 'About the Symposium & Visitor information',
       };
     case 'unconference':
       return {

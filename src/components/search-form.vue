@@ -57,6 +57,7 @@ export default {
   display: flex;
   padding: 7px 35px;
   position: relative;
+  cursor: pointer;
 }
 
 .search-form__content {
