@@ -16,7 +16,12 @@
           </div>
           <div v-else class="archive__results">
             <ArchiveHeader class="archive__header" :node="node" :totalResults="totalResults" />
-            <ItemsList ref="items" :items="items" />
+            <ItemsList
+              ref="items"
+              :items="items"
+              about-page="ArchiveAbout"
+              about-page-text="About the archive"
+            />
             <div v-if="!loading || this.items.length >= 0" class="archive__controls">
               <button
                 class="blob blob--green blob--shadow archive__filters-link"

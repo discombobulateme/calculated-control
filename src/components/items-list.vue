@@ -1,5 +1,10 @@
 <template>
   <ul class="items-list" tabindex="0">
+    <li class="items-list__item items-list__about">
+      <router-link :to="{ name: aboutPage }" class="blob items-list__about-link">
+        {{ aboutPageText }}
+      </router-link>
+    </li>
     <li v-for="(item, index) in items" :key="index" class="items-list__item">
       <ItemPreview ref="item" :item="item" />
     </li>
@@ -18,7 +23,15 @@ export default {
     items: {
       type: Array,
       default: () => [],
-    }
+    },
+    aboutPage: {
+      type: String,
+      default: '',
+    },
+    aboutPageText: {
+      type: String,
+      default: '',
+    },
   },
   mounted() {
     if (this.$refs.item) this.$refs.item[0].$el.focus();
@@ -50,5 +63,18 @@ export default {
 .items-list__item {
   border: solid 1px black;
   height: 288px;
+}
+
+.items-list__about {
+  padding: 5px;
+}
+
+.items-list__about-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
 }
 </style>

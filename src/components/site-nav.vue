@@ -18,13 +18,15 @@
             haus der statistik &amp; panke.gallery</div>
           </router-link>
         </li>
-        <li v-if="liveItem" class="blob nav__item nav__item--page" style="--grid-area: k;">
+        <li v-if="liveItem || loadingLiveItem" class="blob nav__item nav__item--page" style="--grid-area: k;">
+          <Loader v-if="loadingLiveItem" />
           <router-link class="nav__link" :to="{ name: 'Item', params: { key: liveItem.key } }">
             <HomePreview tag="live" :title="liveItem.title" :type="liveItem.type" :imageUrl="liveItem.imageUrl" />
           </router-link>
         </li>
-        <li v-if="newItem" class="blob nav__item nav__item--page" style="--grid-area: l;">
-          <router-link class="nav__link" :to="{ name: 'Item', params: { key: newItem.key } }">
+        <li v-if="newItem || loadingNewItem" class="blob nav__item nav__item--page" style="--grid-area: l;">
+          <Loader v-if="loadingNewItem" />
+          <router-link v-else class="nav__link" :to="{ name: 'Item', params: { key: newItem.key } }">
             <HomePreview tag="new" :title="newItem.title" :type="newItem.type" :imageUrl="newItem.imageUrl" />
           </router-link>
         </li>
@@ -64,6 +66,7 @@
 import { getItemsForTag } from '@/api';
 import { getMainTag } from '@/utils';
 import HomePreview from '@/components/home-preview';
+import Loader from '@/components/icons/loader';
 
 const blurPages = ['about'];
 
@@ -71,8 +74,11 @@ export default {
   name: 'SiteNav',
   components: {
     HomePreview,
+    Loader,
   },
   data: () => ({
+    loadingLiveItem: false,
+    loadingNewItem: false,
     liveItem: null,
     newItem: null,
   }),
@@ -93,6 +99,7 @@ export default {
       return this.$route.path.startsWith(`/${page}`);
     },
     async getLiveItem() {
+      this.loadingLiveItem = true;
       const items = await getItemsForTag({ tag: 'live' });
       this.liveItem = {
         title: items[0].data.title,
@@ -100,8 +107,10 @@ export default {
         type: getMainTag(items[0].data),
         key: items[0].key,
       };
+      this.loadingLiveItem = false;
     },
     async getNewItem() {
+      this.loadingNewItem = true;
       const items = await getItemsForTag({ tag: 'new' });
       this.newItem = {
         title: items[0].data.title,
@@ -109,6 +118,7 @@ export default {
         type: getMainTag(items[0].data),
         key: items[0].key,
       };
+      this.loadingNewItem = false;
     },
   }
 }
