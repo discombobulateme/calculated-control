@@ -15,12 +15,14 @@
             <Loader v-if="loading" />
           </div>
           <div v-else class="archive__results">
-            <ArchiveHeader class="archive__header" :node="node" :totalResults="totalResults" />
+            <ArchiveHeader class="archive__header" :node="node" :totalResults="totalResults">
+              <DatePicker v-if="datePicker" :dates="datePicker" />
+            </ArchiveHeader>
             <ItemsList
               ref="items"
               :items="items"
-              about-page="ArchiveAbout"
-              about-page-text="About the archive"
+              :about-page="aboutConfig.aboutPage"
+              :about-page-text="aboutConfig.aboutPageText"
             />
             <div v-if="!loading || this.items.length >= 0" class="archive__controls">
               <button
@@ -53,10 +55,82 @@
 import { searchItems, getTagsForItemTags } from '@/api';
 import ArchiveHeader from '@/components/archive-header';
 import ArchiveTags from '@/components/archive-tags';
+import DatePicker from '@/components/date-picker';
 import ItemsList from '@/components/items-list';
 import SearchForm from '@/components/search-form';
 import SiteFooter from '@/components/site-footer';
 import Loader from '@/components/icons/loader';
+
+const getAboutConfig = (node) => {
+  switch (node) {
+    case 'exhibition':
+      return {
+        aboutPage: 'ExhibitionAbout',
+        aboutPageText: 'About the exhibition',
+      };
+    case 'journal':
+      return {
+        aboutPage: 'JournalAbout',
+        aboutPageText: 'About the journal',
+      };
+    case 'symposium':
+      return {
+        aboutPage: 'SymposiumAbout',
+        aboutPageText: 'About the symposium',
+      };
+    case 'unconference':
+      return {
+        aboutPage: 'UnconferenceAbout',
+        aboutPageText: 'About the unconference',
+      };
+    default:
+      return {
+        aboutPage: 'ArchiveAbout',
+        aboutPageText: 'About the Archive',
+      };
+  }
+};
+
+const datePickerConfig = {
+  symposium: [
+    {
+      humanReadable: '21/05/2021',
+      tag: 'date_21_05_2021',
+    },
+    {
+      humanReadable: '22/05/2021',
+      tag: 'date_22_05_2021',
+    },
+    {
+      humanReadable: '23/05/2021',
+      tag: 'date_23_05_2021',
+    },
+  ],
+  exhibition: [
+    {
+      humanReadable: 'Haus der Statistik 20/04–09/05/2021',
+      tag: 'date_20_04_2021',
+    },
+    {
+      humanReadable: 'Panke Gallery 09/2021',
+      tag: 'date_09_2021',
+    },
+  ],
+  unconference: [
+    {
+      humanReadable: '21/05/2021',
+      tag: 'date_21_05_2021',
+    },
+    {
+      humanReadable: '22/05/2021',
+      tag: 'date_22_05_2021',
+    },
+    {
+      humanReadable: '23/05/2021',
+      tag: 'date_23_05_2021',
+    },
+  ],
+}
 
 export default {
   name: 'Archive',
@@ -67,6 +141,7 @@ export default {
     SearchForm,
     SiteFooter,
     Loader,
+    DatePicker,
   },
   props: {
     query: {
@@ -101,6 +176,12 @@ export default {
     thereIsMore() {
       return this.totalResults > this.items.length;
     },
+    aboutConfig() {
+      return getAboutConfig(this.node);
+    },
+    datePicker() {
+      return datePickerConfig[this.node];
+    }
   },
   methods: {
     async fetchData(wipe = false) {

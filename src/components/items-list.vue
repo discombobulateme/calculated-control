@@ -58,6 +58,14 @@ export default {
   .items-list {
     grid-template-columns: repeat(3, 1fr);
   }
+
+  .items-list__item:last-child:nth-of-type(2n - 1) {
+    grid-column: span 3;
+  }
+
+  .items-list__item:last-child:nth-of-type(3n + 2) {
+    grid-column: span 2;
+  }
 }
 
 .items-list__item {

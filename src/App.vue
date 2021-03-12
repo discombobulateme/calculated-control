@@ -67,7 +67,7 @@ h1, h2, h3, h4, h5 {
   transition: filter 1s;
 }
 
-.blurred {
+.blurred.blurred {
   filter: blur(64px);
 }
 
@@ -82,7 +82,7 @@ h1, h2, h3, h4, h5 {
 }
 
 .blob--shadow {
-  filter: drop-shadow(2px 2px 12px rgba(0, 0, 0, 0.25));
+  filter: drop-shadow(2px 2px 12px rgba(0, 0, 0, 0.25));;
 }
 
 .blob--green {

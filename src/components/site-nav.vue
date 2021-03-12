@@ -20,7 +20,7 @@
         </li>
         <li v-if="liveItem || loadingLiveItem" class="blob nav__item nav__item--page" style="--grid-area: k;">
           <Loader v-if="loadingLiveItem" />
-          <router-link class="nav__link" :to="{ name: 'Item', params: { key: liveItem.key } }">
+          <router-link v-else class="nav__link" :to="{ name: 'Item', params: { key: liveItem.key } }">
             <HomePreview tag="live" :title="liveItem.title" :type="liveItem.type" :imageUrl="liveItem.imageUrl" />
           </router-link>
         </li>

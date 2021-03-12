@@ -5,14 +5,18 @@
       <div class="item__meta">Archive: Entry #{{ id }}</div>
       <HomeButton class="item__home" aria-label="Home" />
     </header>
-    <main v-if="item" class="main">
+    <div class="item__loading" v-if="loading">
+      <Loader />
+    </div>
+    <main v-else-if="item" class="main">
       <router-link
         :to="{ name: 'Archive' }"
         class="blob blob--green blob--shadow archive-button"
+        :class="{ blurrable: true, 'blurred': showArchiveConnections }"
       >
         ← archive
       </router-link>
-      <section class="section media">
+      <section class="section media" :class="{ blurrable: true, 'blurred': showArchiveConnections }">
         <iframe
           v-if="youtubeEmbed"
           class="media-embed"
@@ -51,7 +55,7 @@
           </h2>
         </div>
       </section>
-      <section class="section content">
+      <section class="section content" :class="{ blurrable: true, 'blurred': showArchiveConnections }">
         <div v-if="loading">
           Loading...
         </div>
@@ -123,35 +127,34 @@
         </div>
         <div v-else>Error</div>
       </section>
-      <div class="archive-connections">
-        <div v-show="showArchiveConnections" class="tags">
-          <ul class="tags__list">
-            <li v-for="{ tag } in item.tags" :key="tag" class="tags__item">
-              <router-link
-                :class="{
-                  'tags__tag': true,
-                  'blob': true,
-                  'blob--pink': isPrimary(tag)
-                }"
-                :to="{ name: 'Archive', query: { tags: [tag] } }"
-              >
-                #{{ tag }}
-              </router-link>
+      <div v-show="showArchiveConnections" class="archive-connections">
+        <div v-if="relations" class="relations">
+          <ul class="relations__list">
+            <li v-for="relation in relations" :key="relation.key" class="relations__item">
+              <ItemPreview :item="relation" />
             </li>
           </ul>
-          <div v-if="relations" class="relations">
-            <ul class="relations__list">
-              <li v-for="relation in relations" :key="relation.key" class="relations__item">
-                <ItemPreview :item="relation" />
-              </li>
-            </ul>
-          </div>
         </div>
-        <button class="blob blob--green archive-connections__show" @click="toggleArchiveConnections">
-          {{ showArchiveConnections ? 'hide' : 'show' }} archive connections
-        </button>
+        <ul class="tags__list">
+          <li v-for="{ tag } in item.tags" :key="tag" class="tags__item">
+            <router-link
+              :class="{
+                'tags__tag': true,
+                'blob': true,
+                'blob--pink': isPrimary(tag)
+              }"
+              :to="{ name: 'Archive', query: { tags: [tag] } }"
+            >
+              #{{ tag }}
+            </router-link>
+          </li>
+        </ul>
       </div>
+      <button class="blob blob--green archive-connections__show" @click="toggleArchiveConnections">
+        {{ showArchiveConnections ? 'hide' : 'show' }} archive connections
+      </button>
     </main>
+    <div v-else>Not Found</div>
   </div>
 </template>
 
@@ -161,6 +164,7 @@ import { primaryTags } from '@/tags';
 import { getMainTag } from '@/utils';
 import HomeButton from '@/components/home-button';
 import ItemPreview from '@/components/item-preview';
+import Loader from '@/components/icons/loader';
 
 const YOUTUBE_EMBED_URL = 'https://www.youtube.com/embed/?modestbranding=1';
 
@@ -169,6 +173,7 @@ export default {
   components: {
     HomeButton,
     ItemPreview,
+    Loader,
   },
   props: {
     id: {
@@ -303,12 +308,14 @@ export default {
   border: solid 1px black;
   overflow: hidden;
   min-height: calc(100vh - 80px);
+  position: relative;
 }
 
 @media screen and (min-width: 1024px) {
   .main {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
     height: calc(100vh - 80px);
   }
 
@@ -356,11 +363,15 @@ export default {
 }
 
 .archive-connections {
+  background: rgba(255, 255, 255, 0.3);
   border: solid 1px black;
   display: flex;
   flex-grow: 1;
   flex-direction: column;
-  grid-column: span 2;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
 
 .archive-connections__show {
@@ -368,6 +379,11 @@ export default {
   cursor: pointer;
   height: 100%;
   width: 100%;
+  grid-column: span 2;
+  max-height: 80px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
 }
 
 .tags__list {
@@ -391,13 +407,6 @@ export default {
   width: 100%;
 }
 
-.tags__tag:hover,
-.tags__tag:focus-within {
-  background: black;
-  border-color: black;
-  color: white;
-}
-
 .relations__list {
   border-top: solid 1px black;
   border-bottom: solid 1px black;
@@ -405,7 +414,7 @@ export default {
   margin: 0;
   padding: 0;
   max-height: 400px;
-  overflow-y: scroll;
+  overflow-y: auto;
 }
 
 .relations__item {
@@ -445,5 +454,9 @@ export default {
   object-fit: contain;
   object-position: center;
   max-height: calc(100vh - 100px);
+}
+
+.item__loading {
+  height: 100%;
 }
 </style>

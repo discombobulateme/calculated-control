@@ -4,9 +4,14 @@
       'archive-header--node': isPrimaryNode,
     }"
   >
-    <h2 class="archive-header__title">calculated:control</h2>
-    <div class="archive-header__meta">
-      <span>{{ node || 'archive' }}</span> ({{ totalResults }})
+    <div class="archive-header__text">
+      <h2 class="archive-header__title">calculated:control</h2>
+      <div class="archive-header__meta">
+        <span>{{ node || 'archive' }}</span> ({{ totalResults }})
+      </div>
+    </div>
+    <div class="archive-header__center">
+      <slot />
     </div>
     <nav class="archive-header__home">
       <HomeButton
@@ -60,6 +65,12 @@ export default {
   position: relative;
 }
 
+@media screen and (min-width: 768px) {
+  .archive-header {
+    display: flex;
+  }
+}
+
 .archive-header--node {
   background: var(--color-prime-pink);
 }
@@ -73,9 +84,13 @@ export default {
   color: var(--color-prime-olive-half);
 }
 
+.archive-header__center {
+  flex-grow: 1;
+}
+
 .archive-header__home {
-  position: absolute;
-  top: 15px;
-  right: 15px;
+  margin-right: 0;
+  margin-left: auto;
+  margin-top: 15px;
 }
 </style>
