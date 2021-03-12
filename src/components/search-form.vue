@@ -39,6 +39,7 @@ export default {
   }),
   mounted() {
     this.selectedTags = !Array.isArray(this.$route.query.tags) ? [this.$route.query.tags] : (this.$route.query.tags || []);
+    if (this.$route.query.q) this.expanded = true;
   },
   methods: {
     onInput(event) {

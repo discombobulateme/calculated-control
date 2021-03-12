@@ -6,7 +6,9 @@
     >
       Close
     </CloseButton>
-    <button class="archive-tags__reset" type="button" @click="reset">reset all categories</button>
+    <button class="archive-tags__reset" type="button" @click="reset">
+      {{ $t('archive.tags.reset') }}
+    </button>
     <form class="archive-tags__content" @submit.prevent="() => {}">
       <section class="archive-tags__list archive-tags__list--primary" aria-label="Primary tags">
         <label
@@ -60,7 +62,7 @@
       @click="$emit('close', $event)"
     >
       <Loader v-if="loading" />
-      <span v-else>show {{ totalResults }} {{ totalResults === 1 ? 'result' : 'results' }}</span>
+      <span v-else>{{ totalResults }} {{ totalResults === 1 ? $t('archive.tags.result') : $t('archive.tags.results') }}</span>
     </button>
   </div>
 </template>

@@ -1,0 +1,24 @@
+<template>
+  <a class="language-switch" @click.prevent="switchLanguage">
+    {{ switchableLanguage }}
+  </a>
+</template>
+
+<script>
+import { getSwitchableLocale, switchLocale } from '@/locale';
+
+export default {
+  name: 'LanguageSwitch',
+  computed: {
+    switchableLanguage() {
+      return getSwitchableLocale();
+    }
+  },
+  methods: {
+    switchLanguage() {
+      switchLocale(this.switchableLanguage);
+      location.reload();
+    },
+  },
+}
+</script>

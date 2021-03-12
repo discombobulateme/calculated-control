@@ -31,31 +31,31 @@
           </router-link>
         </li>
         <li class="blob blob--green nav__item" style="--grid-area: e;">
-          <router-link class="nav__link" :to="{ name: 'Archive' }">archive</router-link>
+          <router-link class="nav__link" :to="{ name: 'Archive' }">{{ $t('archive.title') }}</router-link>
         </li>
         <li class="blob blob--pink nav__item" style="--grid-area: b;">
-          <router-link class="nav__link" :to="{ name: 'Node', params: { node: 'exhibition' } }"><span class="hash">#</span>exhibition</router-link>
+          <router-link class="nav__link" :to="{ name: 'Node', params: { node: 'exhibition' } }"><span class="hash">#</span>{{ $t('home.exhibition') }}</router-link>
         </li>
         <li class="blob blob--pink nav__item" style="--grid-area: h;">
-          <router-link class="nav__link" :to="{ name: 'Node', params: { node: 'journal' } }"><span class="hash">#</span>journal</router-link>
+          <router-link class="nav__link" :to="{ name: 'Node', params: { node: 'journal' } }"><span class="hash">#</span>{{ $t('home.journal') }}</router-link>
         </li>
         <li class="blob blob--pink nav__item" style="--grid-area: g;">
-          <router-link class="nav__link" :to="{ name: 'Node', params: { node: 'symposium' } }"><span class="hash">#</span>symposium</router-link>
+          <router-link class="nav__link" :to="{ name: 'Node', params: { node: 'symposium' } }"><span class="hash">#</span>{{ $t('home.symposium') }}</router-link>
         </li>
         <li class="blob blob--pink nav__item" style="--grid-area: c;">
-          <router-link class="nav__link" :to="{ name: 'Node', params: { node: 'unconference' } }"><span class="hash">#</span>unconference</router-link>
+          <router-link class="nav__link" :to="{ name: 'Node', params: { node: 'unconference' } }"><span class="hash">#</span>{{ $t('home.unconference') }}</router-link>
         </li>
         <li class="blob nav__item nav__item--page" style="--grid-area: d;">
-          <router-link class="nav__link" :to="{ name: 'Team' }">team</router-link>
+          <router-link class="nav__link" :to="{ name: 'Team' }">{{ $t('home.team') }}</router-link>
         </li>
         <li class="blob nav__item nav__item--page" style="--grid-area: i;">
-          <router-link class="nav__link" :to="{ name: 'Visit' }">visit</router-link>
+          <router-link class="nav__link" :to="{ name: 'Visit' }">{{ $t('home.visit') }}</router-link>
         </li>
         <li class="blob nav__item nav__item--page" style="--grid-area: f;">
-          <router-link class="nav__link" :to="{ name: 'Contact' }">contact</router-link>
+          <router-link class="nav__link" :to="{ name: 'Contact' }">{{ $t('home.contact') }}</router-link>
         </li>
         <li class="blob nav__item nav__item--page" style="--grid-area: j;">
-          <button class="nav__link">de/en</button>
+          <LanguageSwitch class="nav__link" />
         </li>
       </ul>
     </nav>
@@ -67,6 +67,7 @@ import { getItemsForTag } from '@/api';
 import { getMainTag } from '@/utils';
 import HomePreview from '@/components/home-preview';
 import Loader from '@/components/icons/loader';
+import LanguageSwitch from '@/components/language-switch';
 
 const blurPages = ['about'];
 
@@ -75,6 +76,7 @@ export default {
   components: {
     HomePreview,
     Loader,
+    LanguageSwitch,
   },
   data: () => ({
     loadingLiveItem: false,

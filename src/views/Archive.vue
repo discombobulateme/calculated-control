@@ -22,7 +22,7 @@
               ref="items"
               :items="items"
               :about-page="aboutConfig.aboutPage"
-              :about-page-text="aboutConfig.aboutPageText"
+              :about-page-text="$t(aboutConfig.aboutPageText)"
             />
             <div v-if="!loading || this.items.length >= 0" class="archive__controls">
               <button
@@ -30,7 +30,7 @@
                 aria-label="filter by tags"
                 @click="filtersOpen = true"
               >
-                filter by tag
+                {{ $t('archive.filter') }}
               </button>
               <SearchForm class="archive__filters-search" />
             </div>
@@ -86,7 +86,7 @@ const getAboutConfig = (node) => {
     default:
       return {
         aboutPage: 'ArchiveAbout',
-        aboutPageText: 'About the Archive',
+        aboutPageText: 'archive.about',
       };
   }
 };

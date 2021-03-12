@@ -2,7 +2,7 @@
   <div class="item">
     <header class="item__header">
       <h1 class="item__page-title">calculating:control</h1>
-      <div class="item__meta">Archive: Entry #{{ id }}</div>
+      <div class="item__meta">{{ $t('archive.title' ) }}: {{ $t('item.entry' ) }} #{{ id }}</div>
       <HomeButton class="item__home" aria-label="Home" />
     </header>
     <div class="item__loading" v-if="loading">
@@ -14,7 +14,7 @@
         class="blob blob--green blob--shadow archive-button"
         :class="{ blurrable: true, 'blurred': showArchiveConnections }"
       >
-        ← archive
+        ← {{ $t('archive.title') }}
       </router-link>
       <section class="section media" :class="{ blurrable: true, 'blurred': showArchiveConnections }">
         <iframe
@@ -53,10 +53,7 @@
         </div>
       </section>
       <section class="section content" :class="{ blurrable: true, 'blurred': showArchiveConnections }">
-        <div v-if="loading">
-          Loading...
-        </div>
-        <div v-else-if="item" class="item__info">
+        <div class="item__info">
           <div v-if="isPerson" class="item__bio note">
             {{ item.abstractNote }}
           </div>
@@ -125,7 +122,6 @@
             </div>
           </div>
         </div>
-        <div v-else>Error</div>
       </section>
       <div v-show="showArchiveConnections" class="archive-connections">
         <div v-if="relations" class="relations">
@@ -151,7 +147,7 @@
         </ul>
       </div>
       <button class="blob blob--green archive-connections__show" @click="toggleArchiveConnections">
-        {{ showArchiveConnections ? 'hide' : 'show' }} archive connections
+        {{ showArchiveConnections ? $t('item.hideRelatedEntries') : $t('item.showRelatedEntries') }}
       </button>
     </main>
     <div v-else>Not Found</div>

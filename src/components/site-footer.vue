@@ -3,17 +3,17 @@
     <section class="site-footer__section site-footer__nav">
       <nav class="site-footer__nav-container">
         <ul class="site-footer__list">
-          <li><router-link class="site-footer__link" :to="{ name: 'Node', params: { node: 'exhibition' } }">#exhibition</router-link></li>
-          <li><router-link class="site-footer__link" :to="{ name: 'Node', params: { node: 'symposium' } }">#symposium</router-link></li>
-          <li><router-link class="site-footer__link" :to="{ name: 'Node', params: { node: 'journal' } }">#journal</router-link></li>
-          <li><router-link class="site-footer__link" :to="{ name: 'Node', params: { node: 'unconference' } }">#unconference</router-link></li>
-          <li><router-link class="site-footer__link" :to="{ name: 'Archive' }">archive</router-link></li>
+          <li><router-link class="site-footer__link" :to="{ name: 'Node', params: { node: 'exhibition' } }">{{ $t('home.exhibition') }}</router-link></li>
+          <li><router-link class="site-footer__link" :to="{ name: 'Node', params: { node: 'symposium' } }">{{ $t('home.symposium') }}</router-link></li>
+          <li><router-link class="site-footer__link" :to="{ name: 'Node', params: { node: 'journal' } }">{{ $t('home.journal') }}</router-link></li>
+          <li><router-link class="site-footer__link" :to="{ name: 'Node', params: { node: 'unconference' } }">{{ $t('home.unconference') }}</router-link></li>
+          <li><router-link class="site-footer__link" :to="{ name: 'Archive' }">{{ $t('archive.title') }}</router-link></li>
         </ul>
 
         <ul class="site-footer__list">
-          <li><router-link class="site-footer__link" :to="{ name: 'Visit' }">visit</router-link></li>
-          <li><router-link class="site-footer__link" :to="{ name: 'Contact' }">contact</router-link></li>
-          <li><router-link class="site-footer__link" :to="{ name: 'Team' }">team</router-link></li>
+          <li><router-link class="site-footer__link" :to="{ name: 'Visit' }">{{ $t('home.visit') }}</router-link></li>
+          <li><router-link class="site-footer__link" :to="{ name: 'Contact' }">{{ $t('home.contact') }}</router-link></li>
+          <li><router-link class="site-footer__link" :to="{ name: 'Team' }">{{ $t('home.team') }}</router-link></li>
         </ul>
       </nav>
     </section>
