@@ -14,9 +14,16 @@
       <slot />
     </div>
     <nav class="archive-header__home">
+      <div
+        class="archive-header__lang blob blob--shadow"
+        :class="{
+          'blob--pink': isPrimaryNode,
+          'blob--green': !isPrimaryNode,
+        }">
+        <LanguageSwitch class="archive-header__lang-switch" />
+      </div>
       <HomeButton
         :class="{
-          'archive-header__home-link': true,
           'blob--pink': isPrimaryNode,
           'blob--green': !isPrimaryNode,
         }"
@@ -29,11 +36,13 @@
 <script>
 import { primaryTags } from '@/tags';
 import HomeButton from '@/components/home-button';
+import LanguageSwitch from '@/components/language-switch';
 
 export default {
   name: 'ArchiveHeader',
   components: {
     HomeButton,
+    LanguageSwitch,
   },
   props: {
     node: {
@@ -92,5 +101,20 @@ export default {
   margin-right: 0;
   margin-left: auto;
   margin-top: 5px;
+  margin-bottom: 5px;
+  display: flex;
+}
+
+.archive-header__lang {
+  cursor: pointer;
+  display: flex;
+  margin-right: 15px;
+}
+
+.archive-header__lang-switch {
+  width: 100%;
+  height: 100%;
+  padding: 15px 35px;
+  line-height: 1;
 }
 </style>

@@ -17,6 +17,7 @@ export default {
       result: "Eintrag",
       results: "Einträge",
     },
+    loadMore: 'Mehr Einträge laden'
   },
   item: {
     entry: 'Eintrag',

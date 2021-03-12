@@ -17,6 +17,7 @@ export default {
       result: 'result',
       results: 'results',
     },
+    loadMore: 'Load more entries'
   },
   item: {
     entry: 'Entry',

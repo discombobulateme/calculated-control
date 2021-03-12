@@ -42,7 +42,7 @@
             @click="fetchData()"
           >
             <Loader v-if="loading" />
-            <span v-else>load more entries</span>
+            <span v-else>{{ $t('archive.loadMore') }}</span>
           </button>
         </section>
       </div>
