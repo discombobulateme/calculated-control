@@ -1,12 +1,12 @@
 <template>
   <div class="archive-tags">
     <CloseButton
-      class="archive-tags__close"
+      class="archive-tags__close blob--green"
       @click="$emit('close', $event)"
     >
       Close
     </CloseButton>
-    <button class="archive-tags__reset">reset all categories</button>
+    <button class="archive-tags__reset" type="button" @click="reset">reset all categories</button>
     <form class="archive-tags__content" @submit.prevent="() => {}">
       <section class="archive-tags__list archive-tags__list--primary" aria-label="Primary tags">
         <label
@@ -28,7 +28,8 @@
             v-model="selectedTags"
           />
           {{ primaryTag }}
-          <Checkmark v-if="isSelected(primaryTag)" class="archive-tags__checkmark" role="presentation"/>
+          <Checkmark v-if="isSelected(primaryTag)" class="archive-tags__icon archive-tags__icon--select" role="presentation"/>
+          <Deselect v-if="isSelected(primaryTag)" class="archive-tags__icon archive-tags__icon--deselect" role="presentation"/>
         </label>
       </section>
       <section class="archive-tags__list archive-tags__list--curated" aria-label="curated tags">
@@ -50,7 +51,7 @@
             v-model="selectedTags"
           />
           {{ curatedTag }}
-          <Checkmark v-if="isSelected(curatedTag)" class="archive-tags__checkmark" role="presentation"/>
+          <Checkmark v-if="isSelected(curatedTag)" class="archive-tags__icon" role="presentation"/>
         </label>
       </section>
     </form>
@@ -58,7 +59,8 @@
       class="blob blob--green blob--shadow archive-tags__submit"
       @click="$emit('close', $event)"
     >
-      show {{ totalResults }} {{ totalResults === 1 ? 'result' : 'results' }}
+      <Loader v-if="loading" />
+      <span v-else>show {{ totalResults }} {{ totalResults === 1 ? 'result' : 'results' }}</span>
     </button>
   </div>
 </template>
@@ -68,6 +70,8 @@ import debounce from 'lodash.debounce';
 
 import CloseButton from '@/components/close-button';
 import Checkmark from '@/components/icons/check';
+import Deselect from '@/components/icons/deselect';
+import Loader from '@/components/icons/loader';
 import { primaryTags, curatedTags } from '@/tags.js';
 
 const DEBOUNCE_WAIT = 1000;
@@ -77,6 +81,8 @@ export default {
   components: {
     Checkmark,
     CloseButton,
+    Deselect,
+    Loader,
   },
   props: {
     totalResults: {
@@ -86,6 +92,10 @@ export default {
     availableTags: {
       type: [Array, null],
       default: null,
+    },
+    loading: {
+      type: Boolean,
+      default: false,
     },
   },
   data: ({ $route }) => ({
@@ -131,7 +141,10 @@ export default {
     },
     isDisabled(tag) {
       return this.availableTags && !this.availableTags.includes(tag.toLowerCase());
-    }
+    },
+    reset() {
+      this.selectedTags = [];
+    },
   },
 }
 </script>
@@ -159,6 +172,7 @@ export default {
   height: 100%;
   gap: 15px;
   width: 100%;
+  margin-top: 50px;
 }
 
 @media screen and (min-width: 768px) {
@@ -219,8 +233,8 @@ export default {
 
 .archive-tags__close {
   position: absolute;
-  top: 0;
-  right: 0;
+  top: 15px;
+  right: 15px;
   z-index: 2;
 }
 
@@ -241,8 +255,20 @@ export default {
   margin-top: 40px;
 }
 
-.archive-tags__checkmark {
+.archive-tags__icon {
   display: inline-block;
   margin-left: 15px;
+}
+
+.archive-tags__icon--deselect {
+  display: none;
+}
+
+.archive-tags__item:hover .archive-tags__icon--select {
+  display: none;
+}
+
+.archive-tags__item:hover .archive-tags__icon--deselect {
+  display: block;
 }
 </style>

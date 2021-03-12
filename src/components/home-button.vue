@@ -4,12 +4,10 @@
     class="blob blob--shadow home-button"
     aria-label="Home"
   >
-    <svg width="41" height="35" viewBox="0 0 41 35" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <g fill="currentColor">
-        <rect width="41" height="4"/>
-        <rect y="15" width="41" height="4"/>
-        <rect y="30" width="41" height="4"/>
-      </g>
+    <svg width="41" height="28" viewBox="0 0 41 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line y1="2" x2="41" y2="2" stroke="#6D5D38" stroke-width="4"/>
+      <line y1="14" x2="41" y2="14" stroke="#6D5D38" stroke-width="4"/>
+      <line y1="26" x2="41" y2="26" stroke="#6D5D38" stroke-width="4"/>
     </svg>
   </router-link>
 </template>

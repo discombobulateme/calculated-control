@@ -5,13 +5,14 @@
         <ArchiveTags
           :available-tags="this.availableTags"
           :total-results="totalResults"
+          :loading="loading"
           @close="filtersOpen = false"
         />
       </section>
       <div :class="{ blurrable: true, 'blurred': filtersOpen }">
         <section class="section content">
-          <div v-if="loading && this.items.length === 0">
-            Loading...
+          <div v-if="loading && this.items.length === 0" class="archive__loading">
+            <Loader v-if="loading" />
           </div>
           <div v-else class="archive__results">
             <ArchiveHeader class="archive__header" :node="node" :totalResults="totalResults" />
@@ -33,7 +34,7 @@
             :disabled="loading"
             @click="fetchData()"
           >
-            <span v-if="loading">loading...</span>
+            <Loader v-if="loading" />
             <span v-else>load more entries</span>
           </button>
         </section>
@@ -50,6 +51,7 @@ import ArchiveTags from '@/components/archive-tags';
 import ItemsList from '@/components/items-list';
 import SearchForm from '@/components/search-form';
 import SiteFooter from '@/components/site-footer';
+import Loader from '@/components/icons/loader';
 
 export default {
   name: 'Archive',
@@ -59,6 +61,7 @@ export default {
     ItemsList,
     SearchForm,
     SiteFooter,
+    Loader,
   },
   props: {
     query: {
@@ -145,6 +148,7 @@ export default {
 
 .archive__filters-link,
 .archive__filters-search {
+  align-items: center;
   justify-content: center;
   margin: 15px 0;
   height: 60px;
@@ -199,5 +203,13 @@ export default {
   width: 100%;
   height: 100%;
   z-index: 5;
+}
+
+.archive__loading {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
 }
 </style>

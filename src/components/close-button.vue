@@ -1,9 +1,13 @@
 <template>
   <button
-      class="close-button"
+      class="blob blob--shadow close-button"
+      aria-label="Close"
       @click="$emit('click', $event)"
     >
-      Close
+      <svg width="103" height="58" viewBox="0 0 103 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M37 14.7896L66.2105 44.0001" stroke="#675836" stroke-width="4"/>
+        <path d="M37 44L66.2105 14" stroke="#675836" stroke-width="4"/>
+      </svg>
     </button>
 </template>
 
@@ -15,31 +19,8 @@ export default {
 
 <style scoped>
 .close-button {
-  background: rgba(196,196,196,0.5);
-  border: none;
+  color: var(--color-prime-olive);
   cursor: pointer;
-  font-size: 0;
-  border-radius: 50%;
-  width: 110px;
-  height: 110px;
-  padding: 0;
-}
-
-.close-button::before,
-.close-button::after {
-  content: '';
-  background: white;
-  display: block;
-  width: 100%;
-  height: 1px;
-  transform-origin: center center;
-}
-
-.close-button::before {
-  transform: rotate(45deg);
-}
-
-.close-button::after {
-  transform: rotate(-45deg);
+  display: flex;
 }
 </style>
