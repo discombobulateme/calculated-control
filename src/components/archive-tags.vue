@@ -51,8 +51,8 @@
             v-model="selectedTags"
           />
           {{ curatedTag }}
-          <Checkmark v-if="isSelected(curatedTag)" class="archive-tags__icon" role="presentation"/>
-          <Deselect v-if="isSelected(primaryTag)" class="archive-tags__icon archive-tags__icon--deselect" role="presentation"/>
+          <Checkmark v-if="isSelected(curatedTag)" class="archive-tags__icon archive-tags__icon--select" role="presentation"/>
+          <Deselect v-if="isSelected(curatedTag)" class="archive-tags__icon archive-tags__icon--deselect" role="presentation"/>
         </label>
       </section>
     </form>
