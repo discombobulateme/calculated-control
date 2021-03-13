@@ -23,6 +23,8 @@
 </template>
 
 <script>
+import { getTagsFromRoute } from '@/utils';
+
 export default {
   name: 'SearchForm',
   props: {
@@ -40,8 +42,12 @@ export default {
     expanded: false,
   }),
   mounted() {
-    this.selectedTags = !Array.isArray(this.$route.query.tags) ? [this.$route.query.tags] : (this.$route.query.tags || []);
     if (this.$route.query.q) this.expanded = true;
+  },
+  computed: {
+    selectedTags() {
+      return getTagsFromRoute(this.$route);
+    },
   },
   methods: {
     onInput(event) {
@@ -49,6 +55,7 @@ export default {
     },
     search() {
       const query = { q: this.currentQuery };
+      if (this.selectedTags) query.tags = this.selectedTags;
       this.$router.push({ query });
     },
   },
