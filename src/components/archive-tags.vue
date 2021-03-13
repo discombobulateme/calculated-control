@@ -73,7 +73,7 @@ import Checkmark from '@/components/icons/check';
 import Deselect from '@/components/icons/deselect';
 import Loader from '@/components/icons/loader';
 import { primaryTags, curatedTags } from '@/tags.js';
-import { getTagsFromRoute } from '@/utils.js';
+import { getTagsFromRoute, caseInsensitiveIncludes } from '@/utils.js';
 
 const DEBOUNCE_WAIT = 1000;
 
@@ -139,10 +139,10 @@ export default {
   },
   methods: {
     isSelected(tag) {
-      return this.selectedTags && this.selectedTags.includes(tag);
+      return caseInsensitiveIncludes(this.selectedTags, tag);
     },
     isDisabled(tag) {
-      return this.availableTags && !this.availableTags.includes(tag.toLowerCase());
+      return !caseInsensitiveIncludes(this.availableTags, tag);
     },
     reset() {
       this.selectedTags = [];

@@ -25,3 +25,7 @@ export const getItemAuthor = item => {
         .join(', ')
         .trim();
 }
+
+export const caseInsensitiveIncludes = (list = [], item = '') => {
+  return list && list.find(listItem => listItem.toLowerCase() === item.toLowerCase())
+}
