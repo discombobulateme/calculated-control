@@ -199,7 +199,7 @@ export default {
 .archive-tags__list--curated {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: min-content;
+  grid-auto-rows: 65px;
   gap: 10px;
 }
 

@@ -7,9 +7,19 @@ export const primaryTags = [
 ];
 
 export const curatedTags = [
-  'Kybernetik',
-  'GDR',
-  'Architektur',
+  'kybernetik',
+  'ddr',
+  'haus der statistik',
+  'kunst am bau',
+  'netzkunst',
+  'datenverarbeitung',
+  'kunst',
+  'datenvisualisierung',
+  'architektur',
+  'utopie',
+  'überwachung',
+  'sozialismus',
+  'magie',
 ];
 
 export const highlightTags = [
