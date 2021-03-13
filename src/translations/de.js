@@ -52,4 +52,7 @@ export default {
   exhibition: {
     about: 'Über die Ausstellung & Besucher*innen Informationen',
   },
+  datepicker: {
+    all: 'alle Tage',
+  },
 };

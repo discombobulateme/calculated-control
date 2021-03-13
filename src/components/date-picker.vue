@@ -10,7 +10,7 @@
           }"
           @click="pickDate({})"
         >
-          all days
+          {{ $t('datepicker.all') }}
         </button>
       </li>
       <li v-for="date in dates" :key="date.tag" class="date-picker__item">
