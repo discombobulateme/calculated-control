@@ -1,5 +1,10 @@
 <template>
-  <a class="language-switch" @click.prevent="switchLanguage">
+  <a
+    class="language-switch"
+    :aria-label="$t('buttons.language')"
+    :title="$t('buttons.language')"
+    @click.prevent="switchLanguage"
+  >
     {{ switchableLanguage }}
   </a>
 </template>

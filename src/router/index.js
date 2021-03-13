@@ -7,6 +7,7 @@ import ArchiveAbout from '../views/ArchiveAbout.vue';
 import About from '../views/About.vue';
 import Team from '../views/Team.vue';
 import Contact from '../views/Contact.vue';
+import Imprint from '../views/Imprint.vue';
 
 Vue.use(VueRouter)
 
@@ -36,6 +37,11 @@ const routes = [
       id: 'T7I2AKJ4',
       title: 'contact',
     },
+  },
+  {
+    path: '/imprint',
+    name: 'Imprint',
+    component: Imprint,
   },
   {
     path: '/archive/about',

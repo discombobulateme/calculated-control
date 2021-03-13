@@ -1,7 +1,8 @@
 <template>
   <button
       class="blob blob--shadow close-button"
-      aria-label="Close"
+      :aria-label="$t('buttons.close')"
+      :title="$t('buttons.close')"
       @click="$emit('click', $event)"
     >
       <svg width="103" height="58" viewBox="0 0 103 58" fill="none" xmlns="http://www.w3.org/2000/svg">

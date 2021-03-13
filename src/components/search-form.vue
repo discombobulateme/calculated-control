@@ -7,11 +7,13 @@
       'search-form--expanded': expanded,
     }"
     role="search"
+    :title="$t('archive.search')"
+    :aria-label="$t('archive.search')"
     @click="expanded = true"
     @submit.prevent="search"
   >
     <div class="search-form__content">
-      <input ref="input" class="search-form__input" type="search" placeholder="search..." name="q" :value="$route.query.q" @input="onInput">
+      <input ref="input" class="search-form__input" type="search" :placeholder="$t('archive.search') + '…'" name="q" :value="$route.query.q" @input="onInput">
     </div>
     <svg width="38" height="36" viewBox="0 0 38 36" fill="none" xmlns="http://www.w3.org/2000/svg">
       <circle cx="15.5" cy="15.5" r="13.5" stroke="#675836" stroke-width="4"/>

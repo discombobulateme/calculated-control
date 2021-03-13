@@ -59,6 +59,7 @@ export default {
   text-decoration: inherit;
   width: 100%;
   word-wrap: anywhere;
+  overflow: hidden;
   position: relative;
   transition: background-color var(--transition-time);
 }

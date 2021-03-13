@@ -2,12 +2,13 @@
   <header :class="{
       'archive-header': true,
       'archive-header--node': isPrimaryNode,
+      'archive-header--item': isItem,
     }"
   >
     <div class="archive-header__text">
       <h2 class="archive-header__title">calculating:control</h2>
       <div class="archive-header__meta">
-        <span>{{ node || $t('archive.title') }}</span> ({{ totalResults }})
+        <slot name="meta" />
       </div>
     </div>
     <div class="archive-header__center">
@@ -17,15 +18,15 @@
       <div
         class="archive-header__lang blob blob--shadow"
         :class="{
-          'blob--pink': isPrimaryNode,
-          'blob--green': !isPrimaryNode,
+          'blob--pink': !isItem && isPrimaryNode,
+          'blob--green': !isItem && !isPrimaryNode,
         }">
         <LanguageSwitch class="archive-header__lang-switch" />
       </div>
       <HomeButton
         :class="{
-          'blob--pink': isPrimaryNode,
-          'blob--green': !isPrimaryNode,
+          'blob--pink': !isItem && isPrimaryNode,
+          'blob--green': !isItem && !isPrimaryNode,
         }"
         aria-label="Home"
       />
@@ -49,14 +50,13 @@ export default {
       type: String,
       default: '',
     },
-    totalResults: {
-      type: Number,
-      default: 0,
-    },
   },
   computed: {
     isPrimaryNode() {
       return primaryTags.includes(this.node);
+    },
+    isItem() {
+      return this.$route.path.startsWith('/item');
     },
   },
 }
@@ -82,6 +82,10 @@ export default {
 
 .archive-header--node {
   background: var(--color-prime-pink);
+}
+
+.archive-header--item {
+  background: var(--color-prime-light-gray);
 }
 
 .archive-header__title {

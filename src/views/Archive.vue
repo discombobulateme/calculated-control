@@ -15,7 +15,10 @@
             <Loader v-if="loading" />
           </div>
           <div v-else class="archive__results">
-            <ArchiveHeader class="archive__header" :node="node" :totalResults="totalResults">
+            <ArchiveHeader class="archive__header" :node="node">
+              <template #meta>
+                <span>{{ node || $t('archive.title') }}</span> ({{ totalResults }})
+              </template>
               <DatePicker v-if="datePicker" :dates="datePicker" />
             </ArchiveHeader>
             <ItemsList
@@ -66,7 +69,7 @@ const getAboutConfig = (node) => {
     case 'exhibition':
       return {
         aboutPage: 'ExhibitionAbout',
-        aboutPageText: 'About the exhibition',
+        aboutPageText: 'exhibition.about',
       };
     case 'journal':
       return {
@@ -76,12 +79,12 @@ const getAboutConfig = (node) => {
     case 'symposium':
       return {
         aboutPage: 'SymposiumAbout',
-        aboutPageText: 'About the Symposium & Visitor information',
+        aboutPageText: 'symposium.about',
       };
     case 'unconference':
       return {
         aboutPage: 'UnconferenceAbout',
-        aboutPageText: 'About the unconference',
+        aboutPageText: 'unconference.about',
       };
     default:
       return {

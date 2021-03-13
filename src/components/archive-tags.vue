@@ -3,9 +3,7 @@
     <CloseButton
       class="archive-tags__close blob--green"
       @click="$emit('close', $event)"
-    >
-      Close
-    </CloseButton>
+    ></CloseButton>
     <button class="archive-tags__reset" type="button" @click="reset">
       {{ $t('archive.tags.reset') }}
     </button>

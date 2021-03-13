@@ -1,10 +1,10 @@
 <template>
   <div class="item">
-    <header class="item__header">
-      <h1 class="item__page-title">calculating:control</h1>
-      <div class="item__meta">{{ $t('archive.title' ) }}: {{ $t('item.entry' ) }} #{{ id }}</div>
-      <HomeButton class="item__home" aria-label="Home" />
-    </header>
+    <ArchiveHeader class="item__header">
+      <template #meta>
+        <div class="item__meta">{{ $t('archive.title' ) }}: {{ $t('item.entry' ) }} #{{ id }}</div>
+      </template>
+    </ArchiveHeader>
     <div class="item__loading" v-if="loading">
       <Loader />
     </div>
@@ -32,7 +32,7 @@
           <div class="note" v-html="item.note"></div>
         </div>
         <div v-else-if="item && item.abstractNote && !isPerson" class="note">
-          <h2 class="item__note-label"><span class="hash">#</span>abstract</h2>
+          <h2 class="item__note-label"><span class="hash">#</span>{{ $t('item.abstract') }}</h2>
           <div v-html="item.abstractNote"></div>
         </div>
         <div v-else-if="item" class="item__pullout-header">
@@ -60,64 +60,64 @@
           <div v-else class="item__fields">
             <template v-if="image || youtubeEmbed || item.itemType === 'note' || item.abstractNote">
               <div v-if="item.title" class="field">
-                <span class="field__label">title</span>
+                <span class="field__label">{{ $t('item.title') }}</span>
                 {{ item.title }}
               </div>
               <div v-if="creators && creators.length > 0" class="field">
-                <span class="field__label">author(s)</span>
+                <span class="field__label">{{ $t('item.authors') }}</span>
                 {{ creators }}
               </div>
               <div v-if="item.itemType" class="field">
-                <span class="field__label">type</span>
+                <span class="field__label">{{ $t('item.type') }}</span>
                 {{ item.itemType }}
               </div>
             </template>
             <div v-if="item.date" class="field">
-              <span class="field__label">date</span>
+              <span class="field__label">{{ $t('item.date') }}</span>
               {{ formatDate(item.date) }}
             </div>
             <div v-if="item.accessDate" class="field">
-              <span class="field__label">accessDate</span>
+              <span class="field__label">{{ $t('item.accessDate')}}</span>
               {{ formatDate(item.accessDate) }}
             </div>
             <div v-if="item.dateAdded" class="field">
-              <span class="field__label">dateAdded</span>
+              <span class="field__label">{{ $t('item.dateAdded') }}</span>
               {{ formatDate(item.dateAdded) }}
             </div>
             <div v-if="item.publisher" class="field">
-              <span class="field__label">publisher</span>
+              <span class="field__label">{{ $t('item.publisher') }}</span>
               {{ item.publisher }}
             </div>
             <div v-if="item.DOI" class="field">
-              <span class="field__label">doi</span>
+              <span class="field__label">DOI</span>
               {{ item.DOI }}
             </div>
             <div v-if="item.ISBN" class="field">
-              <span class="field__label">isbn</span>
+              <span class="field__label">ISBN</span>
               {{ item.ISBN }}
             </div>
             <div v-if="item.language" class="field">
-              <span class="field__label">language</span>
+              <span class="field__label">{{ $t('item.language') }}</span>
               {{ item.language }}
             </div>
             <div v-if="item.numPages" class="field">
-              <span class="field__label">pages</span>
+              <span class="field__label">{{ $t('item.pages') }}</span>
               {{ item.numPages }}
             </div>
             <div v-if="item.archive" class="field">
-              <span class="field__label">archive</span>
+              <span class="field__label">{{ $t('item.archive') }}</span>
               {{ item.archive }}
             </div>
             <div v-if="item.libraryCatalog" class="field">
-              <span class="field__label">catalog</span>
+              <span class="field__label">{{ $t('item.catalog') }}</span>
               {{ item.libraryCatalog }}
             </div>
             <div v-if="item.url" class="field">
-              <span class="field__label">url</span>
+              <span class="field__label">URL</span>
               <a :href="item.url" class="link one-line">{{ item.url }}</a>
             </div>
             <div v-if="image && item.abstractNote" class="field field--long">
-              <span class="field__label">abstract</span>
+              <span class="field__label">{{ $t('item.abstract') }}</span>
               <pre class="field__pre">{{ item.abstractNote }}</pre>
             </div>
           </div>
@@ -158,7 +158,7 @@
 import { getItem, getRelatedItems } from '@/api';
 import { primaryTags } from '@/tags';
 import { getMainTag, getItemAuthor } from '@/utils';
-import HomeButton from '@/components/home-button';
+import ArchiveHeader from '@/components/archive-header';
 import ItemPreview from '@/components/item-preview';
 import Loader from '@/components/icons/loader';
 
@@ -167,7 +167,7 @@ const YOUTUBE_EMBED_URL = 'https://www.youtube.com/embed/?modestbranding=1';
 export default {
   name: 'Item',
   components: {
-    HomeButton,
+    ArchiveHeader,
     ItemPreview,
     Loader,
   },

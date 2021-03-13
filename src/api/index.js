@@ -1,4 +1,5 @@
 import { API_BASE_URL, API_KEY, GROUP_ID } from '@/constants.js';
+import { getSwitchableLocale } from '@/locale';
 
 const headers = {
   Authorization: `Bearer ${API_KEY}`,
@@ -45,9 +46,10 @@ export const getTagsForItemTags = async ({ limit = 25, tags = [], q }) => {
 };
 
 export const searchItems = async ({ q, tags, start = 0, limit = 24 }) => {
+  const langExcludeTag = `-lang_${getSwitchableLocale()}`;
   const query = {
     q,
-    tag: tags,
+    tag: [...tags, langExcludeTag],
     qmode: 'titleCreatorYear',
     limit,
     itemType: '-attachment',

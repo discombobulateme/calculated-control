@@ -1,8 +1,9 @@
 <template>
   <router-link
     :to="{ name: 'Home' }"
+    :aria-label="$t('buttons.home')"
+    :title="$t('buttons.home')"
     class="blob blob--shadow home-button"
-    aria-label="Home"
   >
     <svg width="41" height="28" viewBox="0 0 41 28" fill="none" xmlns="http://www.w3.org/2000/svg">
       <line y1="2" x2="41" y2="2" stroke="#6D5D38" stroke-width="4"/>

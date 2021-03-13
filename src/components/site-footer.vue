@@ -18,15 +18,23 @@
       </nav>
     </section>
     <section class="site-footer__section site-footer__logo">
-      <img class="site-footer__logo" src="../assets/images/zfn_logo.svg" alt="Zentrum für Netzkunst logo" />
+      <a href="https://netzkunst.berlin/">
+        <img class="site-footer__logo" src="../assets/images/zfn_logo.svg" alt="Zentrum für Netzkunst logo" />
+      </a>
     </section>
     <section class="site-footer__section site-footer__socials">
-      <ul class="site-footer__list">
+      <nav class="site-footer__nav-container">
+        <ul class="site-footer__list">
           <li><a class="site-footer__link site-footer__link--green" href="https://t.me/ZentrumderNetzkunst">telegram</a></li>
           <li><a class="site-footer__link" href="https://fb.com/netzkunst.berlin">facebook</a></li>
           <li><a class="site-footer__link" href="">youtube</a></li>
           <li><a class="site-footer__link" href="https://instagram.com/netzkunst.berlin">instagram</a></li>
         </ul>
+
+        <ul class="site-footer__list">
+          <li><router-link class="site-footer__link" :to="{ name: 'Imprint' }">{{ $t('home.imprint') }}</router-link></li>
+        </ul>
+      </nav>
     </section>
   </footer>
 </template>
