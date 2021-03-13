@@ -27,3 +27,9 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+.language-switch {
+  cursor: pointer;
+}
+</style>

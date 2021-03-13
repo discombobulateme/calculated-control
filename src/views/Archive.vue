@@ -17,10 +17,11 @@
           <div v-else class="archive__results">
             <ArchiveHeader class="archive__header" :node="node">
               <template #meta>
-                <span>{{ node || $t('archive.title') }}</span> ({{ totalResults }})
+                <span>{{ node ? $t(`home.${node}`) : $t('archive.title') }}</span> ({{ totalResults }})
               </template>
-              <DatePicker v-if="datePicker" :dates="datePicker" />
+              <DatePicker v-if="datePicker" :dates="datePicker" class="archive__date-picker-desktop" />
             </ArchiveHeader>
+            <DatePicker v-if="datePicker" :dates="datePicker" class="archive__date-picker-mobile" :centered="false"/>
             <ItemsList
               ref="items"
               :items="items"
@@ -240,7 +241,8 @@ export default {
   align-items: center;
   justify-content: center;
   margin: 15px 0;
-  height: 60px;
+  height: 40px;
+  min-height: 40px;
   width: 100%;
 }
 
@@ -263,6 +265,8 @@ export default {
   .archive__filters-link,
   .archive__filters-search {
     margin: 15px;
+    height: 60px;
+    min-height: 60px;
     width: max-content;
   }
 
@@ -300,5 +304,21 @@ export default {
   width: 100%;
   justify-content: center;
   align-items: center;
+}
+
+.archive__date-picker-desktop {
+  width: 100%;
+}
+
+.archive__date-picker-mobile {
+  width: 100%;
+  overflow-x: auto;
+  padding: 5px;
+}
+
+@media screen and (min-width: 1200px) {
+  .archive__date-picker-mobile {
+    display: none;
+  }
 }
 </style>

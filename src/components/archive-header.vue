@@ -64,7 +64,7 @@ export default {
 
 <style scoped>
 .archive-header {
-  display: grid;
+  display: flex;
   background: var(--color-prime-green);
   font-size: var(--font-size-large);
   height: 80px;
@@ -74,9 +74,27 @@ export default {
   position: relative;
 }
 
+.archive-header__center {
+  display: none;
+}
+
+.archive-header__lang {
+  display: none;
+}
+
 @media screen and (min-width: 768px) {
-  .archive-header {
+  .archive-header__lang {
+    cursor: pointer;
     display: flex;
+    margin-right: 15px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .archive-header__center {
+    display: flex;
+    flex-grow: 1;
+    padding: 0 15px;
   }
 }
 
@@ -97,22 +115,12 @@ export default {
   color: var(--color-prime-olive-half);
 }
 
-.archive-header__center {
-  flex-grow: 1;
-}
-
 .archive-header__home {
   margin-right: 0;
   margin-left: auto;
   margin-top: 5px;
   margin-bottom: 5px;
   display: flex;
-}
-
-.archive-header__lang {
-  cursor: pointer;
-  display: flex;
-  margin-right: 15px;
 }
 
 .archive-header__lang-switch {

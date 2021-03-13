@@ -1,6 +1,6 @@
 <template>
   <nav class="date-picker">
-    <ul class="date-picker__list">
+    <ul class="date-picker__list" :class="{ 'date-picker__list--centered': centered }">
       <li class="date-picker__item">
         <button
           class="date-picker__button blob blob--shadow"
@@ -39,6 +39,10 @@ export default {
       type: Array,
       default: () => [],
     },
+    centered: {
+      type: Boolean,
+      default: true,
+    },
   },
   computed: {
     selectedTag() {
@@ -72,11 +76,14 @@ export default {
   display: flex;
   font-size: var(--font-size-small);
   list-style-type: none;
-  justify-content: center;
   padding: 0;
   margin: 0;
   align-items: center;
   height: 100%;
+}
+
+.date-picker__list--centered {
+  justify-content: center;
 }
 
 .date-picker__item + .date-picker__item {
@@ -87,5 +94,6 @@ export default {
   cursor: pointer;
   font-size: inherit;
   padding: 15px 15px;
+  white-space: nowrap;
 }
 </style>

@@ -33,6 +33,9 @@
 
         <ul class="site-footer__list">
           <li><router-link class="site-footer__link" :to="{ name: 'Imprint' }">{{ $t('home.imprint') }}</router-link></li>
+          <li>
+            <LanguageSwitch />
+          </li>
         </ul>
       </nav>
     </section>
@@ -40,8 +43,13 @@
 </template>
 
 <script>
+import LanguageSwitch from '@/components/language-switch';
+
 export default {
   name: 'SiteFooter',
+  components: {
+    LanguageSwitch,
+  },
 };
 </script>
 

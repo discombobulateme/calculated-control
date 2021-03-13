@@ -141,7 +141,7 @@ export default {
   grid-row: span 1;
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1200px) {
   .nav__list {
     display: grid;
     grid-template-areas: "a a a k k k"
@@ -191,7 +191,7 @@ export default {
   display: block;
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1200px) {
   .nav__item--main .nav__link {
     display: flex;
     flex-direction: column;

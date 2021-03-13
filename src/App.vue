@@ -79,10 +79,16 @@ h1, h2, h3, h4, h5 {
   border: none;
   border-radius: var(--border-radius);
   color: var(--color-prime-olive);
-  font-size: var(--font-size-large);
+  font-size: var(--font-size-xs);
   text-align: center;
   overflow: hidden;
   transition: background-color var(--transition-time), filter var(--transition-time);
+}
+
+@media screen and (min-width: 768px) {
+  .blob {
+    font-size: var(--font-size-large);
+  }
 }
 
 .blob:hover {

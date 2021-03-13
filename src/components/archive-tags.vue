@@ -169,7 +169,6 @@ export default {
 
 .archive-tags__content {
   display: grid;
-  height: 100%;
   gap: 15px;
   width: 100%;
   margin-top: 50px;
@@ -178,6 +177,7 @@ export default {
 @media screen and (min-width: 768px) {
   .archive-tags__content {
     grid-template-columns: 1fr 1fr;
+    height: 100%;
   }
 }
 
@@ -239,17 +239,16 @@ export default {
 }
 
 .archive-tags__reset {
-  cursor: pointer;
+  font-size: var(--font-size-xs);
   background: none;
   border: none;
-  font: inherit;
   color: inherit;
 }
 
 .archive-tags__submit {
   color: inherit;
   cursor: pointer;
-  font: inherit;
+  font-size: var(--font-size-xs);
   padding: 15px;
   width: 100%;
   margin-top: 40px;

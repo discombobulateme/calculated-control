@@ -321,7 +321,7 @@ export default {
   position: relative;
 }
 
-@media screen and (min-width: 1024px) {
+@media screen and (min-width: 1200px) {
   .main {
     display: grid;
     grid-template-columns: 1fr 1fr;

@@ -15,7 +15,7 @@
     <div class="search-form__content">
       <input ref="input" class="search-form__input" type="search" :placeholder="$t('archive.search') + '…'" name="q" :value="$route.query.q" @input="onInput">
     </div>
-    <svg width="38" height="36" viewBox="0 0 38 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <svg class="search-form__icon" width="38" height="36" viewBox="0 0 38 36" fill="none" xmlns="http://www.w3.org/2000/svg">
       <circle cx="15.5" cy="15.5" r="13.5" stroke="#675836" stroke-width="4"/>
       <line x1="25.8327" y1="23.9113" x2="36.4141" y2="34.4927" stroke="#675836" stroke-width="4"/>
     </svg>
@@ -91,5 +91,15 @@ export default {
 .search-form__input:focus {
   border-color: black;
   outline: none;
+}
+
+.search-form__icon {
+  height: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .search-form__icon {
+    height: 36px;
+  }
 }
 </style>
