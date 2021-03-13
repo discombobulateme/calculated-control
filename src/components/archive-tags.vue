@@ -142,7 +142,7 @@ export default {
       return caseInsensitiveIncludes(this.selectedTags, tag);
     },
     isDisabled(tag) {
-      return !caseInsensitiveIncludes(this.availableTags, tag);
+      return this.availableTags && !this.availableTags.includes(tag.toLowerCase());
     },
     reset() {
       this.selectedTags = [];
