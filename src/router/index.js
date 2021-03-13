@@ -8,6 +8,7 @@ import About from '../views/About.vue';
 import Team from '../views/Team.vue';
 import Contact from '../views/Contact.vue';
 import Imprint from '../views/Imprint.vue';
+import { getTagsFromRoute } from '@/utils';
 
 Vue.use(VueRouter)
 
@@ -54,7 +55,7 @@ const routes = [
     component: Archive,
     props: route => ({
       query: route.query.q,
-      searchTags: Array.isArray(route.query.tags) ? route.query.tags : [route.query.tags],
+      searchTags: getTagsFromRoute(route),
     }),
   },
   {
@@ -63,7 +64,7 @@ const routes = [
     component: Archive,
     props: route => ({
       query: route.query.q,
-      searchTags: Array.isArray(route.query.tags) ? route.query.tags : [route.query.tags],
+      searchTags: getTagsFromRoute(route),
       node: route.params.node,
     }),
   },

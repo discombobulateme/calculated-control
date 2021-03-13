@@ -73,6 +73,7 @@ import Checkmark from '@/components/icons/check';
 import Deselect from '@/components/icons/deselect';
 import Loader from '@/components/icons/loader';
 import { primaryTags, curatedTags } from '@/tags.js';
+import { getTagsFromRoute } from '@/utils.js';
 
 const DEBOUNCE_WAIT = 1000;
 
@@ -99,9 +100,7 @@ export default {
     },
   },
   data: ({ $route }) => ({
-    selectedTags: $route.query.tags && !Array.isArray($route.query.tags)
-      ? [$route.query.tags]
-      : ($route.query.tags || []),
+    selectedTags: getTagsFromRoute($route),
   }),
   watch: {
     selectedTags(newTags, oldTags) {
@@ -109,15 +108,18 @@ export default {
         this.search();
       }
     },
+    $route() {
+      const routeTags = getTagsFromRoute(this.$route);
+      if (routeTags.length !== this.selectedTags.length || !routeTags.every(t => this.selectedTags.includes(t))) {
+        this.selectedTags = routeTags;
+      }
+    },
   },
   mounted() {
-    this.selectedTags = this.$route.query.tags && !Array.isArray(this.$route.query.tags)
-      ? [this.$route.query.tags]
-      : (this.$route.query.tags || []);
+    this.selectedTags = getTagsFromRoute(this.$route);
   },
   created() {
     this.search = debounce(() => {
-      console.log('searching');
       const query = {};
       if (this.selectedTags) query.tags = Array.from(this.selectedTags);
       if (this.$route.query.q) query.q = this.$route.query.q;

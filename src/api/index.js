@@ -20,7 +20,6 @@ const request = thing => async (params = {}) => {
     url.searchParams.set(key, value);
   }
 
-  console.log(url.toString());
   const response = await fetch(url.toString(), { headers });
   if (!response.ok) throw new Error(`Could not send request with params ${params}`);
   return response;

@@ -131,20 +131,7 @@
             </li>
           </ul>
         </div>
-        <ul class="tags__list">
-          <li v-for="{ tag } in item.tags" :key="tag" class="tags__item">
-            <router-link
-              :class="{
-                'tags__tag': true,
-                'blob': true,
-                'blob--pink': isPrimary(tag)
-              }"
-              :to="{ name: 'Archive', query: { tags: [tag] } }"
-            >
-              {{ tag }}
-            </router-link>
-          </li>
-        </ul>
+        <TagsCloud class="item__tags-cloud" v-if="item.tags" :tags="itemTags" @click="selectTag" />
       </div>
       <button class="blob blob--green archive-connections__show" @click="toggleArchiveConnections">
         {{ showArchiveConnections ? $t('item.hideRelatedEntries') : $t('item.showRelatedEntries') }}
@@ -160,6 +147,7 @@ import { primaryTags } from '@/tags';
 import { getMainTag, getItemAuthor } from '@/utils';
 import ArchiveHeader from '@/components/archive-header';
 import ItemPreview from '@/components/item-preview';
+import TagsCloud from '@/components/tags-cloud';
 import Loader from '@/components/icons/loader';
 
 const YOUTUBE_EMBED_URL = 'https://www.youtube.com/embed/?modestbranding=1';
@@ -169,6 +157,7 @@ export default {
   components: {
     ArchiveHeader,
     ItemPreview,
+    TagsCloud,
     Loader,
   },
   props: {
@@ -192,6 +181,9 @@ export default {
     this.fetchData();
   },
   computed: {
+    itemTags() {
+      return this.item.tags.map(({ tag }) => tag);
+    },
     creators() {
       return getItemAuthor(this.item);
     },
@@ -268,6 +260,14 @@ export default {
         return url.pathname.split('/').pop();
       });
       this.relations = await getRelatedItems({ keys });
+    },
+    selectTag(tag) {
+      this.$router.push({
+        name: 'Archive',
+        query: {
+          tags: [tag],
+        },
+      })
     }
   },
 };

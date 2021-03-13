@@ -11,8 +11,6 @@ Vue.config.productionTip = false;
 Vue.use(VueSafeHTML);
 Vue.use(VueI18n);
 
-console.log(getCurrentLocale(), translations);
-
 const i18n = new VueI18n({
   locale: getCurrentLocale(),
   messages: translations,

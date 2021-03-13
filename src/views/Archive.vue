@@ -11,16 +11,17 @@
       </section>
       <div :class="{ blurrable: true, 'blurred': filtersOpen }">
         <section class="section content">
+          <ArchiveHeader class="archive__header" :node="node">
+            <template #meta>
+              <span>{{ node ? $t(`home.${node}`) : $t('archive.title') }}</span> ({{ totalResults }})
+            </template>
+            <DatePicker v-if="datePicker" :dates="datePicker" class="archive__date-picker-desktop" />
+          </ArchiveHeader>
           <div v-if="loading && this.items.length === 0" class="archive__loading">
             <Loader v-if="loading" />
           </div>
           <div v-else class="archive__results">
-            <ArchiveHeader class="archive__header" :node="node">
-              <template #meta>
-                <span>{{ node ? $t(`home.${node}`) : $t('archive.title') }}</span> ({{ totalResults }})
-              </template>
-              <DatePicker v-if="datePicker" :dates="datePicker" class="archive__date-picker-desktop" />
-            </ArchiveHeader>
+            <TagsCloud class="archive__tags-cloud" v-if="searchTags" :tags="searchTags" deselectable @click="deselectTag" />
             <DatePicker v-if="datePicker" :dates="datePicker" class="archive__date-picker-mobile" :centered="false"/>
             <ItemsList
               ref="items"
@@ -57,6 +58,7 @@
 
 <script>
 import { searchItems, getTagsForItemTags } from '@/api';
+import { getTagsFromRoute } from '@/utils';
 import ArchiveHeader from '@/components/archive-header';
 import ArchiveTags from '@/components/archive-tags';
 import DatePicker from '@/components/date-picker';
@@ -64,6 +66,7 @@ import ItemsList from '@/components/items-list';
 import SearchForm from '@/components/search-form';
 import SiteFooter from '@/components/site-footer';
 import Loader from '@/components/icons/loader';
+import TagsCloud from '@/components/tags-cloud';
 
 const getAboutConfig = (node) => {
   switch (node) {
@@ -146,6 +149,7 @@ export default {
     SiteFooter,
     Loader,
     DatePicker,
+    TagsCloud,
   },
   props: {
     query: {
@@ -204,11 +208,20 @@ export default {
       this.totalResults = parseInt(totalResults, 10);
       this.loading = false;
 
-      if (selectedTags && selectedTags.length) {
+      if ((selectedTags && selectedTags.length) || q) {
         this.availableTags = await getTagsForItemTags({ q, tags: selectedTags });
       } else {
         this.availableTags = null;
       }
+    },
+    deselectTag(tag) {
+      const tags = getTagsFromRoute(this.$route);
+      this.$router.push({
+        query: {
+          q: this.$route.query.q,
+          tags: tags.filter(t => t !== tag),
+        },
+      });
     },
   },
 };
@@ -319,6 +332,19 @@ export default {
 @media screen and (min-width: 1200px) {
   .archive__date-picker-mobile {
     display: none;
+  }
+}
+
+.archive__tags-cloud {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .archive__tags-cloud {
+    display: block;
+    position: sticky;
+    top: 80px;
+    z-index: 5;
   }
 }
 </style>
