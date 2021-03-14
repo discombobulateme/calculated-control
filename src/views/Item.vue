@@ -17,7 +17,7 @@
         ← {{ $t('archive.title') }}
       </router-link>
       <template v-if="isEvent">
-        <ItemEvent
+        <CuratedItem
           :item="item"
           :image="image"
           :youtubeEmbed="youtubeEmbed"
@@ -27,7 +27,7 @@
         />
       </template>
       <template v-else-if="isJournal">
-        <ItemEvent
+        <CuratedItem
           :item="item"
           :image="image"
           :second-link-text="$t('journal.readFull')"
@@ -71,7 +71,7 @@
 import { getItem, getRelatedItems } from '@/api';
 import { caseInsensitiveIncludes } from '@/utils';
 import ArchiveHeader from '@/components/archive-header';
-import ItemEvent from '@/components/item/event';
+import CuratedItem from '@/components/item/curated-item';
 import ItemGenericLeft from '@/components/item/generic-left';
 import ItemGenericRight from '@/components/item/generic-right';
 import ItemPreview from '@/components/item-preview';
@@ -84,7 +84,7 @@ export default {
   name: 'Item',
   components: {
     ArchiveHeader,
-    ItemEvent,
+    CuratedItem,
     ItemGenericLeft,
     ItemGenericRight,
     ItemPreview,
