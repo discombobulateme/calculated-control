@@ -26,7 +26,7 @@
           :class="{ blurrable: true, 'blurred': showArchiveConnections }"
         />
       </template>
-      <template v-if="isJournal">
+      <template v-else-if="isJournal">
         <ItemEvent
           :item="item"
           :image="image"
