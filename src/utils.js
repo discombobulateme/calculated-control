@@ -29,3 +29,10 @@ export const getItemAuthor = item => {
 export const caseInsensitiveIncludes = (list = [], item = '') => {
   return list && list.find(listItem => listItem.toLowerCase() === item.toLowerCase())
 }
+
+export const formatDate = date => {
+  if (!date) return null;
+  const dateObject = new Date(date);
+  if (isNaN(dateObject)) return date;
+  return dateObject.toLocaleString();
+}

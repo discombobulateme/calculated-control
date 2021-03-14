@@ -16,136 +16,64 @@
       >
         ← {{ $t('archive.title') }}
       </router-link>
-      <section class="section media" :class="{ blurrable: true, 'blurred': showArchiveConnections }">
-        <iframe
-          v-if="youtubeEmbed"
-          class="media-embed"
-          type="text/html"
-          width="640"
-          height="360"
-          :src="youtubeEmbed"
-          frameborder="0"></iframe>
-        <figure v-if="image" class="item__image">
-          <img :src="image" />
-        </figure>
-        <div v-else-if="item && item.itemType === 'note'">
-          <div class="note" v-html="item.note"></div>
-        </div>
-        <div v-else-if="item && item.abstractNote && !isPerson" class="note">
-          <h2 class="item__note-label"><span class="hash">#</span>{{ $t('item.abstract') }}</h2>
-          <div v-html="item.abstractNote"></div>
-        </div>
-        <div v-else-if="item" class="item__pullout-header">
-          <div class="item__type">
-            <span class="hash">#</span>{{ mainTag }}
-          </div>
-          <div v-if="creators && creators.length > 0" class="item__authors">
-            <router-link
-              :to="authorRoute"
-              class="link"
-            >
-              {{ creators }}
-            </router-link>
-          </div>
-          <h2 v-if="item.title" class="item__title">
-            {{ item.title }}
-          </h2>
-        </div>
-      </section>
-      <section class="section content" :class="{ blurrable: true, 'blurred': showArchiveConnections }">
-        <div class="item__info">
-          <div v-if="isPerson" class="item__bio note">
-            {{ item.abstractNote }}
-          </div>
-          <div v-else class="item__fields">
-            <template v-if="image || youtubeEmbed || item.itemType === 'note' || item.abstractNote">
-              <div v-if="item.title" class="field">
-                <span class="field__label">{{ $t('item.title') }}</span>
-                {{ item.title }}
-              </div>
-              <div v-if="creators && creators.length > 0" class="field">
-                <span class="field__label">{{ $t('item.authors') }}</span>
-                {{ creators }}
-              </div>
-              <div v-if="item.itemType" class="field">
-                <span class="field__label">{{ $t('item.type') }}</span>
-                {{ item.itemType }}
-              </div>
-            </template>
-            <div v-if="item.date" class="field">
-              <span class="field__label">{{ $t('item.date') }}</span>
-              {{ formatDate(item.date) }}
-            </div>
-            <div v-if="item.accessDate" class="field">
-              <span class="field__label">{{ $t('item.accessDate')}}</span>
-              {{ formatDate(item.accessDate) }}
-            </div>
-            <div v-if="item.dateAdded" class="field">
-              <span class="field__label">{{ $t('item.dateAdded') }}</span>
-              {{ formatDate(item.dateAdded) }}
-            </div>
-            <div v-if="item.publisher" class="field">
-              <span class="field__label">{{ $t('item.publisher') }}</span>
-              {{ item.publisher }}
-            </div>
-            <div v-if="item.DOI" class="field">
-              <span class="field__label">DOI</span>
-              {{ item.DOI }}
-            </div>
-            <div v-if="item.ISBN" class="field">
-              <span class="field__label">ISBN</span>
-              {{ item.ISBN }}
-            </div>
-            <div v-if="item.language" class="field">
-              <span class="field__label">{{ $t('item.language') }}</span>
-              {{ item.language }}
-            </div>
-            <div v-if="item.numPages" class="field">
-              <span class="field__label">{{ $t('item.pages') }}</span>
-              {{ item.numPages }}
-            </div>
-            <div v-if="item.archive" class="field">
-              <span class="field__label">{{ $t('item.archive') }}</span>
-              {{ item.archive }}
-            </div>
-            <div v-if="item.libraryCatalog" class="field">
-              <span class="field__label">{{ $t('item.catalog') }}</span>
-              {{ item.libraryCatalog }}
-            </div>
-            <div v-if="item.url" class="field">
-              <span class="field__label">URL</span>
-              <a :href="item.url" class="link one-line">{{ item.url }}</a>
-            </div>
-            <div v-if="image && item.abstractNote" class="field field--long">
-              <span class="field__label">{{ $t('item.abstract') }}</span>
-              <pre class="field__pre">{{ item.abstractNote }}</pre>
-            </div>
-          </div>
-        </div>
-      </section>
-      <div v-show="showArchiveConnections" class="archive-connections">
-        <div v-if="relations" class="relations">
-          <ul class="relations__list">
-            <li v-for="relation in relations" :key="relation.key" class="relations__item">
-              <ItemPreview :item="relation" />
-            </li>
-          </ul>
-        </div>
-        <TagsCloud class="item__tags-cloud" v-if="item.tags" :tags="itemTags" @click="selectTag" />
-      </div>
-      <button class="blob blob--green archive-connections__show" @click="toggleArchiveConnections">
-        {{ showArchiveConnections ? $t('item.hideRelatedEntries') : $t('item.showRelatedEntries') }}
-      </button>
+      <template v-if="isEvent">
+        <ItemEvent
+          :item="item"
+          :image="image"
+          :youtubeEmbed="youtubeEmbed"
+          :first-link-text="$t('event.enterOnlineExhibition')"
+          :second-link-text="$t('event.booking')"
+          :class="{ blurrable: true, 'blurred': showArchiveConnections }"
+        />
+      </template>
+      <template v-if="isJournal">
+        <ItemEvent
+          :item="item"
+          :image="image"
+          :second-link-text="$t('journal.readFull')"
+          :class="{ blurrable: true, 'blurred': showArchiveConnections }"
+        />
+      </template>
+      <template v-else>
+        <ItemGenericLeft
+          :item="item"
+          :youtube-embed="youtubeEmbed"
+          :image="image"
+          :class="{ blurrable: true, 'blurred': showArchiveConnections }"
+        />
+        <ItemGenericRight
+          :item="item"
+          :class="{ blurrable: true, 'blurred': showArchiveConnections }"
+          :note="isPerson"
+          :image="image"
+          :title-author-type="titleAuthorTypeRight"
+        />
+      </template>
     </main>
     <div v-else>Not Found</div>
+    <div v-if="item" v-show="showArchiveConnections" class="archive-connections">
+      <div v-if="relations" class="relations">
+        <ul class="relations__list">
+          <li v-for="relation in relations" :key="relation.key" class="relations__item">
+            <ItemPreview :item="relation" />
+          </li>
+        </ul>
+      </div>
+      <TagsCloud class="item__tags-cloud" v-if="item.tags" :tags="itemTags" @click="selectTag" />
+    </div>
+    <button v-if="item" class="blob blob--green archive-connections__show" @click="toggleArchiveConnections">
+      {{ showArchiveConnections ? $t('item.hideRelatedEntries') : $t('item.showRelatedEntries') }}
+    </button>
   </div>
 </template>
 
 <script>
 import { getItem, getRelatedItems } from '@/api';
-import { primaryTags } from '@/tags';
-import { getMainTag, getItemAuthor } from '@/utils';
+import { caseInsensitiveIncludes } from '@/utils';
 import ArchiveHeader from '@/components/archive-header';
+import ItemEvent from '@/components/item/event';
+import ItemGenericLeft from '@/components/item/generic-left';
+import ItemGenericRight from '@/components/item/generic-right';
 import ItemPreview from '@/components/item-preview';
 import TagsCloud from '@/components/tags-cloud';
 import Loader from '@/components/icons/loader';
@@ -156,6 +84,9 @@ export default {
   name: 'Item',
   components: {
     ArchiveHeader,
+    ItemEvent,
+    ItemGenericLeft,
+    ItemGenericRight,
     ItemPreview,
     TagsCloud,
     Loader,
@@ -181,26 +112,17 @@ export default {
     this.fetchData();
   },
   computed: {
+    isEvent() {
+      return this.itemTags.some(tag => caseInsensitiveIncludes(['symposium', 'unconference', 'exhibition'], tag));
+    },
+    isJournal() {
+      return this.itemTags.some(tag => tag.toLowerCase() === 'journal');
+    },
+    titleAuthorTypeRight() {
+      return Boolean(this.image || this.youtubeEmbed || this.item.itemType === 'note' || this.item.abstractNote);
+    },
     itemTags() {
-      return this.item.tags.map(({ tag }) => tag);
-    },
-    creators() {
-      return getItemAuthor(this.item);
-    },
-    authorRoute() {
-      const authorIDTag = this.item.tags.find(({ tag }) => tag.startsWith('id_'));
-      if (authorIDTag) {
-        return {
-          name: 'Item',
-          params: {
-            key: authorIDTag.tag.replace('id_', ''),
-          },
-        }
-      }
-      return {
-        name: 'Archive',
-        query: { tags: 'person', q: this.creators }
-      };
+      return this.item.tags.map(({ tag }) => tag).filter(tag => !tag.startsWith('id_') && !tag.startsWith('date_'));
     },
     youtubeEmbed() {
       if (!this.item || !this.item.url) return;
@@ -224,9 +146,6 @@ export default {
 
       return this.item && this.item.rights;
     },
-    mainTag() {
-      return this.item && getMainTag(this.item);
-    },
     isPerson() {
       return this.mainTag === 'person';
     },
@@ -238,15 +157,6 @@ export default {
       const { data } = await getItem({ key: this.id });
       this.item = data;
       this.loading = false;
-    },
-    isPrimary(tag) {
-      return primaryTags.includes(tag);
-    },
-    formatDate(date) {
-      if (!date) return null;
-      const dateObject = new Date(date);
-      if (isNaN(dateObject)) return date;
-      return dateObject.toLocaleString();
     },
     async toggleArchiveConnections() {
       this.showArchiveConnections = !this.showArchiveConnections;
@@ -276,6 +186,8 @@ export default {
 <style scoped>
 .item {
   background: var(--color-prime-light-grey);
+  height: 100vh;
+  overflow: hidden;
 }
 
 .item__header {
@@ -288,20 +200,6 @@ export default {
 .item__page-title {
   font-size: inherit;
   margin: 0;
-}
-
-.item__pullout-header {
-  font-size: var(--font-size-xl);
-  padding: 5px 15px;
-}
-
-.item__title {
-  font-size: inherit;
-  margin: 0;
-}
-
-.item__authors {
-  color: var(--color-prime-rose-darker);
 }
 
 .item__meta {
@@ -319,6 +217,7 @@ export default {
   overflow: hidden;
   min-height: calc(100vh - 80px);
   position: relative;
+  overflow-y: auto;
 }
 
 @media screen and (min-width: 1200px) {
@@ -328,48 +227,6 @@ export default {
     grid-template-rows: 1fr;
     height: calc(100vh - 80px);
   }
-
-  .item__fields {
-    max-height: calc(100vh - 60px);
-    overflow: auto;
-  }
-}
-
-.section {
-  border: solid 1px black;
-  height: 100%;
-  overflow: auto;
-}
-
-.item__info {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-.field {
-  border: solid 1px black;
-  font-size: var(--font-size-small);
-  padding: 10px;
-}
-
-.field__label {
-  display: block;
-}
-
-.field--long .field_label {
-  display: block;
-  margin: 0 0 5px;
-}
-
-.field__pre {
-  white-space: pre-wrap;
-  font-family: inherit;
-}
-
-.media-embed {
-  height: 100%;
-  width: 100%;
 }
 
 .archive-connections {
@@ -379,7 +236,7 @@ export default {
   flex-grow: 1;
   flex-direction: column;
   position: absolute;
-  top: 0;
+  top: 80px;
   left: 0;
   width: 100%;
 }
@@ -394,27 +251,13 @@ export default {
   justify-content: center;
   align-items: center;
   display: flex;
+  margin: 5px;
+  position: fixed;
+  bottom: 0;
 }
 
-.tags__list {
-  display: flex;
-  flex-wrap: wrap;
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-.tags__item {
-  display: inline-flex;
-  padding: 5px;
-  flex-basis: 50%;
-  flex-grow: 1;
-}
-
-.tags__tag {
-  padding: 20px;
-  text-decoration: inherit;
-  width: 100%;
+.relations {
+  background: var(--color-prime-light-grey);
 }
 
 .relations__list {
@@ -423,8 +266,25 @@ export default {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  max-height: 400px;
   overflow-y: auto;
+}
+
+.item__tags-cloud {
+  display: none;
+}
+
+@media screen and (min-width: 768px) {
+  .relations {
+    background: none;
+  }
+
+  .relations__list {
+    height: calc(100vh - 180px);
+  }
+
+  .item__tags-cloud {
+    display: block;
+  }
 }
 
 .relations__item {
@@ -444,30 +304,10 @@ export default {
   left: calc(100% / 3);
 }
 
-.note {
-  font-size: var(--font-size-small);
-  padding: 15px 15px;
-  white-space: pre-wrap;
-}
-
-.item__note-label {
-  font-size: inherit;
-  margin: 0;
-}
-
-.item__image {
-  margin: 0;
-  width: 100%;
-}
-
-.item__image img {
-  width: 100%;
-  object-fit: contain;
-  object-position: center;
-  max-height: calc(100vh - 100px);
-}
-
 .item__loading {
-  height: 100%;
+  display: flex;
+  height: 100vw;
+  margin: 50px auto;
+  justify-content: center;
 }
 </style>

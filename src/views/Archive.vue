@@ -13,7 +13,8 @@
         <section class="section content">
           <ArchiveHeader class="archive__header" :node="node">
             <template #meta>
-              <span>{{ node ? $t(`home.${node}`) : $t('archive.title') }}</span> ({{ totalResults }})
+              <span>{{ node ? $t(`home.${node}`) : $t('archive.title') }}</span>
+              <span v-if="totalResults"> ({{ totalResults }})</span>
             </template>
             <DatePicker v-if="datePicker" :dates="datePicker" class="archive__date-picker-desktop" />
           </ArchiveHeader>

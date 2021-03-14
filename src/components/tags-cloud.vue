@@ -22,7 +22,7 @@ import { primaryTags } from '@/tags';
 import Deselect from '@/components/icons/deselect';
 
 const horizontalDistribution = [
-  12, 68, 32, 80, 45, 60, 24, 76, 5
+  12, 68, 32, 60, 45, 60, 24, 76, 5
 ];
 
 export default {

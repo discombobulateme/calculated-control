@@ -83,6 +83,7 @@ h1, h2, h3, h4, h5 {
   text-align: center;
   overflow: hidden;
   transition: background-color var(--transition-time), filter var(--transition-time);
+  text-decoration: none;
 }
 
 @media screen and (min-width: 768px) {

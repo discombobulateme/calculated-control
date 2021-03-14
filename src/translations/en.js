@@ -55,4 +55,11 @@ export default {
   datepicker: {
     all: 'all days',
   },
+  event: {
+    enterOnlineExhibition: 'Enter online exhibition',
+    booking: 'Book a time slot',
+  },
+  journal: {
+    readFull: 'Read full article',
+  },
 };
