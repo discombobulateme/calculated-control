@@ -11,7 +11,7 @@
       <h2 class="item__note-label"><span class="hash">#</span>{{ $t('item.abstract') }}</h2>
       <div v-html="item.abstractNote"></div>
     </div>
-    <ItemPulloutHeader :item="item" />
+    <ItemPulloutHeader v-if="!item.abstractNote" :item="item" />
   </section>
 </template>
 
