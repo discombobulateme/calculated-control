@@ -6,7 +6,7 @@
       <h2 class="home-preview__title">{{ title }}</h2>
     </div>
     <div v-if="tag" class="home-preview__highlight blob blob--green">
-      <span class="hash">#</span>{{ tag }}
+      <span class="hash">#</span>{{ $t(`tags.${tag}`) }}
     </div>
   </div>
 </template>

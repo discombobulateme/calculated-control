@@ -63,6 +63,9 @@ export default {
     readFull: 'Den Ganzen Beitrag lesen',
   },
   tags: {
+    live: 'live',
+    ongoing: 'aktuell',
+    new: 'neu',
     ausstellung: 'Ausstellung',
     exhibition: 'Ausstellung',
     symposium: 'Symposium',

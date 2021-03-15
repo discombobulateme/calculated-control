@@ -39,7 +39,7 @@ export default {
       const { tags } = this.item.data;
       if (!tags) return null;
       const highlightTag = tags.find(({ tag }) => highlightTags.includes(tag));
-      if (highlightTag) return highlightTag.tag;
+      if (highlightTag) return this.$t(`tags.${highlightTag.tag}`);
       return null;
     },
     author() {
