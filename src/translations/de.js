@@ -40,6 +40,7 @@ export default {
     language: 'Sprache',
     pages: 'Seitenzahl',
     publisher: 'Verlag',
+    runningTime: 'Laufzeit',
     title: 'Titel',
     type: 'Typ',
   },

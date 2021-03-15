@@ -40,6 +40,7 @@ export default {
     language: 'Language',
     pages: 'Pages',
     publisher: 'Publisher',
+    runningTime: 'Running time',
     title: 'Title',
     type: 'Type',
   },

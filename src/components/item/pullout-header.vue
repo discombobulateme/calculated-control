@@ -17,10 +17,14 @@
     <h2 v-if="item.title" class="item__title">
       {{ item.title }}
     </h2>
+    <div v-if="highlightTag" class="item__pullout-header-highlight blob blob--green">
+      <span class="hash">#</span>{{ highlightTag }}
+    </div>
   </div>
 </template>
 
 <script>
+import { highlightTags } from '@/tags';
 import { getMainTag, getItemAuthor, formatDate } from '@/utils';
 
 export default {
@@ -56,6 +60,13 @@ export default {
     formattedDate() {
       return formatDate(this.item.date);
     },
+    highlightTag() {
+      const { tags } = this.item;
+      if (!tags) return null;
+      const highlightTag = tags.find(({ tag }) => highlightTags.includes(tag));
+      if (highlightTag) return this.$t(`tags.${highlightTag.tag}`);
+      return null;
+    },
   },
 };
 </script>
@@ -73,5 +84,12 @@ export default {
 
 .item__authors {
   color: var(--color-prime-rose-darker);
+}
+
+.item__pullout-header-highlight {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  padding: 5px 15px;
 }
 </style>

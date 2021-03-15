@@ -35,6 +35,10 @@
           <span class="field__label">{{ $t('item.publisher') }}</span>
           {{ item.publisher }}
         </div>
+        <div v-if="item.runningTime" class="field">
+          <span class="field__label">{{ $t('item.runningTime') }}</span>
+          {{ item.runningTime }}
+        </div>
         <div v-if="item.DOI" class="field">
           <span class="field__label">DOI</span>
           {{ item.DOI }}
