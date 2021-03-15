@@ -34,7 +34,7 @@
           <router-link class="nav__link" :to="{ name: 'Archive' }">{{ $t('archive.title') }}</router-link>
         </li>
         <li class="blob blob--pink nav__item" style="--grid-area: b;">
-          <router-link class="nav__link" :to="{ name: 'Node', params: { node: 'exhibition' } }"><span class="hash">#</span>{{ $t('home.exhibition') }}</router-link>
+          <router-link class="nav__link" :to="{ name: 'Node', params: { node: 'ausstellung' } }"><span class="hash">#</span>{{ $t('home.ausstellung') }}</router-link>
         </li>
         <li class="blob blob--pink nav__item" style="--grid-area: h;">
           <router-link class="nav__link" :to="{ name: 'Node', params: { node: 'journal' } }"><span class="hash">#</span>{{ $t('home.journal') }}</router-link>

@@ -80,6 +80,7 @@ h1, h2, h3, h4, h5 {
   border-radius: var(--border-radius);
   color: var(--color-prime-olive);
   font-size: var(--font-size-xs);
+  filter: drop-shadow(2px 2px 12px rgba(0, 0, 0, 0));
   text-align: center;
   overflow: hidden;
   transition: background-color var(--transition-time), filter var(--transition-time);

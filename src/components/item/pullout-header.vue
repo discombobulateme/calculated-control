@@ -36,7 +36,7 @@ export default {
       return getItemAuthor(this.item);
     },
     mainTag() {
-      return this.item && getMainTag(this.item);
+      return this.item && getMainTag(this.item, this.$t.bind(this));
     },
     authorRoute() {
       const authorIDTag = this.item.tags.find(({ tag }) => tag.startsWith('id_'));

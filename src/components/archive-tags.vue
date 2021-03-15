@@ -27,7 +27,7 @@
             :value="primaryTag"
             v-model="selectedTags"
           />
-          {{ primaryTag }}
+          {{ $t(`tags.${primaryTag.toLowerCase()}`) }}
           <Checkmark v-if="isSelected(primaryTag)" class="archive-tags__icon archive-tags__icon--select" role="presentation"/>
           <Deselect v-if="isSelected(primaryTag)" class="archive-tags__icon archive-tags__icon--deselect" role="presentation"/>
         </label>
@@ -50,7 +50,7 @@
             :value="curatedTag"
             v-model="selectedTags"
           />
-          {{ curatedTag }}
+          {{ $t(`tags.${curatedTag.toLowerCase()}`) }}
           <Checkmark v-if="isSelected(curatedTag)" class="archive-tags__icon archive-tags__icon--select" role="presentation"/>
           <Deselect v-if="isSelected(curatedTag)" class="archive-tags__icon archive-tags__icon--deselect" role="presentation"/>
         </label>

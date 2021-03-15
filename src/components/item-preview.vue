@@ -28,7 +28,7 @@ export default {
   },
   computed: {
     mainTag() {
-      return this.item && getMainTag(this.item.data);
+      return this.item && getMainTag(this.item.data, (str) => this.$t(str));
     },
     titleText() {
       const { title, note } = this.item.data;

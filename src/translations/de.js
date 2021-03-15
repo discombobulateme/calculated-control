@@ -8,7 +8,7 @@ export default {
     visit: "Besuch",
     team: 'Team',
     contact: 'Kontakt',
-    exhibition: 'Ausstellung',
+    ausstellung: 'Ausstellung',
     journal: 'Journal',
     symposium: 'Symposium',
     unconference: 'unConference',
@@ -49,7 +49,7 @@ export default {
   symposium: {
     about: 'Über das online Symposium',
   },
-  exhibition: {
+  ausstellung: {
     about: 'Über die Ausstellung & Besucher*innen Informationen',
   },
   datepicker: {
@@ -61,5 +61,26 @@ export default {
   },
   journal: {
     readFull: 'Den Ganzen Beitrag lesen',
+  },
+  tags: {
+    ausstellung: 'Ausstellung',
+    exhibition: 'Ausstellung',
+    symposium: 'Symposium',
+    journal: 'Journal',
+    unconference: 'unConference',
+    person: 'Person',
+    kybernetik: 'Kybernetik',
+    ddr: 'DDR',
+    'haus der statistik': 'Haus der Statistik',
+    'kunst am bau': 'Kunst am Bau',
+    netzkunst: 'Netzkunst',
+    'datenverarbeitung': 'Datenverarbeitung',
+    kunst: 'Kunst',
+    datenvisualisierung: 'Datenvisualisierung',
+    architektur: 'Architektur',
+    utopie: 'Utopie',
+    überwachung: 'Überwachung',
+    sozialismus: 'Sozialismus',
+    magie: 'Magie',
   },
 };

@@ -1,5 +1,5 @@
 export const primaryTags = [
-  'exhibition',
+  'ausstellung',
   'symposium',
   'unconference',
   'journal',

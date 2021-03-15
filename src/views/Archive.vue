@@ -71,15 +71,15 @@ import TagsCloud from '@/components/tags-cloud';
 
 const getAboutConfig = (node) => {
   switch (node) {
-    case 'exhibition':
+    case 'ausstellung':
       return {
         aboutPage: 'ExhibitionAbout',
-        aboutPageText: 'exhibition.about',
+        aboutPageText: 'ausstellung.about',
       };
     case 'journal':
       return {
         aboutPage: 'JournalAbout',
-        aboutPageText: 'About the journal',
+        aboutPageText: 'journal.about',
       };
     case 'symposium':
       return {

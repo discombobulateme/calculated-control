@@ -11,7 +11,7 @@
       class="tags-cloud__item blob blob--shadow"
       @click="$emit('click', tag)"
     >
-      {{ tag }}
+      {{ $te(`tags.${tag.toLowerCase()}`) ? $t(`tags.${tag.toLowerCase()}`) : tag }}
       <Deselect v-if="deselectable" class="tags-cloud__item-deselect" />
     </li>
   </ul>

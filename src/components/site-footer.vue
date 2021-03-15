@@ -3,7 +3,7 @@
     <section class="site-footer__section site-footer__nav">
       <nav class="site-footer__nav-container">
         <ul class="site-footer__list">
-          <li><router-link class="site-footer__link" :to="{ name: 'Node', params: { node: 'exhibition' } }">{{ $t('home.exhibition') }}</router-link></li>
+          <li><router-link class="site-footer__link" :to="{ name: 'Node', params: { node: 'ausstellung' } }">{{ $t('home.ausstellung') }}</router-link></li>
           <li><router-link class="site-footer__link" :to="{ name: 'Node', params: { node: 'symposium' } }">{{ $t('home.symposium') }}</router-link></li>
           <li><router-link class="site-footer__link" :to="{ name: 'Node', params: { node: 'journal' } }">{{ $t('home.journal') }}</router-link></li>
           <li><router-link class="site-footer__link" :to="{ name: 'Node', params: { node: 'unconference' } }">{{ $t('home.unconference') }}</router-link></li>
