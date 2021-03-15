@@ -113,7 +113,7 @@ export default {
   },
   computed: {
     isEvent() {
-      return this.itemTags.some(tag => caseInsensitiveIncludes(['symposium', 'unconference', 'exhibition'], tag));
+      return this.itemTags.some(tag => caseInsensitiveIncludes(['symposium', 'unconference', 'ausstellung'], tag));
     },
     isJournal() {
       return this.itemTags.some(tag => tag.toLowerCase() === 'journal');
