@@ -114,7 +114,7 @@ const datePickerConfig = {
       tag: 'date_23_05_2021',
     },
   ],
-  exhibition: [
+  ausstellung: [
     {
       humanReadable: 'Haus der Statistik 20/04–09/05/2021',
       tag: 'date_20_04_2021',
