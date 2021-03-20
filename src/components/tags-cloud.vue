@@ -1,7 +1,7 @@
 <template>
   <ul class="tags-cloud">
     <li
-      v-for="(tag, index) in tags"
+      v-for="(tag, index) in shownTags"
       :key="tag"
       :class="{ 'blob--pink': isPrimary(tag) }"
       :style="{
@@ -43,6 +43,9 @@ export default {
   computed: {
     horizontalDistribution() {
       return horizontalDistribution;
+    },
+    shownTags() {
+      return this.tags.filter(tag => !tag.startsWith('date_') && !tag.startsWith('id_'));
     },
   },
   methods: {

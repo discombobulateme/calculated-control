@@ -50,7 +50,7 @@ export default {
   symposium: {
     about: 'About the online symposium',
   },
-  exhibition: {
+  ausstellung: {
     about: 'About the exhibition & visitor information',
   },
   datepicker: {

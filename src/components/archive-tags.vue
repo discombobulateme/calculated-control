@@ -125,7 +125,7 @@ export default {
       if (this.selectedTags) query.tags = Array.from(this.selectedTags);
       if (this.$route.query.q) query.q = this.$route.query.q;
       this.$router.push({
-        path: '/archive',
+        path: this.$route.path,
         query: query,
       });
     }, DEBOUNCE_WAIT);
