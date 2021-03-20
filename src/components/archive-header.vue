@@ -2,7 +2,7 @@
   <header :class="{
       'archive-header': true,
       'archive-header--node': isPrimaryNode,
-      'archive-header--item': isItem,
+      'archive-header--item': isItem || staticPage,
     }"
   >
     <div class="archive-header__text">
@@ -18,15 +18,15 @@
       <div
         class="archive-header__lang blob blob--shadow"
         :class="{
-          'blob--pink': !isItem && isPrimaryNode,
-          'blob--green': !isItem && !isPrimaryNode,
+          'blob--pink': !isItem && isPrimaryNode && !staticPage,
+          'blob--green': !isItem && !isPrimaryNode && !staticPage,
         }">
         <LanguageSwitch class="archive-header__lang-switch" />
       </div>
       <HomeButton
         :class="{
-          'blob--pink': !isItem && isPrimaryNode,
-          'blob--green': !isItem && !isPrimaryNode,
+          'blob--pink': !isItem && isPrimaryNode && !staticPage,
+          'blob--green': !isItem && !isPrimaryNode && !staticPage,
         }"
         aria-label="Home"
       />
@@ -49,6 +49,10 @@ export default {
     node: {
       type: String,
       default: '',
+    },
+    staticPage: {
+      type: Boolean,
+      default: false,
     },
   },
   computed: {

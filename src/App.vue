@@ -135,7 +135,24 @@ h1, h2, h3, h4, h5 {
   text-decoration: underline;
 }
 
+.link--arrow::after {
+  background-image: url("data:image/svg+xml,%3Csvg width='22' height='20' viewBox='0 0 22 20' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cline x1='20' y1='10' x2='-8.74228e-08' y2='10' stroke='%23B57380' stroke-width='2'/%3E%3Cpath d='M11 1L21 10L11 19' stroke='%23B57380' stroke-width='2' stroke-linejoin='bevel'/%3E%3C/svg%3E%0A");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 70% 70%;
+  content: "";
+  display: inline-block;
+  margin-left: 0.15ch;
+  vertical-align: middle;
+  width: 2ch;
+  height: 1em;
+}
+
 .hash {
   font-family: Helvetica, Arial, sans-serif;
+}
+
+address {
+  font-style: normal;
 }
 </style>

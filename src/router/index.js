@@ -8,6 +8,7 @@ import About from '../views/About.vue';
 import Team from '../views/Team.vue';
 import Contact from '../views/Contact.vue';
 import Imprint from '../views/Imprint.vue';
+import Visit from '../views/Visit.vue';
 import { getTagsFromRoute } from '@/utils';
 
 Vue.use(VueRouter)
@@ -37,6 +38,14 @@ const routes = [
     props: {
       id: 'T7I2AKJ4',
       title: 'contact',
+    },
+  },
+  {
+    path: '/visit',
+    name: 'Visit',
+    component: Visit,
+    props: {
+      title: 'visit',
     },
   },
   {
