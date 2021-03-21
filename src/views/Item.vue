@@ -9,13 +9,13 @@
       <Loader />
     </div>
     <main v-else-if="item" class="main">
-      <router-link
-        :to="{ name: 'Archive' }"
+      <a
         class="blob blob--green blob--shadow archive-button"
         :class="{ blurrable: true, 'blurred': showArchiveConnections }"
+        @click.prevent="$router.go(-1)"
       >
         ← {{ $t('archive.title') }}
-      </router-link>
+      </a>
       <template v-if="isEvent">
         <CuratedItem
           :item="item"

@@ -37,3 +37,27 @@ export const formatDate = date => {
   if (isNaN(dateObject)) return date;
   return dateObject.toLocaleString();
 }
+
+export const routesEqual = (route1, route2) => {
+  if (!route1 || !route2) return false;
+
+  const samePath = route1.path === route2.path;
+  const sameQueryKeysLength = Object.keys(route1.query).length === Object.keys(route2.query).length;
+  const sameQueryKeys = Object.keys(route1.query).every(key => Object.keys(route2.query).includes(key));
+  const sameSearchTerm = route1.query.q === route2.query.q;
+  const bothHaveTags = route1.query.tags && route2.query.tags;
+  const neitherHasTags = !route1.query.tags && !route2.query.tags;
+
+  if (!samePath) return false;
+  if (!sameSearchTerm) return false;
+  if (!sameQueryKeys && !sameQueryKeysLength) return false;
+  if (bothHaveTags) {
+    const sameTagsLength = route1.query.tags.length === Object.keys(route2.query.tags).length;
+    const sameTags = route1.query.tags.every(tag => route2.query.tags.includes(tag));
+    if (!sameTagsLength || !sameTags) return false;
+  } else if (!neitherHasTags) {
+    return false;
+  }
+
+  return true;
+};

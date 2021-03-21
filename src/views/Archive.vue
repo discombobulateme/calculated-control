@@ -58,8 +58,10 @@
 </template>
 
 <script>
+import { mapMutations, mapState } from 'vuex';
+
 import { searchItems, getTagsForItemTags } from '@/api';
-import { getTagsFromRoute } from '@/utils';
+import { getTagsFromRoute, routesEqual } from '@/utils';
 import { getAboutConfig, datePickerConfig } from '@/archive-config';
 import ArchiveHeader from '@/components/archive-header';
 import ArchiveTags from '@/components/archive-tags';
@@ -97,21 +99,22 @@ export default {
     },
   },
   watch: {
-    $route() {
-      this.fetchData(true);
+    async $route() {
+      await this.loadResultsIfNeeded();
     },
   },
   data: () => ({
     availableTags: null,
     items: [],
-    loading: true,
+    loading: false,
     filtersOpen: false,
     totalResults: 0,
   }),
-  created() {
-    this.fetchData();
+  async created() {
+    await this.loadResultsIfNeeded();
   },
   computed: {
+    ...mapState(['archiveItems', 'lastArchiveSearch']),
     thereIsMore() {
       return this.totalResults > this.items.length;
     },
@@ -123,6 +126,14 @@ export default {
     }
   },
   methods: {
+    ...mapMutations(['setArchiveItems', 'setLastArchiveSearch']),
+    async loadResultsIfNeeded() {
+      if (this.lastArchiveSearch && routesEqual(this.$route, this.lastArchiveSearch)) {
+        this.items = this.archiveItems;
+        return;
+      }
+      await this.fetchData(true);
+    },
     async fetchData(wipe = false) {
       this.loading = true;
       if (wipe) this.items = [];
@@ -136,6 +147,8 @@ export default {
       });
 
       this.items.push(...newItems);
+      this.setArchiveItems(this.items);
+      this.setLastArchiveSearch(this.$route);
       this.totalResults = parseInt(totalResults, 10);
       this.loading = false;
 

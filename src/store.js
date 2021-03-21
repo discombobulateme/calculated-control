@@ -8,7 +8,9 @@ export default () => new Store({
     loadingLiveItem: false,
     liveItem: null,
     loadingNewItem: false,
-    newItem: null
+    newItem: null,
+    archiveItems: [],
+    lastArchiveSearch: null,
   },
   mutations: {
     setLiveItem(st, item) {
@@ -22,6 +24,12 @@ export default () => new Store({
     },
     setLoadingNewItem(st, value) {
       st.loadingNewItem = value;
+    },
+    setArchiveItems(st, items) {
+      st.archiveItems = items;
+    },
+    setLastArchiveSearch(st, search) {
+      st.lastArchiveSearch = search;
     },
   },
   actions: {
