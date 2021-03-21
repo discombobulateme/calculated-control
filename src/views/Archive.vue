@@ -132,6 +132,7 @@ export default {
       if (this.lastArchiveSearch && routesEqual(this.$route, this.lastArchiveSearch)) {
         this.items = this.archiveItems;
         this.totalResults = this.lastArchiveSearch.totalResults;
+        this.fetchAvailableTags();
         return;
       }
       await this.fetchData(true);
@@ -140,8 +141,8 @@ export default {
       this.loading = true;
       if (wipe) this.items = [];
 
-      const { tags, q } = this.$route.query;
-      const selectedTags = typeof tags !== 'object' ? [tags].filter(tag => !!tag) : tags;
+      const { q } = this.$route.query;
+      const selectedTags = getTagsFromRoute(this.$route);
       const { items: newItems, totalResults } = await searchItems({
         tags: selectedTags.concat(this.node ? [this.node] : []),
         start: this.items.length,
@@ -152,8 +153,12 @@ export default {
       this.totalResults = parseInt(totalResults, 10);
       this.setArchiveItems(this.items);
       this.setLastArchiveSearch({ ...this.$route, totalResults: this.totalResults });
+      this.fetchAvailableTags();
       this.loading = false;
-
+    },
+    async fetchAvailableTags() {
+      const { q } = this.$route.query;
+      const selectedTags = getTagsFromRoute(this.$route);
       if ((selectedTags && selectedTags.length) || q) {
         this.availableTags = await getTagsForItemTags({ q, tags: selectedTags });
       } else {
