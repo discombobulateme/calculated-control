@@ -63,8 +63,8 @@
 </template>
 
 <script>
-import { getItemsForTag } from '@/api';
-import { getMainTag } from '@/utils';
+import { mapState, mapActions } from 'vuex';
+
 import HomePreview from '@/components/home-preview';
 import Loader from '@/components/icons/loader';
 import LanguageSwitch from '@/components/language-switch';
@@ -82,46 +82,20 @@ export default {
       default: false,
     },
   },
-  data: () => ({
-    loadingLiveItem: false,
-    loadingNewItem: false,
-    liveItem: null,
-    newItem: null,
-  }),
   computed: {
+    ...mapState(['loadingLiveItem', 'liveItem', 'loadingNewItem', 'newItem']),
     isHome() {
       return this.$route.path === '/';
     },
   },
   created() {
-    this.getLiveItem();
-    this.getNewItem();
+    this.fetchLiveItem();
+    this.fetchNewItem();
   },
   methods: {
+    ...mapActions(['fetchLiveItem', 'fetchNewItem']),
     isPage(page) {
       return this.$route.path.startsWith(`/${page}`);
-    },
-    async getLiveItem() {
-      this.loadingLiveItem = true;
-      const items = await getItemsForTag({ tag: 'live' });
-      this.liveItem = {
-        title: items[0].data.title,
-        imageUrl: items[0].data.rights,
-        type: getMainTag(items[0].data),
-        key: items[0].key,
-      };
-      this.loadingLiveItem = false;
-    },
-    async getNewItem() {
-      this.loadingNewItem = true;
-      const items = await getItemsForTag({ tag: 'new' });
-      this.newItem = {
-        title: items[0].data.title,
-        imageUrl: items[0].data.rights,
-        type: getMainTag(items[0].data),
-        key: items[0].key,
-      };
-      this.loadingNewItem = false;
     },
   }
 }
