@@ -11,6 +11,7 @@ export default () => new Store({
     newItem: null,
     archiveItems: [],
     lastArchiveSearch: null,
+    lastItem: null,
   },
   mutations: {
     setLiveItem(st, item) {
@@ -30,6 +31,9 @@ export default () => new Store({
     },
     setLastArchiveSearch(st, search) {
       st.lastArchiveSearch = search;
+    },
+    setLastItem(st, item) {
+      st.lastItem = item;
     },
   },
   actions: {

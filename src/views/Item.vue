@@ -79,6 +79,8 @@
 </template>
 
 <script>
+import { mapState, mapMutations } from 'vuex';
+
 import { getItem, getRelatedItems } from '@/api';
 import { caseInsensitiveIncludes } from '@/utils';
 import ArchiveHeader from '@/components/archive-header';
@@ -125,6 +127,7 @@ export default {
     this.fetchData();
   },
   computed: {
+    ...mapState(['lastItem']),
     from() {
       return this.$route.query.from;
     },
@@ -170,11 +173,18 @@ export default {
     },
   },
   methods: {
+    ...mapMutations(['setLastItem']),
     async fetchData() {
+      if (this.lastItem && this.lastItem.id === this.id) {
+        this.item = this.lastItem.item;
+        return;
+      }
+
       this.showArchiveConnections = false;
       this.loading = true;
       const { data } = await getItem({ key: this.id });
       this.item = data;
+      this.setLastItem({ id: this.id, item: this.item });
       this.loading = false;
     },
     async toggleArchiveConnections() {
