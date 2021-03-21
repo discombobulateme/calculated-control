@@ -1,54 +1,48 @@
 <template>
-  <main class="contact base-grid">
-    <div class="contact__back">
-      <router-link :to="{ name: 'Home' }" class="contact__back-link nav__item nav__item--page">contact</router-link>
-    </div>
-    <section class="contact-section contact__meta">
-      <h1 class="contact__title">{{ title }}</h1>
-    </section>
-    <section class="contact-section contact__content">
-      <div v-if="loading">
-        Loading...
+  <main class="contact">
+    <ArchiveHeader static-page class="contact__header">
+      <template #meta>
+        {{ $t('home.contact') }}
+      </template>
+    </ArchiveHeader>
+    <section class="contact__section">
+      <div class="contact__section-left">
+        Zentrum für Netzkunst
       </div>
-      <div v-else v-html="content" />
+      <div class="contact__section-right">
+        <address class="contact__panel">
+          Zentrum für Netzkunst e.V,<br>
+          Kollwitzstraße 71<br>
+          10435 Berlin<br>
+        </address>
+        <div class="contact__panel">
+          <a class="link" href="mailto:info@netart.berlin">info@netart.berlin</a>
+          <br><br>
+          <template v-if="english">Press</template>
+          <template v-else>Presse</template>
+          <br>Igor Štromajer<br>
+          <a class="link" href="mailto:presse@netzkunst.berlin">presse@netzkunst.berlin</a>
+        </div>
+      </div>
     </section>
-    <section class="contact__imprint">
-      <router-link :to="{ name: 'Imprint' }" class="contact__imprint-link">imprint</router-link>
-    </section>
-    <section class="contact-section contact__newsletter">
-      <router-link :to="{ name: 'Newsletter' }" class="contact__newsletter-link">newsletter</router-link>
-    </section>
+    <SiteFooter />
   </main>
 </template>
 
 <script>
-import { getItem } from '@/api';
+import { getCurrentLocale } from '@/locale';
+import ArchiveHeader from '@/components/archive-header';
+import SiteFooter from '@/components/site-footer';
 
 export default {
   name: 'contact',
-  props: {
-    id: {
-      type: String,
-      required: true,
-    },
-    title: {
-      type: String,
-      default: '',
-    },
+  components: {
+    ArchiveHeader,
+    SiteFooter,
   },
-  data: () => ({
-    loading: false,
-    content: '',
-  }),
-  created() {
-    this.fetchData();
-  },
-  methods: {
-    async fetchData() {
-      this.loading = true;
-      const { data: { note } } = await getItem({ key: this.id });
-      this.content = note;
-      this.loading = false;
+  computed: {
+    english() {
+      return getCurrentLocale() === 'en';
     },
   },
 };
@@ -56,80 +50,45 @@ export default {
 
 <style scoped>
 .contact {
-  grid-template-areas: "a a a b b b"
-                       "d d d b b b"
-                       "d d d b b b"
-                       "d d d c c c";
+  background: var(--color-prime-light-grey);
+  border: solid 1px black;
   min-height: 100vh;
 }
 
-.contact-section {
-  border: solid 2px black;
+.contact__header {
+  border: solid 1px black;
 }
 
-.contact__title {
+.contact__section {
+  border: solid 1px black;
+  min-height: 60vh;
+}
+
+.contact__section-left,
+.contact__section-right {
+  padding: 10px;
+}
+
+.contact__section-left {
   font-size: var(--font-size-xl);
-  margin: 0;
-  text-align: justify;
-  padding: 0 15px;
 }
 
-.contact__meta {
-  grid-area: a;
-}
-
-.contact__content {
-  font-size: var(--font-size-medium);
-  grid-area: b;
-  padding: 15px;
-}
-
-.contact__back {
-  position: fixed;
-  top: 90%;
-  left: calc(100% / 3);
-  width: calc(100% / 6);
-}
-
-.contact__back-link {
-  color: inherit;
-  position: absolute;
-  top: 5vh;
-  left: calc(100vw / 6 / 2);
-  transform: translateY(-50%) translateX(-50%);
-  text-decoration: inherit;
-  padding: 7px 35px;
-}
-
-.contact__imprint {
-  grid-area: d;
-}
-
-.contact__imprint-link {
-  background: var(--color-prime-pink);
-  border-radius: var(--border-radius);
-  color: inherit;
-  display: flex;
+.contact__section-right {
   font-size: var(--font-size-large);
-  justify-content: center;
-  align-items: center;
-  text-decoration: inherit;
-  width: 100%;
-  height: 100%;
 }
 
-.contact__newsletter {
-  grid-area: c;
-}
-</style>
+@media screen and (min-width: 768px) {
+  .contact__section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
 
-<style>
-.contact__content p:first-of-type {
-  margin-top: 0;
-}
+  .contact__section-left {
+    border-right: solid 1px black;
+  }
 
-.contact__content a {
-  color: var(--color-prime-pink);
-  text-decoration: inherit;
+  .contact__section-right {
+    border-left: solid 1px black;
+  }
 }
 </style>
