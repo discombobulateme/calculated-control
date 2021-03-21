@@ -131,7 +131,6 @@ export default {
     async loadResultsIfNeeded() {
       if (this.lastArchiveSearch && routesEqual(this.$route, this.lastArchiveSearch)) {
         this.items = this.archiveItems;
-        console.log(this.lastArchiveSearch.totalResults);
         this.totalResults = this.lastArchiveSearch.totalResults;
         return;
       }
