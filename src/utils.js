@@ -45,15 +45,17 @@ export const routesEqual = (route1, route2) => {
   const sameQueryKeysLength = Object.keys(route1.query).length === Object.keys(route2.query).length;
   const sameQueryKeys = Object.keys(route1.query).every(key => Object.keys(route2.query).includes(key));
   const sameSearchTerm = route1.query.q === route2.query.q;
-  const bothHaveTags = route1.query.tags && route2.query.tags;
-  const neitherHasTags = !route1.query.tags && !route2.query.tags;
+  const route1Tags = getTagsFromRoute(route1);
+  const route2Tags = getTagsFromRoute(route2);
+  const bothHaveTags = route1Tags && route2Tags;
+  const neitherHasTags = !route1Tags && !route2Tags;
 
   if (!samePath) return false;
   if (!sameSearchTerm) return false;
   if (!sameQueryKeys && !sameQueryKeysLength) return false;
   if (bothHaveTags) {
-    const sameTagsLength = route1.query.tags.length === Object.keys(route2.query.tags).length;
-    const sameTags = route1.query.tags.every(tag => route2.query.tags.includes(tag));
+    const sameTagsLength = route1Tags.length === Object.keys(route2Tags).length;
+    const sameTags = route1Tags.every(tag => route2Tags.includes(tag));
     if (!sameTagsLength || !sameTags) return false;
   } else if (!neitherHasTags) {
     return false;

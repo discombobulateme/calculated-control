@@ -130,6 +130,8 @@ export default {
     async loadResultsIfNeeded() {
       if (this.lastArchiveSearch && routesEqual(this.$route, this.lastArchiveSearch)) {
         this.items = this.archiveItems;
+        console.log(this.lastArchiveSearch.totalResults);
+        this.totalResults = this.lastArchiveSearch.totalResults;
         return;
       }
       await this.fetchData(true);
@@ -147,9 +149,9 @@ export default {
       });
 
       this.items.push(...newItems);
-      this.setArchiveItems(this.items);
-      this.setLastArchiveSearch(this.$route);
       this.totalResults = parseInt(totalResults, 10);
+      this.setArchiveItems(this.items);
+      this.setLastArchiveSearch({ ...this.$route, totalResults: this.totalResults });
       this.loading = false;
 
       if ((selectedTags && selectedTags.length) || q) {
