@@ -9,7 +9,7 @@
     role="search"
     :title="$t('archive.search')"
     :aria-label="$t('archive.search')"
-    @click="expanded = true"
+    @click="expand"
     @submit.prevent="search"
   >
     <div class="search-form__content">
@@ -57,6 +57,10 @@ export default {
       const query = { q: this.currentQuery };
       if (this.selectedTags) query.tags = this.selectedTags;
       this.$router.push({ query });
+    },
+    expand() {
+      this.expanded = true;
+      this.$refs.input.focus();
     },
   },
 };
