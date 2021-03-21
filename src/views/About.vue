@@ -1,93 +1,85 @@
 <template>
-  <main class="page">
-    <div class="page__back">
-      <router-link :to="{ name: 'Home' }" class="page__back-link">
-        calculating control:<br/>
-        (netz)kunst und kybernetik<br/>
-      </router-link>
-    </div>
-    <div v-if="loading">
-      Loading...
-    </div>
-    <section v-else v-html="content" class="page__content" />
+  <main>
+    <SiteNav :blurred="true"/>
+    <section class="about__content">
+      <div class="about__back">
+        <router-link :to="{ name: 'Home' }" class="blob blob--green about__back-link">
+          calculating control:<br/>
+          (netz)kunst und kybernetik<br/>
+        </router-link>
+      </div>
+      <p class="about__large">
+        <template v-if="english">
+          The calculative management of the unknown via algorithms, big data or predictive methods has not only nurtured utopian visions on governing complex systems, but also exposed the fissures of informational capitalism.
+        </template>
+        <template v-else>
+          The calculative management of the unknown via algorithms, big data or predictive methods has not only nurtured utopian visions on governing complex systems, but also exposed the fissures of informational capitalism.
+        </template>
+      </p>
+      <p>
+        <template v-if="english">
+          Taking Haus der Statistik as a starting point, Calculating Control draws a critical and poetic trajectory from historic perspectives on the role of cyberneticsc in the former GDR towards the sociopolitical effects of contemporary algorithmic practices within a networked society. Over the duration of 6 months Zentrum für Netzkunst will explore the topics and its effects on the arts in an exhibition, a symposium and a conference as well as a series of essays.
+        </template>
+        <template v-else>
+          Taking Haus der Statistik as a starting point, Calculating Control draws a critical and poetic trajectory from historic perspectives on the role of cyberneticsc in the former GDR towards the sociopolitical effects of contemporary algorithmic practices within a networked society. Over the duration of 6 months Zentrum für Netzkunst will explore the topics and its effects on the arts in an exhibition, a symposium and a conference as well as a series of essays.
+        </template>
+      </p>
+    </section>
   </main>
 </template>
 
 <script>
-import { getItem } from '@/api';
+import { getCurrentLocale } from '@/locale';
+import SiteNav from '@/components/site-nav';
 
 export default {
   name: 'About',
-  props: {
-    id: {
-      type: String,
-      required: true,
-    },
+  components: {
+    SiteNav,
   },
-  data: () => ({
-    loading: false,
-    content: '',
-  }),
-  created() {
-    this.fetchData();
-  },
-  methods: {
-    async fetchData() {
-      this.loading = true;
-      const { data: { note } } = await getItem({ key: this.id });
-      this.content = note;
-      this.loading = false;
+  computed: {
+    english() {
+      return getCurrentLocale() === 'en';
     },
   },
 };
 </script>
 
 <style scoped>
-.page {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  overflow: scroll;
-  text-align: center;
-  z-index: 3;
-}
-
-.page__back {
+.about__back.about__back {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 80px 0;
+  max-width: 50vw;
   width: 100%;
 }
 
-.page__back-link {
-  background-color: var(--color-prime-pink);
-  border-radius: var(--border-radius);
+.about__back-link {
   display: inline-flex;
   font-size: var(--font-size-large);
-  color: var(--color-prime-green);
   padding: 20px;
   text-decoration: inherit;
   text-align: center;
 }
 
-.page__content {
-  font-size: 1.5rem;
-  max-width: 1500px;
-  margin: 10px auto;
-  padding: 0 10px;
-  text-align: center;
+.about__content {
+  font-size: var(--font-size-large);
+  position: absolute;
+  top: 0;
+  width: 100%;
+  padding: 0 60px;
 }
 
-@media screen and (min-width: 768px) {
-  .page__back {
-    height: 30vh;
-    width: 50vw;
-  }
+.about__content > * {
+  max-width: 900px;
+  margin: 0 auto;
+}
 
-  .page__content {
-    font-size: 3.5vw;
-  }
+.about__large {
+  font-size: var(--font-size-xxl);
+  text-align: center;
+  margin-bottom: 45px;
+  max-width: 1500px;
 }
 </style>

@@ -2,12 +2,12 @@
   <header>
     <nav>
       <ul
-        v-show="isHome || isBlurred"
+        v-show="isHome || blurred"
         :class="{
           nav__list: true,
           'base-grid': true,
           blurrable: true,
-          'blurred': isBlurred,
+          'blurred': blurred,
         }"
       >
         <li v-show="!isPage('about')" class="blob blob--pink nav__item nav__item--main" style="--grid-area: a;">
@@ -69,14 +69,18 @@ import HomePreview from '@/components/home-preview';
 import Loader from '@/components/icons/loader';
 import LanguageSwitch from '@/components/language-switch';
 
-const blurPages = ['about'];
-
 export default {
   name: 'SiteNav',
   components: {
     HomePreview,
     Loader,
     LanguageSwitch,
+  },
+  props: {
+    blurred: {
+      type: Boolean,
+      default: false,
+    },
   },
   data: () => ({
     loadingLiveItem: false,
@@ -85,9 +89,6 @@ export default {
     newItem: null,
   }),
   computed: {
-    isBlurred() {
-      return blurPages.some(page => this.isPage(page));
-    },
     isHome() {
       return this.$route.path === '/';
     },
