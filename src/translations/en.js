@@ -43,6 +43,7 @@ export default {
     runningTime: 'Running time',
     title: 'Title',
     type: 'Type',
+    back: 'back',
   },
   unconference: {
     about: 'About the unconference',

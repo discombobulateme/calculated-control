@@ -10,11 +10,22 @@
     </div>
     <main v-else-if="item" class="main">
       <a
-        class="blob blob--green blob--shadow archive-button"
-        :class="{ blurrable: true, 'blurred': showArchiveConnections }"
+        class="blob blob--shadow archive-button"
+        :class="{
+          blurrable: true,
+          'blurred': showArchiveConnections,
+          'blob--green': !from,
+          'blob--pink': from
+        }"
         @click.prevent="$router.go(-1)"
       >
-        ← {{ $t('archive.title') }}
+        <ArrowLeft />
+        <template v-if="fromRelated">
+          {{ $t('item.back') }}
+        </template>
+        <template v-else>
+          {{ from ? $t(`home.${from}`) : $t('archive.title') }}
+        </template>
       </a>
       <template v-if="isEvent">
         <CuratedItem
@@ -55,7 +66,7 @@
       <div v-if="relations" class="relations">
         <ul class="relations__list">
           <li v-for="relation in relations" :key="relation.key" class="relations__item">
-            <ItemPreview :item="relation" />
+            <ItemPreview :item="relation" from-related />
           </li>
         </ul>
       </div>
@@ -77,12 +88,14 @@ import ItemGenericRight from '@/components/item/generic-right';
 import ItemPreview from '@/components/item-preview';
 import TagsCloud from '@/components/tags-cloud';
 import Loader from '@/components/icons/loader';
+import ArrowLeft from '@/components/icons/arrow-left';
 
 const YOUTUBE_EMBED_URL = 'https://www.youtube.com/embed/?modestbranding=1';
 
 export default {
   name: 'Item',
   components: {
+    ArrowLeft,
     ArchiveHeader,
     CuratedItem,
     ItemGenericLeft,
@@ -112,6 +125,12 @@ export default {
     this.fetchData();
   },
   computed: {
+    from() {
+      return this.$route.query.from;
+    },
+    fromRelated() {
+      return this.$route.query.fromRelated;
+    },
     isEvent() {
       return this.itemTags.some(tag => caseInsensitiveIncludes(['symposium', 'unconference', 'ausstellung'], tag));
     },
@@ -294,6 +313,7 @@ export default {
 }
 
 .archive-button {
+  cursor: pointer;
   position: absolute;
 }
 

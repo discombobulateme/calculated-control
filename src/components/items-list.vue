@@ -6,7 +6,7 @@
       </router-link>
     </li>
     <li v-for="(item, index) in items" :key="index" class="items-list__item">
-      <ItemPreview ref="item" :item="item" />
+      <ItemPreview ref="item" :item="item" :from="from" />
     </li>
   </ul>
 </template>
@@ -29,6 +29,10 @@ export default {
       default: '',
     },
     aboutPageText: {
+      type: String,
+      default: '',
+    },
+    from: {
       type: String,
       default: '',
     },

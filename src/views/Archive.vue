@@ -29,6 +29,7 @@
               :items="items"
               :about-page="aboutConfig.aboutPage"
               :about-page-text="$t(aboutConfig.aboutPageText)"
+              :from="node"
             />
             <div v-if="!loading || this.items.length >= 0" class="archive__controls">
               <button

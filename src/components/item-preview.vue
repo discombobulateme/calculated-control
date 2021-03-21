@@ -1,5 +1,5 @@
 <template>
-  <router-link class="item-preview-link" :to="{ name: 'Item', params: { key: item.key } }">
+  <router-link class="item-preview-link" :to="{ name: 'Item', params: { key: item.key }, query }">
     <article class="item-preview" tabindex="0">
       <p class="item-preview__type">{{ mainTag }}</p>
       <time v-if="item.data.date" class="item-preview__date">{{ item.data.date }}</time>
@@ -25,8 +25,22 @@ export default {
       type: Object,
       required: true,
     },
+    from: {
+      type: String,
+      default: '',
+    },
+    fromRelated: {
+      type: Boolean,
+      default: false,
+    },
   },
   computed: {
+    query() {
+      if (this.fromRelated) {
+        return { fromRelated: true };
+      }
+      return this.from ? { from: this.from } : {};
+    },
     mainTag() {
       return this.item && getMainTag(this.item.data, (str) => this.$t(str));
     },
