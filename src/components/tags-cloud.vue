@@ -45,7 +45,7 @@ export default {
       return horizontalDistribution;
     },
     shownTags() {
-      return this.tags.filter(tag => !tag.startsWith('date_') && !tag.startsWith('id_'));
+      return this.tags.filter(tag => !tag.startsWith('date_') && !tag.startsWith('id_') && !tag.startsWith('lang_'));
     },
   },
   methods: {
