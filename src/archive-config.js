@@ -32,15 +32,15 @@ export const datePickerConfig = {
   symposium: [
     {
       humanReadable: '21/05/2021',
-      tag: 'date_21_05_2021',
+      tag: 'date_2021_05_21',
     },
     {
       humanReadable: '22/05/2021',
-      tag: 'date_22_05_2021',
+      tag: 'date_2021_05_22',
     },
     {
       humanReadable: '23/05/2021',
-      tag: 'date_23_05_2021',
+      tag: 'date_2021_05_23',
     },
   ],
   ausstellung: [
@@ -56,15 +56,15 @@ export const datePickerConfig = {
   unconference: [
     {
       humanReadable: '21/05/2021',
-      tag: 'date_21_05_2021',
+      tag: 'date_2021_05_21',
     },
     {
       humanReadable: '22/05/2021',
-      tag: 'date_22_05_2021',
+      tag: 'date_2021_05_22',
     },
     {
       humanReadable: '23/05/2021',
-      tag: 'date_23_05_2021',
+      tag: 'date_2021_05_23',
     },
   ],
 }
