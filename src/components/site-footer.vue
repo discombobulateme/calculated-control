@@ -25,10 +25,10 @@
     <section class="site-footer__section site-footer__socials">
       <nav class="site-footer__nav-container">
         <ul class="site-footer__list">
-          <li><a class="site-footer__link site-footer__link--green" href="https://t.me/ZentrumderNetzkunst">telegram</a></li>
-          <li><a class="site-footer__link" href="https://fb.com/netzkunst.berlin">facebook</a></li>
-          <li><a class="site-footer__link" href="">youtube</a></li>
-          <li><a class="site-footer__link" href="https://instagram.com/netzkunst.berlin">instagram</a></li>
+          <li><a target="_blank" rel="noopener" class="site-footer__link site-footer__link--green" href="https://t.me/ZentrumderNetzkunst">telegram</a></li>
+          <li><a target="_blank" rel="noopener" class="site-footer__link" href="https://fb.com/netzkunst.berlin">facebook</a></li>
+          <li><a target="_blank" rel="noopener" class="site-footer__link" href="https://www.youtube.com/channel/UCg0wwEdrQjLrPOITC7nrIwA">youtube</a></li>
+          <li><a target="_blank" rel="noopener" class="site-footer__link" href="https://instagram.com/netzkunst.berlin">instagram</a></li>
         </ul>
 
         <ul class="site-footer__list">

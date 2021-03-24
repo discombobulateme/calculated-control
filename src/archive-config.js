@@ -31,26 +31,26 @@ export const getAboutConfig = (node) => {
 export const datePickerConfig = {
   symposium: [
     {
-      humanReadable: '21/05/2021',
-      tag: 'date_2021_05_21',
+      humanReadable: '01/05/2021',
+      tag: 'date_2021_05_01',
     },
     {
-      humanReadable: '22/05/2021',
-      tag: 'date_2021_05_22',
+      humanReadable: '02/05/2021',
+      tag: 'date_2021_05_02',
     },
     {
-      humanReadable: '23/05/2021',
-      tag: 'date_2021_05_23',
+      humanReadable: '03/05/2021',
+      tag: 'date_2021_05_03',
     },
   ],
   ausstellung: [
     {
-      humanReadable: 'Haus der Statistik 20/04–09/05/2021',
-      tag: 'date_20_04_2021',
+      humanReadable: 'Haus der Statistik 30/04 – 09/05/2021',
+      tag: 'date_2021_04_30',
     },
     {
-      humanReadable: 'Panke Gallery 09/2021',
-      tag: 'date_09_2021',
+      humanReadable: 'panke.gallery 18/09/ – 03/10/2021',
+      tag: 'date_2021_09_18',
     },
   ],
   unconference: [
