@@ -28,8 +28,8 @@
               ref="items"
               class="archive__items"
               :items="items"
-              :about-page="aboutConfig.aboutPage"
-              :about-page-text="$t(aboutConfig.aboutPageText)"
+              :about-page="aboutConfig && aboutConfig.aboutPage"
+              :about-page-text="$t(aboutConfig && aboutConfig.aboutPageText)"
               :from="node"
             />
             <div v-if="!loading || this.items.length >= 0" class="archive__controls">
@@ -121,7 +121,7 @@ export default {
       return this.totalResults > this.items.length;
     },
     aboutConfig() {
-      return getAboutConfig(this.node);
+      return getAboutConfig(this.node || 'archive');
     },
     datePicker() {
       return datePickerConfig[this.node];
@@ -181,7 +181,7 @@ export default {
 
 <style scoped>
 .archive__main {
-  min-height: calc(100vh - 390px);
+  min-height: calc(100vh - 290px);
 }
 
 .archive__results {

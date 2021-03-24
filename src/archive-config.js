@@ -1,10 +1,5 @@
 export const getAboutConfig = (node) => {
   switch (node) {
-    case 'ausstellung':
-      return {
-        aboutPage: 'ExhibitionAbout',
-        aboutPageText: 'ausstellung.about',
-      };
     case 'journal':
       return {
         aboutPage: 'JournalAbout',
@@ -20,11 +15,13 @@ export const getAboutConfig = (node) => {
         aboutPage: 'UnconferenceAbout',
         aboutPageText: 'unconference.about',
       };
-    default:
+    case 'archive':
       return {
         aboutPage: 'ArchiveAbout',
         aboutPageText: 'archive.about',
       };
+    default:
+      return null;
   }
 };
 

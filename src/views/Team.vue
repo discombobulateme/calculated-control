@@ -23,14 +23,14 @@
         <img class="team__image" src="../assets/images/zfn.jpg" alt="Zentrum für Netzkunst Team" />
       </div>
       <div class="team__section-right">
-        <a class="blob blob--green team__link" href="http://netart.berlin/">
-          netart.berlin
+        <a class="blob blob--green team__link" href="https://netzkunst.berlin/">
+          netzkunst.berlin
         </a>
-        <a class="blob blob--green team__link" href="http://www.hausderstatistik.org">
-          www.hausderstatistik.org
+        <a class="blob blob--green team__link" href="https://www.hausderstatistik.org">
+          hausderstatistik.org
         </a>
-        <a class="blob blob--green team__link" href="http://www.panke.gallery">
-          www.panke.gallery
+        <a class="blob blob--green team__link" href="https://www.panke.gallery">
+          panke.gallery
         </a>
       </div>
     </section>
@@ -41,11 +41,11 @@
       <div class="team__section-centre">
         <template v-if="english">
           <p>
-          <strong>Concept and Curatorial Team</strong><br>
-          Tereza Havlíková, Paloma Oliveira, Anneliese Ostertag, Tabea Rossol, Robert Sakrowski
+          <strong>Concept and Curation</strong><br>
+          Tereza Havlíková, Paloma Oliveira, Anneliese Ostertag, Tabea Rossol, Sakrowski
           </p>
           <p>
-          <strong>Graphic Design and Concept</strong><br>
+          <strong>Research, Graphic Concept, and Design</strong><br>
           <a class="link" href="http://annaluiselorenz.com/">Anna-Luise Lorenz</a>
           </p>
           <p>
@@ -53,9 +53,17 @@
           <a class="link" href="https://fiala.space">Jakub Fiala</a>
           </p>
           <p>
-          <strong>Documentation</strong><br>
-          Hannah Rumstedt
-          Alexia Manzano Schlamp
+          <strong>Press and Public Relations</strong><br>
+          Igor Štromajer
+          </p>
+          <p>
+          <strong>Editing and Translation</strong><br>
+          Colin Lang
+          </p>
+          <p>
+          <p>
+          <strong>Symposium Assistance</strong><br>
+          Noemi Garay
           </p>
           <p>
           <strong>Exhibition Architecture</strong><br>
@@ -63,24 +71,25 @@
           </p>
           <p>
           <strong>Technical Advisor</strong><br>
-          Enrike
+          xx
           </p>
           <p>
-          <strong>Press and Public Relations</strong><br>
-          Igor Štromajer
+          <strong>Sound Recording</strong><br>
+          Jürg Meister
           </p>
           <p>
-          <strong>Editorial and Translation</strong><br>
-          Colin Lang
+          <strong>Documentation</strong><br>
+          Hannah Rumstedt
+          Alexia Manzano Schlamp
           </p>
         </template>
         <template v-else>
           <p>
           <strong>Konzept und Kuration</strong><br>
-          Tereza Havlíková, Paloma Oliveira, Anneliese Ostertag, Tabea Rossol, Robert Sakrowski
+          Tereza Havlíková, Paloma Oliveira, Anneliese Ostertag, Tabea Rossol, Sakrowski
           </p>
           <p>
-          <strong>Grafik Konzept und Design</strong><br>
+          <strong>Recherche, Grafik Konzept und Design</strong><br>
           <a class="link" href="http://annaluiselorenz.com/">Anna-Luise Lorenz</a>
           </p>
           <p>
@@ -88,25 +97,33 @@
           <a class="link" href="https://fiala.space">Jakub Fiala</a>
           </p>
           <p>
-          <strong>Dokumentation</strong><br>
-          Hannah Rumstedt
-          Alexia Manzano Schlamp
-          </p>
-          <p>
-          <strong>Ausstellungsarchitektur</strong><br>
-          Alexej Paryla
-          </p>
-          <p>
-          <strong>Technische Beratung</strong><br>
-          Enrike
-          </p>
-          <p>
           <strong>Presse und Öffentlichkeitsarbeit</strong><br>
           Igor Štromajer
           </p>
           <p>
-          <strong>Lektorat und Übersetung</strong><br>
+          <strong>Lektorat und Übersetzung</strong><br>
           Colin Lang
+          </p>
+          <p>
+          <strong>Symposium Assistenz</strong><br>
+          Noemi Garay
+          </p>
+          <p>
+          <strong>Ausstellungsarchitektur</strong><br>
+          x
+          </p>
+          <p>
+          <strong>Technische Beratung</strong><br>
+          x
+          </p>
+          <p>
+          <strong>Tonaufnahme</strong><br>
+          Jürg Meister
+          </p>
+          <p>
+          <strong>Dokumentation</strong><br>
+          Hannah Rumstedt
+          Alexia Manzano Schlamp
           </p>
         </template>
       </div>
@@ -152,6 +169,10 @@ export default {
   min-height: 60vh;
 }
 
+.team__section + .team__section {
+  border-top: none;
+}
+
 .team__section-title {
   font-size: inherit;
   margin: 0;
@@ -159,6 +180,8 @@ export default {
 
 .team__section-left {
   border: solid 1px black;
+  border-top: none;
+  border-bottom: none;
   font-size: var(--font-size-xl);
   padding: 10px;
 }
@@ -166,6 +189,8 @@ export default {
 .team__section-centre,
 .team__section-right {
   border: solid 1px black;
+  border-top: none;
+  border-bottom: none;
   font-size: var(--font-size-large);
   padding: 10px;
 }

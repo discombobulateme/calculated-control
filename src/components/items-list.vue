@@ -1,6 +1,6 @@
 <template>
   <ul class="items-list" tabindex="0">
-    <li class="items-list__item items-list__about">
+    <li v-if="aboutPage" class="items-list__item items-list__about">
       <router-link :to="{ name: aboutPage }" class="blob items-list__about-link">
         {{ aboutPageText }}
       </router-link>

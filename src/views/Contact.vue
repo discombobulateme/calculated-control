@@ -11,7 +11,7 @@
       </div>
       <div class="contact__section-right">
         <address class="contact__panel">
-          Zentrum für Netzkunst e.V,<br>
+          Zentrum für Netzkunst e.V.,<br>
           Kollwitzstraße 71<br>
           10435 Berlin<br>
         </address>
@@ -21,7 +21,7 @@
           <template v-if="english">Press</template>
           <template v-else>Presse</template>
           <br>Igor Štromajer<br>
-          <a class="link" href="mailto:presse@netzkunst.berlin">presse@netzkunst.berlin</a>
+          <a class="link" href="mailto:press@netzkunst.berlin">press@netzkunst.berlin</a>
         </div>
       </div>
     </section>

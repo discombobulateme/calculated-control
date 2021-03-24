@@ -26,13 +26,13 @@
           <router-link class="link link--arrow" to="/node/ausstellung?tags=date_20_04_2021">Exhibition</router-link><br>
           30.04. – 09.05.2021<br>
           Opening hours<br>
-          2–7pm<br>
+          13.00 – 19.00<br>
           <br>
           <router-link class="link link--arrow" to="/node/symposium">Symposium</router-link><br>
           01.05. – 03.05.2021<br>
           Online<br>
           <br>
-          <router-link class="link link--arrow" to="/node/unconference">unConference</router-link><br>
+          <router-link class="link link--arrow" to="/node/unconference">Unconference</router-link><br>
           21.05. – 23.05.2021<br>
           <br>
           <address>
@@ -50,13 +50,13 @@
           <router-link class="link link--arrow" to="/node/ausstellung?tags=date_20_04_2021">Ausstellung</router-link><br>
           30.04. – 09.05.2021<br>
           Öffnungszeiten<br>
-          2–7pm<br>
+          13.00 – 19.00<br>
           <br>
           <router-link class="link link--arrow" to="/node/symposium">Symposium</router-link><br>
           01.05. – 03.05.2021<br>
           Online<br>
           <br>
-          <router-link class="link link--arrow" to="/node/unconference">unConference</router-link><br>
+          <router-link class="link link--arrow" to="/node/unconference">Unconference</router-link><br>
           21.05. – 23.05.2021<br>
           <br>
           <address>
@@ -79,6 +79,22 @@
       <div class="visit__section-right">
         <template v-if="english">
           <router-link class="link link--arrow" to="/node/ausstellung?tags=date_09_2021">Exhibition</router-link><br>
+          <br>
+          <address>
+            Gerichtstraße 23<br>
+            Hof 5<br>
+            13347 Berlin<br>
+          </address>
+          <br>
+          18/09 &mdash; 03/10/2021<br>
+          Mittwoch &mdash; Samstag<br>
+          Opening Hours/Öffnungszeiten<br>
+          15:00 - 19:00<br>
+          <br>
+          Vernissage<br>
+          18/09/2021<br>
+          Finissage<br>
+          03/10/2021<br><br>
           <a class="link" href="https://www.openstreetmap.org/directions?engine=fossgis_osrm_foot&route=52.54388%2C13.36949%3B52.54510%2C13.37424#map=18/52.54427/13.37324">
           Directions</a>
 
@@ -86,6 +102,22 @@
         </template>
         <template v-else>
           <router-link class="link link--arrow" to="/node/ausstellung?tags=date_09_2021">Ausstellung</router-link><br>
+          <br>
+          <address>
+            Gerichtstraße 23<br>
+            Hof 5<br>
+            13347 Berlin<br>
+          </address>
+          <br>
+          18/09 &mdash; 03/10/2021<br>
+          Mittwoch &mdash; Samstag<br>
+          Öffnungszeiten<br>
+          15:00 - 19:00<br>
+          <br>
+          Vernissage<br>
+          18/09/2021<br>
+          Finissage<br>
+          03/10/2021<br><br>
           <a class="link" href="https://www.openstreetmap.org/directions?engine=fossgis_osrm_foot&route=52.54388%2C13.36949%3B52.54510%2C13.37424#map=18/52.54427/13.37324">
           Anfahrt</a>
 
