@@ -85,7 +85,6 @@ import { getItem, getRelatedItems } from '@/api';
 import { caseInsensitiveIncludes } from '@/utils';
 import ArchiveHeader from '@/components/archive-header';
 import CuratedItem from '@/components/item/curated-item';
-// import Person from '@/components/item/person';
 import ItemGenericLeft from '@/components/item/generic-left';
 import ItemGenericRight from '@/components/item/generic-right';
 import ItemPreview from '@/components/item-preview';
@@ -106,7 +105,6 @@ export default {
     ItemPreview,
     TagsCloud,
     Loader,
-    // Person,
   },
   props: {
     id: {
@@ -171,7 +169,7 @@ export default {
       return this.item && this.item.rights;
     },
     isPerson() {
-      return this.mainTag && this.mainTag.toLowerCase() === 'person';
+      return this.itemTags.some(tag => tag.toLowerCase() === 'person');
     },
   },
   methods: {

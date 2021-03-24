@@ -11,7 +11,7 @@
       <h2 class="item__note-label"><span class="hash">#</span>{{ $t('item.abstract') }}</h2>
       <div v-html="item.abstractNote"></div>
     </div>
-    <ItemPulloutHeader v-if="!item.abstractNote" :item="item" />
+    <ItemPulloutHeader v-if="isPerson || !item.abstractNote" :item="item" />
   </section>
 </template>
 
@@ -40,8 +40,11 @@ export default {
     },
   },
   computed: {
+    itemTags() {
+      return this.item.tags.map(({ tag }) => tag).filter(tag => !tag.startsWith('id_') && !tag.startsWith('date_'));
+    },
     isPerson() {
-      return this.mainTag === 'person';
+      return this.itemTags.some(tag => tag.toLowerCase() === 'person');
     },
   },
 };
