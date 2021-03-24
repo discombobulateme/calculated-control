@@ -85,6 +85,7 @@ import { getItem, getRelatedItems } from '@/api';
 import { caseInsensitiveIncludes } from '@/utils';
 import ArchiveHeader from '@/components/archive-header';
 import CuratedItem from '@/components/item/curated-item';
+// import Person from '@/components/item/person';
 import ItemGenericLeft from '@/components/item/generic-left';
 import ItemGenericRight from '@/components/item/generic-right';
 import ItemPreview from '@/components/item-preview';
@@ -105,6 +106,7 @@ export default {
     ItemPreview,
     TagsCloud,
     Loader,
+    // Person,
   },
   props: {
     id: {
@@ -169,7 +171,7 @@ export default {
       return this.item && this.item.rights;
     },
     isPerson() {
-      return this.mainTag === 'person';
+      return this.mainTag && this.mainTag.toLowerCase() === 'person';
     },
   },
   methods: {
@@ -215,12 +217,17 @@ export default {
 <style scoped>
 .item {
   background: var(--color-prime-light-grey);
-  height: 100vh;
-  overflow: hidden;
+}
+
+@media screen and (min-width: 768px) {
+  .item {
+    height: 100vh;
+    overflow: hidden;
+  }
 }
 
 .item__header {
-  font-size: var(--font-size-medium-small);
+  font-size: var(--font-size-large);
   height: 80px;
   padding: 5px 15px;
   position: relative;
@@ -271,6 +278,7 @@ export default {
 }
 
 .archive-connections__show {
+  font-family: inherit;
   padding: 30px 0;
   cursor: pointer;
   height: 100%;
@@ -281,9 +289,15 @@ export default {
   align-items: center;
   display: flex;
   margin: 5px;
-  position: fixed;
+  position: sticky;
   bottom: 0;
 }
+
+/* @media screen and (min-width: 768px) {
+  .archive-connections__show {
+    position: fixed;
+  }
+} */
 
 .relations {
   background: var(--color-prime-light-grey);
@@ -324,7 +338,7 @@ export default {
 
 .archive-button {
   cursor: pointer;
-  position: absolute;
+  position: fixed;
 }
 
 .archive-button {

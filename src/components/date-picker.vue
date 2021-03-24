@@ -83,6 +83,7 @@ export default {
 }
 
 .date-picker__list--centered {
+  align-items: center;
   justify-content: center;
 }
 
@@ -93,7 +94,8 @@ export default {
 .date-picker__button {
   cursor: pointer;
   font-size: inherit;
-  padding: 15px 15px;
+  font-family: inherit;
+  padding: 9px 20px;
   white-space: nowrap;
 }
 </style>

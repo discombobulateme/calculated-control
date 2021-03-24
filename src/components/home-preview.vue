@@ -2,7 +2,7 @@
   <div class="home-preview">
     <img v-if="imageUrl" :src="imageUrl" role="presentation" class="home-preview__image" />
     <div class="home-preview__text">
-      <div class="home-preview__type">{{ type }}</div>
+      <div class="home-preview__type"><span class="hash">#</span>{{ type }}</div>
       <h2 class="home-preview__title">{{ title }}</h2>
     </div>
     <div v-if="tag" class="home-preview__highlight blob blob--green">
@@ -51,12 +51,14 @@ export default {
   background: linear-gradient(264.28deg, rgba(255, 255, 255, 0.5) -3.29%, rgba(255, 255, 255, 0) 82.34%), rgba(156,250,111,0.5);
   border-radius: var(--border-radius);
   position: relative;
-  padding: 15px;
+  padding: 5px;
+  margin: 30px;
 }
 
 @media screen and (min-width: 768px) {
   .home-preview__text {
     max-width: 70%;
+    margin: auto;
   }
 }
 
@@ -81,7 +83,7 @@ export default {
 
 .home-preview__highlight {
   display: inline-block;
-  font-size: inherit;
+  font-size: var(--font-size-xxs);
   padding: 5px 15px;
   position: absolute;
   top: 15px;

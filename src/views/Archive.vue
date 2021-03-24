@@ -26,6 +26,7 @@
             <DatePicker v-if="datePicker" :dates="datePicker" class="archive__date-picker-mobile" :centered="false"/>
             <ItemsList
               ref="items"
+              class="archive__items"
               :items="items"
               :about-page="aboutConfig.aboutPage"
               :about-page-text="$t(aboutConfig.aboutPageText)"
@@ -203,6 +204,7 @@ export default {
 .archive__filters-link,
 .archive__filters-search {
   align-items: center;
+  font-family: inherit;
   justify-content: center;
   margin: 15px 0;
   height: 40px;
@@ -242,6 +244,7 @@ export default {
 .archive__load-more {
   color: inherit;
   cursor: pointer;
+  font-family: inherit;
   padding: 2em 0;
   width: 100%;
 }

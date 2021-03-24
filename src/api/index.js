@@ -50,7 +50,7 @@ export const searchItems = async ({ q, tags, start = 0, limit = 24 }) => {
     q,
     tag: [...tags, langExcludeTag],
     qmode: 'titleCreatorYear',
-    limit,
+    limit: start === 0 ? 23 : limit,
     itemType: '-attachment',
   };
 

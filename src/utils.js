@@ -6,7 +6,7 @@ export const getMainTag = (itemData, translator = x => x) => {
   const { tags, itemType } = itemData;
   const primaryTag = tags && tags.find(({ tag }) => tag && primaryTags.includes(tag.toLowerCase()));
   const tagKey = primaryTag && primaryTag.tag.toLowerCase();
-  return tagKey ? translator(`tags.${tagKey.toLowerCase()}`) : itemType;
+  return tagKey ? translator(`tags.${tagKey.toLowerCase()}`).toLowerCase() : itemType;
 };
 
 export const getTagsFromRoute = route => {

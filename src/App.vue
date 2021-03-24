@@ -23,20 +23,29 @@ export default {
   --color-prime-pink-hover: #F0D2D8;
   --color-prime-rose-darker: #B57380;
   --color-prime-olive: rgb(109, 93, 56);
+  --color-prime-olive-dark: rgb(75, 64, 38);
   --color-prime-olive-half: rgb(109, 93, 56, 0.5);
   --color-prime-light-grey: rgb(225, 225, 225);
   --color-prime-light-grey-hover: rgb(233,233,233);
 
+  --font-size-xxs: 16px;
   --font-size-xs: 20px;
   --font-size-small: 24px;
   --font-size-medium-small: 30px;
   --font-size-medium: 2vw;
-  --font-size-large: 30px;
-  --font-size-xl: 42px;
+  --font-size-large: 23px;
+  --font-size-xl: 32px;
   --font-size-xxl: 52px;
 
   --border-radius: 30px;
   --transition-time: 400ms;
+}
+
+@media screen and (min-width: 768px) {
+  :root {
+    --font-size-large: 30px;
+    --font-size-xl: 42px;
+  }
 }
 
 * {
@@ -51,6 +60,8 @@ body {
 
 html {
   font-family: "Maxima-Lig", Helvetica, Arial, sans-serif;
+  letter-spacing: -0.25px;
+  line-height: 1.1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: var(--color-prime-olive);
@@ -95,7 +106,7 @@ h1, h2, h3, h4, h5 {
 
 .blob:hover {
   background: var(--color-prime-light-grey-hover);
-  filter: drop-shadow(2px 2px 12px rgba(0, 0, 0, 0.25));
+  /* filter: drop-shadow(2px 2px 12px rgba(0, 0, 0, 0.25)); */
 }
 
 .blob--shadow {
@@ -148,11 +159,12 @@ h1, h2, h3, h4, h5 {
   height: 1em;
 }
 
-.hash {
-  font-family: Helvetica, Arial, sans-serif;
-}
-
 address {
   font-style: normal;
+}
+
+button {
+  font-family: inherit;
+  letter-spacing: inherit;
 }
 </style>

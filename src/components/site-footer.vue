@@ -17,7 +17,7 @@
         </ul>
       </nav>
     </section>
-    <section class="site-footer__section site-footer__logo">
+    <section class="site-footer__section site-footer__logo-section">
       <a href="https://netzkunst.berlin/">
         <img class="site-footer__logo" src="../assets/images/zfn_logo.svg" alt="Zentrum für Netzkunst logo" />
       </a>
@@ -58,7 +58,8 @@ export default {
   background: black;
   color: white;
   display: grid;
-  font-size: var(--font-size-small);
+  font-size: var(--font-size-xs);
+  line-height: 1.2;
 }
 
 .site-footer__section {
@@ -72,7 +73,7 @@ export default {
 @media screen and (min-width: 768px) {
   .site-footer {
     grid-template-columns: 1fr 1fr 1fr;
-    height: 390px;
+    height: 290px;
   }
 
   .site-footer__section + .site-footer__section {
@@ -105,7 +106,11 @@ export default {
   justify-content: space-between;
 }
 
+.site-footer__logo-section {
+  display: flex;
+}
+
 .site-footer__logo {
-  width: 100%;
+  width: 80%;
 }
 </style>

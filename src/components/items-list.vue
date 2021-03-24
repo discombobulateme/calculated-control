@@ -50,6 +50,7 @@ export default {
   list-style-type: none;
   padding: 0;
   margin: 0;
+  min-height: calc(100vh - 80px);
 }
 
 .items-list__item {
@@ -63,7 +64,8 @@ export default {
   }
 
   .items-list__item {
-    height: 288px;
+    min-height: 288px;
+    height: 100%;
   }
 
   .items-list__item:last-child:nth-of-type(2n - 1) {

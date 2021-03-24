@@ -69,7 +69,7 @@ export default {
   font-size: var(--font-size-large);
   display: block;
   height: 100%;
-  padding: 15px;
+  padding: 7px 12px;
   text-decoration: inherit;
   width: 100%;
   word-wrap: anywhere;
@@ -95,6 +95,10 @@ export default {
 
 .item-preview__type {
   margin-top: 5px;
+}
+
+.item-preview__title {
+  font-style: italic;
 }
 
 .item-preview__type:before {

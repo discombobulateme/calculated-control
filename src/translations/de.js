@@ -11,7 +11,7 @@ export default {
     ausstellung: 'Ausstellung',
     journal: 'Journal',
     symposium: 'Symposium',
-    unconference: 'unConference',
+    unconference: 'Unconference',
     imprint: 'Impressum',
   },
   archive: {
@@ -46,7 +46,7 @@ export default {
     back: 'zurück',
   },
   unconference: {
-    about: 'Über die unConference',
+    about: 'Über die Unconference',
   },
   symposium: {
     about: 'Über das online Symposium',

@@ -4,8 +4,8 @@
     <section class="about__content">
       <div class="about__back">
         <router-link :to="{ name: 'Home' }" class="blob blob--green about__back-link">
-          calculating control:<br/>
-          (netz)kunst und kybernetik<br/>
+          Calculating Control:<br/>
+          (Netz)Kunst und Kybernetik<br/>
         </router-link>
       </div>
       <p class="about__large">
@@ -65,6 +65,7 @@ export default {
 
 .about__content {
   font-size: var(--font-size-large);
+  letter-spacing: -0.25px;
   position: absolute;
   top: 0;
   width: 100%;
@@ -80,6 +81,6 @@ export default {
   font-size: var(--font-size-xxl);
   text-align: center;
   margin-bottom: 45px;
-  max-width: 1500px;
+  max-width: 1300px;
 }
 </style>

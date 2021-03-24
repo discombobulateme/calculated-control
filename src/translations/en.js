@@ -11,7 +11,7 @@ export default {
     ausstellung: 'Exhibition',
     journal: 'Journal',
     symposium: 'Symposium',
-    unconference: 'unConference',
+    unconference: 'Unconference',
     imprint: 'Imprint',
   },
   archive: {

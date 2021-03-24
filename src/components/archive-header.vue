@@ -6,7 +6,7 @@
     }"
   >
     <div class="archive-header__text">
-      <h2 class="archive-header__title">calculating:control</h2>
+      <h2 class="archive-header__title">Calculating Control</h2>
       <div class="archive-header__meta">
         <slot name="meta" />
       </div>
@@ -76,6 +76,7 @@ export default {
   overflow: hidden;
   padding: 5px 15px;
   position: relative;
+  align-items: center;
 }
 
 .archive-header__center {
