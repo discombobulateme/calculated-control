@@ -3,7 +3,7 @@
     <article class="item-preview" tabindex="0">
       <p class="item-preview__type">{{ mainTag }}</p>
       <time v-if="item.data.date" class="item-preview__date">{{ item.data.date }}</time>
-      <p v-if="author" class="item-preview__author">{{ author }}</p>
+      <p v-if="author && !isPerson" class="item-preview__author">{{ author }}</p>
       <h2 class="item-preview__title" v-safe-html="titleText"></h2>
       <div v-if="highlightTag" class="item-preview__highlight blob blob--green">
         <span class="hash">#</span>{{ highlightTag }}
@@ -58,6 +58,9 @@ export default {
     },
     author() {
       return getItemAuthor(this.item.data);
+    },
+    isPerson() {
+      return this.mainTag === 'person';
     },
   }
 };

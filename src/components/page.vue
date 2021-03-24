@@ -41,6 +41,7 @@ export default {
     display: grid;
     grid-template-areas: "side side main main x close";
     grid-template-rows: 1fr;
+    gap: 20px;
   }
 
   .page__meta {

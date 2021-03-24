@@ -6,7 +6,7 @@
     <time v-if="formattedDate" class="item__date">
       {{ formattedDate }}
     </time>
-    <div v-if="creators && creators.length > 0" class="item__authors">
+    <div v-if="creators && creators.length > 0 && !isPerson" class="item__authors">
       <router-link
         :to="authorRoute"
         class="link"
@@ -66,6 +66,12 @@ export default {
       const highlightTag = tags.find(({ tag }) => highlightTags.includes(tag));
       if (highlightTag) return this.$t(`tags.${highlightTag.tag}`);
       return null;
+    },
+    itemTags() {
+      return this.item.tags.map(({ tag }) => tag).filter(tag => !tag.startsWith('id_') && !tag.startsWith('date_'));
+    },
+    isPerson() {
+      return this.itemTags.some(tag => tag.toLowerCase() === 'person');
     },
   },
 };

@@ -10,7 +10,8 @@
           'blurred': blurred,
         }"
       >
-        <li v-show="!isPage('about')" class="blob blob--pink nav__item nav__item--main" style="--grid-area: a;">
+        <li v-show="!isPage('about')" class="blob blob--pink nav__item nav__item--main"
+          :style="{ '--grid-area': 'a', 'grid-column': (loadingLiveItem || loadingNewItem || newItem || liveItem) ? 'span 3' : 'span 6' }">
           <router-link class="nav__link" :to="{ name: 'About' }">
             <h1 class="nav__title">Calculating Control:<br/>
             (Netz)Kunst und Kybernetik</h1>
@@ -18,15 +19,15 @@
             Haus der Statistik &amp; panke.gallery</div>
           </router-link>
         </li>
-        <li v-if="liveItem || loadingLiveItem" class="blob nav__item nav__item--page nav__item--preview" style="--grid-area: k;">
-          <Loader v-if="loadingLiveItem" />
-          <router-link v-else class="nav__link" :to="{ name: 'Item', params: { key: liveItem.key } }">
+        <li v-if="liveItem && !loadingLiveItem" class="blob nav__item nav__item--page nav__item--preview"
+            :style="{ '--grid-area': 'k', 'grid-row': newItem ? 'auto' : 'span 2' }">
+          <router-link class="nav__link" :to="{ name: 'Item', params: { key: liveItem.key } }">
             <HomePreview tag="live" :title="liveItem.title" :type="liveItem.type" :imageUrl="liveItem.imageUrl" />
           </router-link>
         </li>
-        <li v-if="newItem || loadingNewItem" class="blob nav__item nav__item--page nav__item--preview" style="--grid-area: l;">
-          <Loader v-if="loadingNewItem" />
-          <router-link v-else class="nav__link" :to="{ name: 'Item', params: { key: newItem.key } }">
+        <li v-if="newItem && !loadingNewItem" class="blob nav__item nav__item--page nav__item--preview"
+            :style="{ '--grid-area': liveItem ? 'l' : 'k', 'grid-row': liveItem ? 'auto' : 'span 2' }">
+          <router-link class="nav__link" :to="{ name: 'Item', params: { key: newItem.key } }">
             <HomePreview tag="new" :title="newItem.title" :type="newItem.type" :imageUrl="newItem.imageUrl" />
           </router-link>
         </li>
@@ -66,14 +67,12 @@
 import { mapState, mapActions } from 'vuex';
 
 import HomePreview from '@/components/home-preview';
-import Loader from '@/components/icons/loader';
 import LanguageSwitch from '@/components/language-switch';
 
 export default {
   name: 'SiteNav',
   components: {
     HomePreview,
-    Loader,
     LanguageSwitch,
   },
   props: {

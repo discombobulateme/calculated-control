@@ -4,6 +4,9 @@ import Home from '../views/Home.vue';
 import Archive from '../views/Archive.vue';
 import Item from '../views/Item.vue';
 import ArchiveAbout from '../views/ArchiveAbout.vue';
+import SymposiumAbout from '../views/SymposiumAbout.vue';
+import UnconferenceAbout from '../views/UnconferenceAbout.vue';
+import JournalAbout from '../views/JournalAbout.vue';
 import About from '../views/About.vue';
 import Team from '../views/Team.vue';
 import Contact from '../views/Contact.vue';
@@ -57,6 +60,21 @@ const routes = [
     path: '/archive/about',
     name: 'ArchiveAbout',
     component: ArchiveAbout,
+  },
+  {
+    path: '/symposium/about',
+    name: 'SymposiumAbout',
+    component: SymposiumAbout,
+  },
+  {
+    path: '/unconference/about',
+    name: 'UnconferenceAbout',
+    component: UnconferenceAbout,
+  },
+  {
+    path: '/journal/about',
+    name: 'JournalAbout',
+    component: JournalAbout,
   },
   {
     path: '/archive',

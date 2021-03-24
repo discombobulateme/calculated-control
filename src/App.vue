@@ -35,7 +35,7 @@ export default {
   --font-size-medium: 2vw;
   --font-size-large: 23px;
   --font-size-xl: 32px;
-  --font-size-xxl: 52px;
+  --font-size-xxl: 32px;
 
   --border-radius: 30px;
   --transition-time: 400ms;
@@ -45,6 +45,7 @@ export default {
   :root {
     --font-size-large: 30px;
     --font-size-xl: 42px;
+    --font-size-xxl: 52px;
   }
 }
 

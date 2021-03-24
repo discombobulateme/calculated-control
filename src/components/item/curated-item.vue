@@ -111,6 +111,7 @@ export default {
 
 .curated-item__info-section {
   border: solid 1px black;
+  border-top: none;
 }
 
 @media screen and (min-width: 768px) {

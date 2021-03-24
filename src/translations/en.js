@@ -62,6 +62,7 @@ export default {
     booking: 'Book a time slot',
   },
   journal: {
+    about: 'About the journal',
     readFull: 'Read full article',
   },
   tags: {

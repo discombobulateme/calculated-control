@@ -62,6 +62,7 @@ export default {
     booking: 'Termin vereinbaren',
   },
   journal: {
+    about: 'Über das Journal',
     readFull: 'Den Ganzen Beitrag lesen',
   },
   tags: {

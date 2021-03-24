@@ -93,10 +93,20 @@ export default {
 .site-footer__link:visited {
   color: inherit;
   text-decoration: inherit;
+  transition: color var(--transition-time);
+}
+
+.site-footer__link:hover {
+  color: var(--color-prime-green);
+  text-decoration: inherit;
 }
 
 .site-footer__link--green {
   color: var(--color-prime-green);
+}
+
+.site-footer__link--green:hover {
+  color: white;
 }
 
 .site-footer__nav-container {

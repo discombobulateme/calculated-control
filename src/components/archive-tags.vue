@@ -246,6 +246,7 @@ export default {
   background: none;
   border: none;
   color: inherit;
+  cursor: pointer;
 }
 
 .archive-tags__submit {
