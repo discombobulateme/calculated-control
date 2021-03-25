@@ -34,7 +34,7 @@ const archiveRouteConfigForNode = node => ({
 
 const routes = [
   {
-    path: '/about',
+    path: '/cc/about',
     name: 'About',
     component: About,
     props: {
@@ -42,7 +42,7 @@ const routes = [
     },
   },
   {
-    path: '/team',
+    path: '/cc/team',
     name: 'Team',
     component: Team,
     props: {
@@ -51,7 +51,7 @@ const routes = [
     },
   },
   {
-    path: '/contact',
+    path: '/cc/contact',
     name: 'Contact',
     component: Contact,
     props: {
@@ -60,7 +60,7 @@ const routes = [
     },
   },
   {
-    path: '/visit',
+    path: '/cc/visit',
     name: 'Visit',
     component: Visit,
     props: {
@@ -68,32 +68,32 @@ const routes = [
     },
   },
   {
-    path: '/imprint',
+    path: '/cc/imprint',
     name: 'Imprint',
     component: Imprint,
   },
   {
-    path: '/archive/about',
+    path: '/cc/archive/about',
     name: 'ArchiveAbout',
     component: ArchiveAbout,
   },
   {
-    path: '/symposium/about',
+    path: '/cc/symposium/about',
     name: 'SymposiumAbout',
     component: SymposiumAbout,
   },
   {
-    path: '/unconference/about',
+    path: '/cc/unconference/about',
     name: 'UnconferenceAbout',
     component: UnconferenceAbout,
   },
   {
-    path: '/journal/about',
+    path: '/cc/journal/about',
     name: 'JournalAbout',
     component: JournalAbout,
   },
   {
-    path: '/archive',
+    path: '/cc/archive',
     name: 'Archive',
     component: Archive,
     props: route => ({
@@ -102,7 +102,7 @@ const routes = [
     }),
   },
   {
-    path: '/node/:node',
+    path: '/cc/node/:node',
     name: 'Node',
     component: Archive,
     props: route => ({
@@ -112,38 +112,43 @@ const routes = [
     }),
   },
   {
-    path: '/e',
+    path: '/cc/e',
     ...archiveRouteConfigForNode('ausstellung'),
   },
   {
-    path: '/j',
+    path: '/cc/j',
     ...archiveRouteConfigForNode('journal'),
   },
   {
-    path: '/s',
+    path: '/cc/s',
     ...archiveRouteConfigForNode('symposium'),
   },
   {
-    path: '/u',
+    path: '/cc/u',
     ...archiveRouteConfigForNode('unconference'),
   },
   {
-    path: '/item/:key',
+    path: '/cc/item/:key',
     name: 'Item',
     ...itemRouteConfig,
   },
   {
-    path: '/entry/:key',
+    path: '/cc/entry/:key',
     name: 'Entry',
     ...itemRouteConfig,
   },
   {
-    path: '/eintrag/:key',
+    path: '/cc/eintrag/:key',
     name: 'Eintrag',
     ...itemRouteConfig,
   },
   {
-    path: '*',
+    path: '/cc',
+    name: 'Home',
+    component: Home
+  },
+  {
+    path: '/',
     name: 'Home',
     component: Home
   },
