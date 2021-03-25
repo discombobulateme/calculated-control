@@ -29,7 +29,7 @@
           As an artistic practice of network society, netart traces systems of cybernetic administration and renders their forms visible and subject to revision. Over the duration of 6 months, Calculating Control will unravel cybernetic thinking in the space of two separate exhibitions, a symposium, an unconference, as well as an online journal. These various formats are connected and contextualized by further research material available in the archive section of this site.
         </template>
         <template v-else>
-          Als eine künstlerische Praxis der Netzwerkgesellschaft zeichnet die Netzkunst die Systeme kybernetischer Verwaltung nach. Über einen Zeitraum von 6 Monaten folgt Calculating Control dem kybernetischen Denken im Rahmen von zwei Ausstellungen, einem Symposium, einer Unconference und einem online Journal. Die verschiedenen Formate werden miteinander verbunden und in dem Archiv auf dieser Seite durch weiteres Forschungsmaterial kontextualisiert.
+          Als eine künstlerische Praxis der Netzwerkgesellschaft zeichnet die Netzkunst gegenwärtige kybernetische Kontrollmechanismen nach. Über einen Zeitraum von 6 Monaten folgt Calculating Control dem kybernetischen Denken im Rahmen von zwei Ausstellungen, einem Symposium, einer Unconference und einem online Journal. Die verschiedenen Formate werden miteinander verbunden und in dem Archiv auf dieser Seite durch weiteres Forschungsmaterial kontextualisiert.
         </template>
       </p>
     </section>
