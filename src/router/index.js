@@ -14,7 +14,23 @@ import Imprint from '../views/Imprint.vue';
 import Visit from '../views/Visit.vue';
 import { getTagsFromRoute } from '@/utils';
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
+
+const itemRouteConfig = {
+  component: Item,
+  props: route => ({
+    id: route.params.key,
+  }),
+};
+
+const archiveRouteConfigForNode = node => ({
+  component: Archive,
+  props: route => ({
+    query: route.query.q,
+    searchTags: getTagsFromRoute(route),
+    node,
+  }),
+});
 
 const routes = [
   {
@@ -96,12 +112,35 @@ const routes = [
     }),
   },
   {
+    path: '/e',
+    ...archiveRouteConfigForNode('ausstellung'),
+  },
+  {
+    path: '/j',
+    ...archiveRouteConfigForNode('journal'),
+  },
+  {
+    path: '/s',
+    ...archiveRouteConfigForNode('symposium'),
+  },
+  {
+    path: '/u',
+    ...archiveRouteConfigForNode('unconference'),
+  },
+  {
     path: '/item/:key',
     name: 'Item',
-    component: Item,
-    props: route => ({
-      id: route.params.key,
-    }),
+    ...itemRouteConfig,
+  },
+  {
+    path: '/entry/:key',
+    name: 'Entry',
+    ...itemRouteConfig,
+  },
+  {
+    path: '/eintrag/:key',
+    name: 'Eintrag',
+    ...itemRouteConfig,
   },
   {
     path: '*',
