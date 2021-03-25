@@ -24,16 +24,16 @@
       <div class="visit__section-right">
         <template v-if="english">
           <router-link class="link link--arrow" to="/node/ausstellung?tags=date_20_04_2021">Exhibition</router-link><br>
-          30.04. – 09.05.2021<br>
+          30/04 &ndash; 09/05/2021<br>
           Opening hours<br>
-          13.00 – 19.00<br>
+          13:00 &ndash; 19:00<br>
           <br>
           <router-link class="link link--arrow" to="/node/symposium">Symposium</router-link><br>
-          01.05. – 03.05.2021<br>
+          01/05 &ndash; 03/05/2021<br>
           Online<br>
           <br>
           <router-link class="link link--arrow" to="/node/unconference">Unconference</router-link><br>
-          21.05. – 23.05.2021<br>
+          21/05 &ndash; 23/05/2021<br>
           <br>
           <address>
           Haus der Statistik<br>
@@ -44,20 +44,20 @@
           <br>
           <a class="link" href="https://classic-maps.openrouteservice.org/directions?n1=52.522324&n2=13.415195&n3=18&a=52.521985,13.412772,52.5222,13.418084&b=2&c=0&k1=en-US&k2=km">
           Directions</a><br>
-          <iframe class="visit__map" width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=13.416007161140444%2C52.52126414320506%2C13.419547677040102%2C52.5227917019113&amp;layer=mapnik&amp;marker=52.52202792919787%2C13.417777419090271"></iframe>
+          <iframe class="visit__map" width="425" height="450" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=13.416007161140444%2C52.52126414320506%2C13.419547677040102%2C52.5227917019113&amp;layer=mapnik&amp;marker=52.52202792919787%2C13.417777419090271"></iframe>
         </template>
         <template v-else>
           <router-link class="link link--arrow" to="/node/ausstellung?tags=date_20_04_2021">Ausstellung</router-link><br>
-          30.04. – 09.05.2021<br>
+          30/04 &ndash; 09/05/2021<br>
           Öffnungszeiten<br>
-          13.00 – 19.00<br>
+          13:00 &ndash; 19:00<br>
           <br>
           <router-link class="link link--arrow" to="/node/symposium">Symposium</router-link><br>
-          01.05. – 03.05.2021<br>
+          01/05 &ndash; 03/05/2021<br>
           Online<br>
           <br>
           <router-link class="link link--arrow" to="/node/unconference">Unconference</router-link><br>
-          21.05. – 23.05.2021<br>
+          21/05 &ndash; 23/05/2021<br>
           <br>
           <address>
           Haus der Statistik<br>
@@ -68,7 +68,7 @@
           <br>
           <a class="link" href="https://classic-maps.openrouteservice.org/directions?n1=52.522324&n2=13.415195&n3=18&a=52.521985,13.412772,52.5222,13.418084&b=2&c=0&k1=en-US&k2=km">
           Anfahrt</a><br>
-          <iframe class="visit__map" width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=13.416007161140444%2C52.52126414320506%2C13.419547677040102%2C52.5227917019113&amp;layer=mapnik&amp;marker=52.52202792919787%2C13.417777419090271"></iframe>
+          <iframe class="visit__map" width="425" height="450" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=13.416007161140444%2C52.52126414320506%2C13.419547677040102%2C52.5227917019113&amp;layer=mapnik&amp;marker=52.52202792919787%2C13.417777419090271"></iframe>
         </template>
       </div>
     </section>
@@ -86,9 +86,9 @@
             13347 Berlin<br>
           </address>
           <br>
-          18/09 &mdash; 03/10/2021<br>
-          Mittwoch &mdash; Samstag<br>
-          Opening Hours/Öffnungszeiten<br>
+          18/09 &ndash; 03/10/2021<br>
+          Mittwoch &ndash; Samstag<br>
+          Opening Hours<br>
           15:00 - 19:00<br>
           <br>
           Vernissage<br>
@@ -98,7 +98,7 @@
           <a class="link" href="https://www.openstreetmap.org/directions?engine=fossgis_osrm_foot&route=52.54388%2C13.36949%3B52.54510%2C13.37424#map=18/52.54427/13.37324">
           Directions</a>
 
-          <iframe class="visit__map" width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=13.36715340614319%2C52.542048093392786%2C13.381315469741823%2C52.54815511835757&layer=mapnik&marker=52.545101712087344%2C13.374234437942505"></iframe>
+          <iframe class="visit__map" width="425" height="450" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=13.36715340614319%2C52.542048093392786%2C13.381315469741823%2C52.54815511835757&layer=mapnik&marker=52.545101712087344%2C13.374234437942505"></iframe>
         </template>
         <template v-else>
           <router-link class="link link--arrow" to="/node/ausstellung?tags=date_09_2021">Ausstellung</router-link><br>
@@ -109,8 +109,8 @@
             13347 Berlin<br>
           </address>
           <br>
-          18/09 &mdash; 03/10/2021<br>
-          Mittwoch &mdash; Samstag<br>
+          18/09 &ndash; 03/10/2021<br>
+          Mittwoch &ndash; Samstag<br>
           Öffnungszeiten<br>
           15:00 - 19:00<br>
           <br>
@@ -121,7 +121,7 @@
           <a class="link" href="https://www.openstreetmap.org/directions?engine=fossgis_osrm_foot&route=52.54388%2C13.36949%3B52.54510%2C13.37424#map=18/52.54427/13.37324">
           Anfahrt</a>
 
-          <iframe class="visit__map" width="425" height="350" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=13.36715340614319%2C52.542048093392786%2C13.381315469741823%2C52.54815511835757&layer=mapnik&marker=52.545101712087344%2C13.374234437942505"></iframe>
+          <iframe class="visit__map" width="425" height="450" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=13.36715340614319%2C52.542048093392786%2C13.381315469741823%2C52.54815511835757&layer=mapnik&marker=52.545101712087344%2C13.374234437942505"></iframe>
         </template>
       </div>
     </section>

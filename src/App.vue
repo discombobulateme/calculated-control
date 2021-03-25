@@ -158,6 +158,8 @@ h1, h2, h3, h4, h5 {
   vertical-align: middle;
   width: 2ch;
   height: 1em;
+  position: relative;
+  top: -2px;
 }
 
 address {

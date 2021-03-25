@@ -11,7 +11,7 @@
       </div>
       <div class="contact__section-right">
         <address class="contact__panel">
-          Zentrum für Netzkunst e.V.,<br>
+          Zentrum für Netzkunst e.V.<br>
           Kollwitzstraße 71<br>
           10435 Berlin<br>
         </address>
@@ -61,7 +61,7 @@ export default {
 
 .contact__section {
   border: solid 1px black;
-  min-height: 60vh;
+  min-height: 100vh;
 }
 
 .contact__section-left,

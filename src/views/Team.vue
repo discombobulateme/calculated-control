@@ -13,12 +13,12 @@
         <template v-if="english">
           <p>Zentrum für Netzkunst (center for net art) reconstructs, maintains and preserves net art and net culture. The initiative researches archiving and contextualization of net art.</p>
           <p>The Center for Net Art has been a pioneer user in the House of Statistics since September 2019 and is funded by the Kulturamt Berlin Mitte for the exhibition “stick.t.me” (June 2020). Until the foundation of the association, the members of the Center for Network Art have realized exhibition and publication projects in various cooperations, such as: „En Plein Air. Ethnographies of the Digital“ (2019, funded by the Federal Cultural Foundation), „Zentrum für Netzkunst, then and now «(2018, funded by the Senate Department for Culture and Europe), and» warehouse. industries ”(2017, funded by the German Federal Cultural Foundation).</p>
-          <p>Members of the association are: <a class="link" href="https://wwwwwwwwwwwwwwwwwwwwww.bitnik.org/">!Mediengruppe Bitnik</a>, Tereza Havlíková, <a class="link" href="http://www.discombobulate.me/en/">Paloma Oliveira</a>, Anneliese Ostertag, <a class="link" href="https://super-filme.org/">Tabea Rossol</a>, <a class="link" href="http://www.curatingyoutube.net/">Robert Sakrowski</a> and <a class="link" href="http://artwarez.org/">Cornelia Sollfrank</a>.</p>
+          <p>Members of the association are: <a class="link" target="_blank" rel="noopener" href="https://wwwwwwwwwwwwwwwwwwwwww.bitnik.org/">!Mediengruppe Bitnik</a>, Tereza Havlíková, <a class="link" target="_blank" rel="noopener" href="http://www.discombobulate.me/en/">Paloma Oliveira</a>, Anneliese Ostertag, <a class="link" target="_blank" rel="noopener" href="https://super-filme.org/">Tabea Rossol</a>, <a class="link" target="_blank" rel="noopener" href="http://www.curatingyoutube.net/">Robert Sakrowski</a> and <a class="link" target="_blank" rel="noopener" href="http://artwarez.org/">Cornelia Sollfrank</a>.</p>
         </template>
         <template v-else>
-          <p>Das Zentrum für Netzkunst rekonstruiert, erhält und be- wahrt Netzkunst und Netzkultur. Die Initiative erforscht Möglichkeiten der Archivierung, und Kontextualisierung von Netzkunst.</p>
-          <p>Zentrum für Netzkunst ist seit September 2019 Pioniernutzerin im Haus der Statistik und wird für die Ausstellung »stick.t.me« (Juni 2020) vom Kulturamt Berlin Mitte gefördert. Bis zur Gründung des Vereins haben die Mitglieder des Zentrum für Netz­ kunst in unterschiedlichen Kooperationen Ausstellungs- und Publikationsprojekte realisiert, wie: »En Plein Air. Ethnographies of the Digital« (2019, gefördert durch die Kulturstiftung des Bundes), »Zentrum der Netzkunst, damals und heute« (2018, gefördert durch die Senatsverwaltung für Kultur und Europa), und »warehouse. industries« (2017, gefördert durch durch die Kulturstif- tung des Bundes).</p>
-          <p>Mitglieder des Vereins sind: <a class="link" href="https://wwwwwwwwwwwwwwwwwwwwww.bitnik.org/">!Mediengruppe Bitnik</a>, Tereza Havlíková, <a class="link" href="http://www.discombobulate.me/en/">Paloma Oliveira</a>, Anneliese Ostertag, <a class="link" href="https://super-filme.org/">Tabea Rossol</a>, <a class="link" href="http://www.curatingyoutube.net/">Robert Sakrowski</a> und <a class="link" href="http://artwarez.org/">Cornelia Sollfrank</a>.</p>
+          <p>Das Zentrum für Netzkunst rekonstruiert, erhält und bewahrt Netzkunst und Netzkultur. Die Initiative erforscht Möglichkeiten der Archivierung, und Kontextualisierung von Netzkunst.</p>
+          <p>Zentrum für Netzkunst ist seit September 2019 Pioniernutzerin im Haus der Statistik und wird für die Ausstellung »stick.t.me« (Juni 2020) vom Kulturamt Berlin Mitte gefördert. Bis zur Gründung des Vereins haben die Mitglieder des Zentrum für Netz­kunst in unterschiedlichen Kooperationen Ausstellungs- und Publikationsprojekte realisiert, wie: »En Plein Air. Ethnographies of the Digital« (2019, gefördert durch die Kulturstiftung des Bundes), »Zentrum der Netzkunst, damals und heute« (2018, gefördert durch die Senatsverwaltung für Kultur und Europa), und »warehouse. industries« (2017, gefördert durch durch die Kulturstiftung des Bundes).</p>
+          <p>Mitglieder des Vereins sind: <a class="link" target="_blank" rel="noopener" href="https://wwwwwwwwwwwwwwwwwwwwww.bitnik.org/">!Mediengruppe Bitnik</a>, Tereza Havlíková, <a class="link" target="_blank" rel="noopener" href="http://www.discombobulate.me/en/">Paloma Oliveira</a>, Anneliese Ostertag, <a class="link" target="_blank" rel="noopener" href="https://super-filme.org/">Tabea Rossol</a>, <a class="link" target="_blank" rel="noopener" href="http://www.curatingyoutube.net/">Robert Sakrowski</a> und <a class="link" target="_blank" rel="noopener" href="http://artwarez.org/">Cornelia Sollfrank</a>.</p>
         </template>
         <img class="team__image" src="../assets/images/zfn.jpg" alt="Zentrum für Netzkunst Team" />
       </div>
@@ -41,89 +41,89 @@
       <div class="team__section-centre">
         <template v-if="english">
           <p>
-          <strong>Concept and Curation</strong><br>
-          Tereza Havlíková, Paloma Oliveira, Anneliese Ostertag, Tabea Rossol, Sakrowski
+          <span>Concept and Curation</span><br>
+          <em>Tereza Havlíková, Paloma Oliveira, Anneliese Ostertag, Tabea Rossol, Sakrowski</em>
           </p>
           <p>
-          <strong>Research, Graphic Concept, and Design</strong><br>
-          <a class="link" href="http://annaluiselorenz.com/">Anna-Luise Lorenz</a>
+          <span>Research, Graphic Concept, and Design</span><br>
+          <em><a class="link" target="_blank" rel="noopener" href="http://annaluiselorenz.com/">Anna-Luise Lorenz</a></em>
           </p>
           <p>
-          <strong>Programming</strong><br>
-          <a class="link" href="https://fiala.space">Jakub Fiala</a>
+          <span>Programming</span><br>
+          <em><a class="link" target="_blank" rel="noopener" href="https://fiala.space">Jakub Fiala</a></em>
           </p>
           <p>
-          <strong>Press and Public Relations</strong><br>
-          Igor Štromajer
+          <span>Press and Public Relations</span><br>
+          <em>Igor Štromajer</em>
           </p>
           <p>
-          <strong>Editing and Translation</strong><br>
-          Colin Lang
+          <span>Editing and Translation</span><br>
+          <em>Colin Lang</em>
           </p>
           <p>
           <p>
-          <strong>Symposium Assistance</strong><br>
-          Noemi Garay
+          <span>Symposium Assistance</span><br>
+          <em>Noemi Garay</em>
           </p>
           <p>
-          <strong>Exhibition Architecture</strong><br>
-          Alexej Paryla
+          <span>Exhibition Architecture</span><br>
+          <em>Alexej Paryla</em>
           </p>
           <p>
-          <strong>Technical Advisor</strong><br>
-          xx
+          <span>Technical Advisor</span><br>
+          <em>xx</em>
           </p>
           <p>
-          <strong>Sound Recording</strong><br>
-          Jürg Meister
+          <span>Sound Recording</span><br>
+          <em>Jürg Meister</em>
           </p>
           <p>
-          <strong>Documentation</strong><br>
-          Hannah Rumstedt
-          Alexia Manzano Schlamp
+          <span>Documentation</span><br>
+          <em>Hannah Rumstedt</em><br>
+          <em>Alexia Manzano Schlamp</em>
           </p>
         </template>
         <template v-else>
           <p>
-          <strong>Konzept und Kuration</strong><br>
-          Tereza Havlíková, Paloma Oliveira, Anneliese Ostertag, Tabea Rossol, Sakrowski
+          <span>Konzept und Kuration</span><br>
+          <em>Tereza Havlíková, Paloma Oliveira, Anneliese Ostertag, Tabea Rossol, Sakrowski</em>
           </p>
           <p>
-          <strong>Recherche, Grafik Konzept und Design</strong><br>
-          <a class="link" href="http://annaluiselorenz.com/">Anna-Luise Lorenz</a>
+          <span>Recherche, Grafik Konzept und Design</span><br>
+          <em><a class="link" target="_blank" rel="noopener" href="http://annaluiselorenz.com/">Anna-Luise Lorenz</a></em>
           </p>
           <p>
-          <strong>Programmierung</strong><br>
-          <a class="link" href="https://fiala.space">Jakub Fiala</a>
+          <span>Programmierung</span><br>
+          <em><a class="link" target="_blank" rel="noopener" href="https://fiala.space">Jakub Fiala</a></em>
           </p>
           <p>
-          <strong>Presse und Öffentlichkeitsarbeit</strong><br>
-          Igor Štromajer
+          <span>Presse und Öffentlichkeitsarbeit</span><br>
+          <em>Igor Štromajer</em>
           </p>
           <p>
-          <strong>Lektorat und Übersetzung</strong><br>
-          Colin Lang
+          <span>Lektorat und Übersetzung</span><br>
+          <em>Colin Lang</em>
           </p>
           <p>
-          <strong>Symposium Assistenz</strong><br>
-          Noemi Garay
+          <span>Symposium Assistenz</span><br>
+          <em>Noemi Garay</em>
           </p>
           <p>
-          <strong>Ausstellungsarchitektur</strong><br>
-          x
+          <span>Ausstellungsarchitektur</span><br>
+          <em>x</em>
           </p>
           <p>
-          <strong>Technische Beratung</strong><br>
-          x
+          <span>Technische Beratung</span><br>
+          <em>x</em>
           </p>
           <p>
-          <strong>Tonaufnahme</strong><br>
-          Jürg Meister
+          <span>Tonaufnahme</span><br>
+          <em>Jürg Meister</em>
           </p>
           <p>
-          <strong>Dokumentation</strong><br>
-          Hannah Rumstedt
-          Alexia Manzano Schlamp
+          <span>Dokumentation</span><br>
+          <em>Hannah Rumstedt</em><br>
+          <em>Alexia Manzano Schlamp</em>
           </p>
         </template>
       </div>

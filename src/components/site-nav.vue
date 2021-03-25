@@ -15,7 +15,7 @@
           <router-link class="nav__link" :to="{ name: 'About' }">
             <h1 class="nav__title">Calculating Control:<br/>
             (Netz)Kunst und Kybernetik</h1>
-            <div class="nav__subtitle">20/02 &mdash; 31/10/2021<br/>
+            <div class="nav__subtitle">20/02 &ndash; 31/10/2021<br/>
             Haus der Statistik &amp; panke.gallery</div>
           </router-link>
         </li>
