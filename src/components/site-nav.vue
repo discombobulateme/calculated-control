@@ -122,7 +122,7 @@ export default {
   .nav__item--main,
   .nav__item:last-of-type,
   .nav__item--preview {
-    grid-column: span 2;
+    grid-column: span 2 !important;
     height: auto;
   }
 
