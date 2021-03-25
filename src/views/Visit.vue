@@ -145,6 +145,9 @@ export default {
       return getCurrentLocale() === 'en';
     },
   },
+  mounted() {
+    document.title = `${this.$t('home.visit')} - Calculating Control`;
+  },
 };
 </script>
 

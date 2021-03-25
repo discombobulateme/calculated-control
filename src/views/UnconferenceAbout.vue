@@ -30,6 +30,9 @@ export default {
       return getCurrentLocale() === 'en';
     },
   },
+  mounted() {
+    document.title = `${this.$t('home.unconference')} - Calculating Control`;
+  },
 };
 </script>
 

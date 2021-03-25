@@ -118,6 +118,10 @@ export default {
   async created() {
     await this.loadResultsIfNeeded();
   },
+  mounted() {
+    const title = this.node ? `home.${this.node}` : 'archive.title';
+    document.title = `${this.$t(title)} - Calculating Control`;
+  },
   computed: {
     ...mapState(['archiveItems', 'lastArchiveSearch']),
     thereIsMore() {

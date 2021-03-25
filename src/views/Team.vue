@@ -150,6 +150,9 @@ export default {
       return getCurrentLocale() === 'en';
     },
   },
+  mounted() {
+    document.title = `${this.$t('home.team')} - Calculating Control`;
+  },
 };
 </script>
 

@@ -102,6 +102,9 @@ export default {
       return getCurrentLocale() === 'en';
     },
   },
+  mounted() {
+    document.title = `${this.$t('home.imprint')} - Calculating Control`;
+  },
 };
 </script>
 

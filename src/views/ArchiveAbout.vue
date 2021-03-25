@@ -17,6 +17,9 @@ export default {
   components: {
     Page,
   },
+  mounted() {
+    document.title = `${this.$t('archive.title')} - Calculating Control`;
+  },
 };
 </script>
 

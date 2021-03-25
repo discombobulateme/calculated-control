@@ -12,5 +12,8 @@ export default {
   components: {
     SiteNav,
   },
+  mounted() {
+    document.title = 'Calculating Control';
+  },
 };
 </script>

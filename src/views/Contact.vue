@@ -45,6 +45,9 @@ export default {
       return getCurrentLocale() === 'en';
     },
   },
+  mounted() {
+    document.title = `${this.$t('home.contact')} - Calculating Control`;
+  },
 };
 </script>
 

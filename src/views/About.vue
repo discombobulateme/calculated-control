@@ -50,6 +50,9 @@ export default {
       return getCurrentLocale() === 'en';
     },
   },
+  mounted() {
+    document.title = 'Calculating Control';
+  },
 };
 </script>
 

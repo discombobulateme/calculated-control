@@ -28,6 +28,9 @@ export default {
       return getCurrentLocale() === 'en';
     },
   },
+  mounted() {
+    document.title = `${this.$t('home.journal')} - Calculating Control`;
+  },
 };
 </script>
 

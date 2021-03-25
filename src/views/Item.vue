@@ -186,6 +186,10 @@ export default {
       this.item = data;
       this.setLastItem({ id: this.id, item: this.item });
       this.loading = false;
+      const title = this.item.title
+        ? (this.item.title.length > 20 ? this.item.title.slice(0, 20) + '...' : this.item.title) + ' - '
+        : '';
+      document.title = `${title}Calculating Control`;
     },
     async toggleArchiveConnections() {
       this.showArchiveConnections = !this.showArchiveConnections;
