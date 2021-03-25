@@ -69,7 +69,6 @@ export default {
 <style lang="css" scoped>
 .search-form {
   display: flex;
-  padding: 7px 35px;
   position: relative;
   cursor: pointer;
 }
@@ -81,6 +80,11 @@ export default {
   width: 0;
   overflow: hidden;
   transition: width 400ms, min-width 400ms;
+}
+
+.search-form--expanded.search-form--expanded {
+  width: auto;
+  padding: 7px 35px;
 }
 
 .search-form--expanded .search-form__content {
@@ -105,12 +109,19 @@ export default {
 }
 
 .search-form__icon {
-  height: 20px;
+  height: 30px;
+  width: 30px;
+  flex-shrink: 0;
 }
 
 @media screen and (min-width: 768px) {
+  .search-form {
+    padding: 7px 35px;
+  }
+
   .search-form__icon {
     height: 36px;
+    width: 36px;
   }
 }
 </style>

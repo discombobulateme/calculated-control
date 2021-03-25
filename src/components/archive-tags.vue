@@ -156,6 +156,7 @@ export default {
 .archive-tags {
   font-size: var(--font-size-medium);
   overflow: hidden;
+  overflow-y: auto;
   overscroll-behavior: contain;
   height: 100vh;
   padding: 15px;
@@ -173,14 +174,15 @@ export default {
 .archive-tags__content {
   display: grid;
   gap: 15px;
+  margin-top: 15px;
   width: 100%;
-  margin-top: 50px;
 }
 
 @media screen and (min-width: 768px) {
   .archive-tags__content {
     grid-template-columns: 1fr 1fr;
     height: 100%;
+    margin-top: 50px;
   }
 }
 
@@ -200,8 +202,14 @@ export default {
 .archive-tags__list--curated {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-auto-rows: 65px;
+  grid-auto-rows: max-content;
   gap: 10px;
+}
+
+@media screen and (min-width: 768px) {
+  .archive-tags__list--curated {
+    grid-auto-rows: 65px;
+  }
 }
 
 .archive-tags__item {
@@ -235,10 +243,16 @@ export default {
 }
 
 .archive-tags__close {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  z-index: 2;
+  margin: 0 0 20px auto;
+}
+
+@media screen and (min-width: 768px) {
+  .archive-tags__close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 2;
+  }
 }
 
 .archive-tags__reset {
@@ -255,12 +269,28 @@ export default {
   font-size: var(--font-size-xs);
   padding: 15px;
   width: 100%;
-  margin-top: 40px;
+  margin: 20px 0;
+}
+
+@media screen and (min-width: 768px) {
+  .archive-tags__submit {
+    margin: 40px 0 0;
+  }
 }
 
 .archive-tags__icon {
   display: inline-block;
-  margin-left: 15px;
+  margin-left: 5px;
+  width: 20px;
+  height: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .archive-tags__icon {
+    margin-left: 15px;
+    width: auto;
+    height: auto;
+  }
 }
 
 .archive-tags__icon--deselect {

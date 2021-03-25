@@ -348,7 +348,7 @@ export default {
 
 .item__loading {
   display: flex;
-  height: 100vw;
+  height: 100vh;
   margin: 50px auto;
   justify-content: center;
 }

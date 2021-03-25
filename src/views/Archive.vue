@@ -35,10 +35,11 @@
             <div v-if="!loading || this.items.length >= 0" class="archive__controls">
               <button
                 class="blob blob--green blob--shadow archive__filters-link"
-                aria-label="filter by tags"
+                :aria-label="$t('archive.filter')"
                 @click="filtersOpen = true"
               >
-                {{ $t('archive.filter') }}
+                <FilterIcon class="archive__filters-icon" />
+                <span class="archive__filters-text">{{ $t('archive.filter') }}</span>
               </button>
               <SearchForm class="archive__filters-search" />
             </div>
@@ -72,6 +73,7 @@ import ItemsList from '@/components/items-list';
 import SearchForm from '@/components/search-form';
 import SiteFooter from '@/components/site-footer';
 import Loader from '@/components/icons/loader';
+import Filter from '@/components/icons/filter';
 import TagsCloud from '@/components/tags-cloud';
 
 export default {
@@ -83,6 +85,7 @@ export default {
     SearchForm,
     SiteFooter,
     Loader,
+    FilterIcon: Filter,
     DatePicker,
     TagsCloud,
   },
@@ -194,7 +197,6 @@ export default {
   display: flex;
   height: 0;
   position: sticky;
-  flex-direction: column;
   padding: 0 15px;
   justify-content: flex-end;
   right: 0;
@@ -207,9 +209,9 @@ export default {
   font-family: inherit;
   justify-content: center;
   margin: 15px 0;
-  height: 40px;
-  min-height: 40px;
-  width: 100%;
+  height: 60px;
+  min-height: 60px;
+  width: 60px;
 }
 
 .archive__filters-link {
@@ -217,9 +219,13 @@ export default {
   color: inherit;
   cursor: pointer;
   display: inline-flex;
-  margin-bottom: 0;
-  padding: 7px 35px;
+  margin-right: 5px;
+  padding: 0;
   text-decoration: inherit;
+}
+
+.archive__filters-text {
+  display: none;
 }
 
 @media screen and (min-width: 768px) {
@@ -231,13 +237,20 @@ export default {
   .archive__filters-link,
   .archive__filters-search {
     margin: 15px;
-    height: 60px;
-    min-height: 60px;
     width: max-content;
   }
 
   .archive__filters-link {
+    padding: 7px 35px;
     margin-right: 0;
+  }
+
+  .archive__filters-text {
+    display: initial;
+  }
+
+  .archive__filters-icon {
+    display: none;
   }
 }
 
@@ -267,7 +280,7 @@ export default {
 
 .archive__loading {
   display: flex;
-  height: 100%;
+  height: 100vh;
   width: 100%;
   justify-content: center;
   align-items: center;
