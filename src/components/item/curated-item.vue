@@ -13,11 +13,11 @@
         <div v-safe-html="item.abstractNote"></div>
       </div>
       <div class="curated-item__info-section curated-item__links">
-        <a v-if="item.url && firstLinkText" :href="item.url" class="blob blob--pink curated-item__link" target="_blank" rel="noopener">
+        <a v-if="item.url && firstLinkText && !isSymposium" :href="item.url" class="blob blob--pink curated-item__link" target="_blank" rel="noopener">
           {{ firstLinkText }}
           <ArrowRight class="curated-item__link-icon" />
         </a>
-        <a v-if="item.extra && secondLinkText" :href="item.extra" class="blob blob--pink curated-item__link" target="_blank" rel="noopener">
+        <a v-if="item.extra && secondLinkText && !isSymposium" :href="item.extra" class="blob blob--pink curated-item__link" target="_blank" rel="noopener">
           {{ secondLinkText }}
           <ArrowRight class="curated-item__link-icon" />
         </a>
@@ -58,6 +58,14 @@ export default {
     secondLinkText: {
       type: String,
       default: '',
+    },
+  },
+  computed: {
+    itemTags() {
+      return this.item.tags.map(({ tag }) => tag).filter(tag => !tag.startsWith('id_') && !tag.startsWith('date_'));
+    },
+    isSymposium() {
+      return this.itemTags.some(tag => tag.toLowerCase() === 'symposium');
     },
   },
 };
