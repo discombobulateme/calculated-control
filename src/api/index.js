@@ -52,6 +52,7 @@ export const searchItems = async ({ q, tags, start = 0, limit = 24 }) => {
     qmode: 'titleCreatorYear',
     limit: start === 0 ? 23 : limit,
     itemType: '-attachment',
+    sort: 'title',
   };
 
   if (start) query.start = start;
