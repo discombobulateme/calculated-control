@@ -44,7 +44,7 @@ export const getTagsForItemTags = async ({ limit = 25, tags = [], q }) => {
   return data.map(({ tag }) => tag.toLowerCase());
 };
 
-export const searchItems = async ({ q, tags, start = 0, limit = 24 }) => {
+export const searchItems = async ({ q, tags, start = 0, limit = 24, sort = 'title', direction = 'desc' }) => {
   const langExcludeTag = `-lang_${getSwitchableLocale()}`;
   const query = {
     q,
@@ -52,7 +52,8 @@ export const searchItems = async ({ q, tags, start = 0, limit = 24 }) => {
     qmode: 'titleCreatorYear',
     limit: start === 0 ? 23 : limit,
     itemType: '-attachment',
-    sort: 'title',
+    sort,
+    direction,
   };
 
   if (start) query.start = start;

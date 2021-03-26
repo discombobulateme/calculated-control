@@ -155,6 +155,8 @@ export default {
         tags: selectedTags.concat(this.node ? [this.node] : []),
         start: this.items.length,
         q,
+        sort: this.node ? 'date' : 'title',
+        direction: this.node ? 'asc' : 'desc',
       });
 
       this.items.push(...newItems);
