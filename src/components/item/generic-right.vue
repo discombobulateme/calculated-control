@@ -116,6 +116,8 @@ export default {
 <style scoped>
 .section {
   border: solid 1px black;
+  border-top: none;
+  border-left: none;
   height: 100%;
   overflow: auto;
 }
@@ -136,6 +138,10 @@ export default {
   border: solid 1px black;
   font-size: var(--font-size-small);
   padding: 10px;
+}
+
+.field:last-of-type {
+  border-bottom: solid 2px black;
 }
 
 .field__label {

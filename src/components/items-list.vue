@@ -46,10 +46,11 @@ export default {
 <style lang="css" scoped>
 .items-list {
   border: solid 1px black;
+  border-top: none;
   display: grid;
   list-style-type: none;
   padding: 0;
-  margin: 0;
+  margin: -1px 0 0;
   min-height: calc(100vh - 80px);
 }
 

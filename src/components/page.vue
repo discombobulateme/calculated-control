@@ -20,6 +20,9 @@ export default {
   components: {
     CloseButton,
   },
+  mounted() {
+    document.body.scrollIntoView();
+  },
   methods: {
     close() {
       this.$router.go(-1);
