@@ -13,11 +13,11 @@
         <div v-safe-html="item.abstractNote"></div>
       </div>
       <div class="curated-item__info-section curated-item__links">
-        <a v-if="item.url && firstLinkText && !isSymposium" :href="item.url" class="blob blob--pink curated-item__link" target="_blank" rel="noopener">
+        <a v-if="item.url && firstLinkText && !isSymposium" :href="urlOrEmail(item.url)" class="blob blob--pink curated-item__link" target="_blank" rel="noopener">
           {{ firstLinkText }}
           <ArrowRight class="curated-item__link-icon" />
         </a>
-        <a v-if="item.extra && secondLinkText && !isSymposium" :href="item.extra" class="blob blob--pink curated-item__link" target="_blank" rel="noopener">
+        <a v-if="item.extra && secondLinkText && !isSymposium" :href="urlOrEmail(item.extra)" class="blob blob--pink curated-item__link" target="_blank" rel="noopener">
           {{ secondLinkText }}
           <ArrowRight class="curated-item__link-icon" />
         </a>
@@ -66,6 +66,15 @@ export default {
     },
     isSymposium() {
       return this.itemTags.some(tag => tag.toLowerCase() === 'symposium');
+    },
+  },
+  methods: {
+    urlOrEmail(url) {
+      if (url.includes('@') && !url.startsWith('http')) {
+        // it's probably actually an email address
+        return `mailto:${url}`;
+      }
+      return url;
     },
   },
 };
