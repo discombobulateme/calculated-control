@@ -37,7 +37,7 @@ export default () => new Store({
     },
   },
   actions: {
-    async fetchLiveItem({ commit, state }) {
+    async fetchLiveItem({ commit, state }, translator) {
       if (state.liveItem) return;
 
       commit('setLoadingLiveItem', true);
@@ -47,7 +47,7 @@ export default () => new Store({
         commit('setLiveItem', {
           title: items[0].data.title,
           imageUrl: items[0].data.rights,
-          type: getMainTag(items[0].data),
+          type: getMainTag(items[0].data, translator),
           key: items[0].key,
         });
       } catch(err) {
@@ -56,7 +56,7 @@ export default () => new Store({
         commit('setLoadingLiveItem', false);
       }
     },
-    async fetchNewItem({ commit, state }) {
+    async fetchNewItem({ commit, state }, translator) {
       if (state.newItem) return;
 
       commit('setLoadingNewItem', true);
@@ -65,7 +65,7 @@ export default () => new Store({
         commit('setNewItem', {
           title: items[0].data.title,
           imageUrl: items[0].data.rights,
-          type: getMainTag(items[0].data),
+          type: getMainTag(items[0].data, translator),
           key: items[0].key,
         });
       } catch(err) {

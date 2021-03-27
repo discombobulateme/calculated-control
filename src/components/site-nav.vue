@@ -87,8 +87,8 @@ export default {
     },
   },
   created() {
-    this.fetchLiveItem();
-    this.fetchNewItem();
+    this.fetchLiveItem(this.$t.bind(this));
+    this.fetchNewItem(this.$t.bind(this));
   },
   methods: {
     ...mapActions(['fetchLiveItem', 'fetchNewItem']),
