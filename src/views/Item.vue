@@ -17,7 +17,7 @@
           'blob--green': !from,
           'blob--pink': from
         }"
-        @click.prevent="$router.go(-1)"
+        @click.prevent="onBack"
       >
         <ArrowLeft />
         <template v-if="fromRelated">
@@ -194,6 +194,9 @@ export default {
     isPerson() {
       return this.itemTags.some(tag => tag.toLowerCase() === 'person');
     },
+    isStartLocation() {
+      return this.$route.path === this.$router.history._startLocation;
+    },
   },
   methods: {
     ...mapMutations(['setLastItem']),
@@ -234,6 +237,18 @@ export default {
           tags: [tag],
         },
       })
+    },
+    onBack() {
+      if (this.isStartLocation) {
+        if (this.from) {
+          const name = this.from[0].toUpperCase() + this.from.slice(1);
+          this.$router.push({ name });
+        } else {
+          this.$router.push({ name: 'Archive' });
+        }
+      } else {
+        this.$router.go(-1);
+      }
     }
   },
 };

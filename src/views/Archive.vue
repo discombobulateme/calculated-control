@@ -310,6 +310,7 @@ export default {
 }
 
 .archive__date-picker-desktop {
+  display: none;
   width: 100%;
 }
 
@@ -320,7 +321,11 @@ export default {
   padding: 5px;
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1260px) {
+  .archive__date-picker-desktop {
+    display: block;
+  }
+
   .archive__date-picker-mobile {
     display: none;
   }

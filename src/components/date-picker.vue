@@ -90,6 +90,13 @@ export default {
   height: 100%;
 }
 
+@media screen and (min-width: 768px) {
+  .date-picker__list {
+    align-items: center;
+    justify-content: center;
+  }
+}
+
 .date-picker__list--centered {
   align-items: center;
   justify-content: center;
