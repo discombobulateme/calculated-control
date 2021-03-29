@@ -145,6 +145,7 @@ h1, h2, h3, h4, h5 {
 .link:hover,
 .note a:hover {
   text-decoration: underline;
+  text-decoration-thickness: 2px;
 }
 
 .link--arrow::after {

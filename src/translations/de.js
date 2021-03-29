@@ -13,6 +13,7 @@ export default {
     symposium: 'Symposium',
     unconference: 'Unconference',
     imprint: 'Impressum',
+    subtitle: 'Netz(Kunst) und Kybernetik',
   },
   archive: {
     title: "Archiv",
@@ -60,6 +61,8 @@ export default {
   event: {
     enterOnlineExhibition: 'Online-Ausstellung',
     booking: 'Termin vereinbaren',
+    register: 'Anmeldung',
+    watchOnYoutube: 'Auf YouTube ansehen',
   },
   journal: {
     about: 'Über das Journal',

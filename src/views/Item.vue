@@ -27,13 +27,31 @@
           {{ from ? $t(`home.${from}`) : $t('archive.title') }}
         </template>
       </a>
-      <template v-if="isEvent">
+      <template v-if="isExhibition">
         <CuratedItem
           :item="item"
           :image="image"
           :youtubeEmbed="youtubeEmbed"
           :first-link-text="$t('event.enterOnlineExhibition')"
           :second-link-text="$t('event.booking')"
+          :class="{ blurrable: true, 'blurred': showArchiveConnections }"
+        />
+      </template>
+      <template v-else-if="isSymposium">
+        <CuratedItem
+          :item="item"
+          :image="image"
+          :youtubeEmbed="youtubeEmbed"
+          :first-link-text="$t('event.watchOnYoutube')"
+          :class="{ blurrable: true, 'blurred': showArchiveConnections }"
+        />
+      </template>
+      <template v-else-if="isUnconference">
+        <CuratedItem
+          :item="item"
+          :image="image"
+          :youtubeEmbed="youtubeEmbed"
+          :first-link-text="$t('event.register')"
           :class="{ blurrable: true, 'blurred': showArchiveConnections }"
         />
       </template>
@@ -82,7 +100,6 @@
 import { mapState, mapMutations } from 'vuex';
 
 import { getItem, getRelatedItems } from '@/api';
-import { caseInsensitiveIncludes } from '@/utils';
 import ArchiveHeader from '@/components/archive-header';
 import CuratedItem from '@/components/item/curated-item';
 import ItemGenericLeft from '@/components/item/generic-left';
@@ -134,11 +151,17 @@ export default {
     fromRelated() {
       return this.$route.query.fromRelated;
     },
-    isEvent() {
-      return this.itemTags.some(tag => caseInsensitiveIncludes(['symposium', 'unconference', 'ausstellung'], tag));
-    },
     isJournal() {
       return this.itemTags.some(tag => tag.toLowerCase() === 'journal');
+    },
+    isExhibition() {
+      return this.itemTags.some(tag => tag.toLowerCase() === 'ausstellung');
+    },
+    isUnconference() {
+      return this.itemTags.some(tag => tag.toLowerCase() === 'unconference');
+    },
+    isSymposium() {
+      return this.itemTags.some(tag => tag.toLowerCase() === 'symposium');
     },
     titleAuthorTypeRight() {
       return Boolean(this.image || this.youtubeEmbed || this.item.itemType === 'note' || this.item.abstractNote);

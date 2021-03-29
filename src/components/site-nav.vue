@@ -9,12 +9,12 @@
           'blurred': blurred,
         }"
       >
-        <li v-show="!isPage('about')" class="blob blob--pink nav__item nav__item--main"
+        <li v-show="!isPage('about')" class="blob blob--green nav__item nav__item--main"
           :style="{ '--grid-area': 'a', 'grid-column': (loadingLiveItem || loadingNewItem || newItem || liveItem) ? 'span 3' : 'span 6' }">
           <router-link class="nav__link" :to="{ name: 'About' }">
             <h1 class="nav__title">Calculating Control:<br/>
-            (Netz)Kunst und Kybernetik</h1>
-            <div class="nav__subtitle">20/02 &ndash; 31/10/2021<br/>
+            {{ $t('home.subtitle') }}</h1>
+            <div class="nav__subtitle">30/04 &ndash; 31/10/2021<br/>
             Haus der Statistik &amp; panke.gallery</div>
           </router-link>
         </li>
@@ -169,10 +169,6 @@ export default {
     font-size: var(--font-size-small);
     margin: 0;
   }
-}
-
-.nav__item--main {
-  background-color: var(--color-prime-green);
 }
 
 .nav__link {

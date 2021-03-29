@@ -13,6 +13,7 @@ export default {
     symposium: 'Symposium',
     unconference: 'Unconference',
     imprint: 'Imprint',
+    subtitle: 'Net(Art) and Cybernetics',
   },
   archive: {
     title: 'Archive',
@@ -60,6 +61,8 @@ export default {
   event: {
     enterOnlineExhibition: 'Enter online exhibition',
     booking: 'Book a time slot',
+    register: 'Register',
+    watchOnYoutube: 'Watch on YouTube',
   },
   journal: {
     about: 'About the journal',
