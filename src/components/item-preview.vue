@@ -110,9 +110,10 @@ export default {
 
 .item-preview__highlight {
   display: inline-block;
+  font-size: var(--font-size-xxs);
   padding: 5px 15px;
   position: absolute;
-  top: 15px;
-  right: 15px;
+  top: 5px;
+  right: 5px;
 }
 </style>

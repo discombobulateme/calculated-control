@@ -82,7 +82,7 @@ export default {
 
 .date-picker__list {
   display: flex;
-  font-size: var(--font-size-small);
+  font-size: var(--font-size-xs);
   list-style-type: none;
   padding: 0;
   margin: 0;

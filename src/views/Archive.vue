@@ -29,7 +29,14 @@
           </div>
           <div v-else class="archive__results">
             <TagsCloud class="archive__tags-cloud" v-if="searchTags" :tags="searchTags" deselectable @click="deselectTag" />
-            <DatePicker v-if="datePicker" :dates="datePicker" class="archive__date-picker-mobile" :centered="false"/>
+            <DatePicker
+              v-if="datePicker"
+              :dates="datePicker.dates"
+              :default-option="datePicker.default"
+              :reset="datePicker.reset"
+              class="archive__date-picker-mobile"
+              :centered="false"
+            />
             <ItemsList
               ref="items"
               class="archive__items"
@@ -309,6 +316,7 @@ export default {
 .archive__date-picker-mobile {
   width: 100%;
   overflow-x: auto;
+  border-bottom: solid 2px black;
   padding: 5px;
 }
 
