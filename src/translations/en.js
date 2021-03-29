@@ -53,7 +53,7 @@ export default {
     about: 'About the online symposium',
   },
   ausstellung: {
-    about: 'About the exhibition & visitor information',
+    about: 'About the exhibition',
   },
   datepicker: {
     all: 'all days',

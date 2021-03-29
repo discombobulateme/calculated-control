@@ -1,7 +1,7 @@
 <template>
   <nav class="date-picker">
     <ul class="date-picker__list" :class="{ 'date-picker__list--centered': centered }">
-      <li class="date-picker__item">
+      <li v-if="reset" class="date-picker__item">
         <button
           class="date-picker__button blob blob--shadow"
           :class="{
@@ -43,12 +43,20 @@ export default {
       type: Boolean,
       default: true,
     },
+    reset: {
+      type: Boolean,
+      default: true,
+    },
+    defaultOption: {
+      type: String,
+      default: '',
+    },
   },
   computed: {
     selectedTag() {
       const tags = getTagsFromRoute(this.$route);
       const dateTag = tags.find(tag => tag.startsWith('date_'));
-      return dateTag;
+      return dateTag || this.defaultOption;
     },
   },
   methods: {

@@ -42,7 +42,8 @@ export default {
 @media screen and (min-width: 768px) {
   .page {
     display: grid;
-    grid-template-areas: "side side main main x close";
+    grid-template-columns: 1fr 2fr 1fr;
+    grid-template-areas: "side main close";
     grid-template-rows: 1fr;
     gap: 20px;
   }

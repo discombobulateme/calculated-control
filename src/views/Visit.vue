@@ -23,16 +23,14 @@
       </div>
       <div class="visit__section-right">
         <template v-if="english">
-          <router-link class="link link--arrow" to="/node/ausstellung?tags=date_20_04_2021">Exhibition</router-link><br>
+          <router-link class="link link--arrow" to="/cc/e?tags=date_2021_04_30">Exhibition</router-link><br>
           30/04 &ndash; 09/05/2021<br>
           Opening hours<br>
           13:00 &ndash; 19:00<br>
           <br>
-          <router-link class="link link--arrow" to="/node/symposium">Symposium</router-link><br>
-          01/05 &ndash; 03/05/2021<br>
-          Online<br>
-          <br>
-          <router-link class="link link--arrow" to="/node/unconference">Unconference</router-link><br>
+          If you want to visit the exhibition come by, or book a time slot in advance.
+          <br><br>
+          <router-link class="link link--arrow" to="/cc/u">Unconference</router-link><br>
           21/05 &ndash; 23/05/2021<br>
           <br>
           <address>
@@ -47,16 +45,14 @@
           <iframe class="visit__map" width="425" height="450" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=13.416007161140444%2C52.52126414320506%2C13.419547677040102%2C52.5227917019113&amp;layer=mapnik&amp;marker=52.52202792919787%2C13.417777419090271"></iframe>
         </template>
         <template v-else>
-          <router-link class="link link--arrow" to="/node/ausstellung?tags=date_20_04_2021">Ausstellung</router-link><br>
+          <router-link class="link link--arrow" to="/cc/e?tags=date_2021_04_30">Ausstellung</router-link><br>
           30/04 &ndash; 09/05/2021<br>
           Öffnungszeiten<br>
           13:00 &ndash; 19:00<br>
           <br>
-          <router-link class="link link--arrow" to="/node/symposium">Symposium</router-link><br>
-          01/05 &ndash; 03/05/2021<br>
-          Online<br>
-          <br>
-          <router-link class="link link--arrow" to="/node/unconference">Unconference</router-link><br>
+          Sie können hier ein Zeitfenster für den Ausstellungsbesuch buchen oder direkt zur Ausstellung kommen.
+          <br><br>
+          <router-link class="link link--arrow" to="/cc/u">Unconference</router-link><br>
           21/05 &ndash; 23/05/2021<br>
           <br>
           <address>
@@ -78,7 +74,7 @@
       </div>
       <div class="visit__section-right">
         <template v-if="english">
-          <router-link class="link link--arrow" to="/node/ausstellung?tags=date_09_2021">Exhibition</router-link><br>
+          <router-link class="link link--arrow" to="/cc/e?tags=date_2021_09_18">Exhibition</router-link><br>
           <br>
           <address>
             Gerichtstraße 23<br>
@@ -88,7 +84,7 @@
           <br>
           18/09 &ndash; 03/10/2021<br>
           Mittwoch &ndash; Samstag<br>
-          Opening Hours<br>
+          Opening hours<br>
           15:00 - 19:00<br>
           <br>
           Vernissage<br>
@@ -101,7 +97,7 @@
           <iframe class="visit__map" width="425" height="450" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=13.36715340614319%2C52.542048093392786%2C13.381315469741823%2C52.54815511835757&layer=mapnik&marker=52.545101712087344%2C13.374234437942505"></iframe>
         </template>
         <template v-else>
-          <router-link class="link link--arrow" to="/node/ausstellung?tags=date_09_2021">Ausstellung</router-link><br>
+          <router-link class="link link--arrow" to="/cc/e?tags=date_2021_09_18">Ausstellung</router-link><br>
           <br>
           <address>
             Gerichtstraße 23<br>
@@ -123,6 +119,15 @@
 
           <iframe class="visit__map" width="425" height="450" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=13.36715340614319%2C52.542048093392786%2C13.381315469741823%2C52.54815511835757&layer=mapnik&marker=52.545101712087344%2C13.374234437942505"></iframe>
         </template>
+      </div>
+    </section>
+    <section class="visit__section">
+      <div class="visit__section-left">
+        Online
+      </div>
+      <div class="visit__section-right">
+        <router-link class="link link--arrow" to="/cc/j">{{ $t('home.journal') }} </router-link><br>
+        <router-link class="link link--arrow" to="/cc/e">{{ $t('home.ausstellung') }} </router-link><br>
       </div>
     </section>
     <SiteFooter />
@@ -172,6 +177,7 @@ export default {
 
 .visit__section {
   border: solid 1px black;
+  min-height: 50vh;
 }
 
 .visit__section-left,
@@ -203,7 +209,8 @@ export default {
 }
 
 .visit__map {
-  border: solid 1px black;
+  border: none;
+  border-top: solid 2px black;
   display: block;
   margin: 15px -10px -10px -10px;
   width: calc(100% + 20px);

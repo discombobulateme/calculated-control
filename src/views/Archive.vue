@@ -16,7 +16,13 @@
               <span>{{ node ? $t(`home.${node}`) : $t('archive.title') }}</span>
               <span v-if="totalResults"> ({{ totalResults }})</span>
             </template>
-            <DatePicker v-if="datePicker" :dates="datePicker" class="archive__date-picker-desktop" />
+            <DatePicker
+              v-if="datePicker"
+              :dates="datePicker.dates"
+              :default-option="datePicker.default"
+              :reset="datePicker.reset"
+              class="archive__date-picker-desktop"
+            />
           </ArchiveHeader>
           <div v-if="loading && this.items.length === 0" class="archive__loading">
             <Loader v-if="loading" />
@@ -128,7 +134,7 @@ export default {
       return this.totalResults > this.items.length;
     },
     aboutConfig() {
-      return getAboutConfig(this.node || 'archive');
+      return getAboutConfig(this.node || 'archive', getTagsFromRoute(this.$route));
     },
     datePicker() {
       return datePickerConfig[this.node];
@@ -151,6 +157,10 @@ export default {
 
       const { q } = this.$route.query;
       const selectedTags = getTagsFromRoute(this.$route);
+
+      if (this.node === 'ausstellung' && !selectedTags.some(tag => tag.startsWith('date_'))) {
+        selectedTags.push(this.datePicker.default);
+      }
       const { items: newItems, totalResults } = await searchItems({
         tags: selectedTags.concat(this.node ? [this.node] : []),
         start: this.items.length,

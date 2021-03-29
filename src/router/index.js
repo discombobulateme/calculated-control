@@ -7,6 +7,8 @@ import ArchiveAbout from '../views/ArchiveAbout.vue';
 import SymposiumAbout from '../views/SymposiumAbout.vue';
 import UnconferenceAbout from '../views/UnconferenceAbout.vue';
 import JournalAbout from '../views/JournalAbout.vue';
+import HDSExhibitionAbout from '../views/HDSExhibitionAbout.vue';
+import PankeExhibitionAbout from '../views/PankeExhibitionAbout.vue';
 import About from '../views/About.vue';
 import Team from '../views/Team.vue';
 import Contact from '../views/Contact.vue';
@@ -91,6 +93,16 @@ const routes = [
     path: '/cc/journal/about',
     name: 'JournalAbout',
     component: JournalAbout,
+  },
+  {
+    path: '/cc/ausstellung/hds',
+    name: 'HDSExhibitionAbout',
+    component: HDSExhibitionAbout,
+  },
+  {
+    path: '/cc/ausstellung/panke',
+    name: 'PankeExhibitionAbout',
+    component: PankeExhibitionAbout,
   },
   {
     path: '/cc/archive',
