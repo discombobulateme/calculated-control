@@ -80,6 +80,7 @@ export default {
 <style scoped>
 .item__pullout-header {
   font-size: var(--font-size-xl);
+  letter-spacing: 0.75;
   padding: 5px 15px;
 }
 
