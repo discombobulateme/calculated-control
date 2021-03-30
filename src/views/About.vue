@@ -98,7 +98,6 @@ export default {
 .about__content > * {
   max-width: 900px;
   margin: 0 auto;
-  hyphens: auto;
 }
 
 .about__large {
