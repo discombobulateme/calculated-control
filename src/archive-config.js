@@ -21,7 +21,8 @@ export const getAboutConfig = (node, tags = []) => {
         aboutPageText: 'archive.about',
       };
     case 'ausstellung': {
-      const aboutPage = tags.includes('date_2021_09_18') ? 'PankeExhibitionAbout' : 'HDSExhibitionAbout';
+      const aboutPage = tags.includes('date_2021_09_18')
+        ? 'PankeExhibitionAbout' : 'HDSExhibitionAbout';
       return {
         aboutPage,
         aboutPageText: 'ausstellung.about',
@@ -60,10 +61,6 @@ export const datePickerConfig = {
       {
         humanReadable: 'panke.gallery 18/09/ – 03/10/2021',
         tag: 'date_2021_09_18',
-      },
-      {
-        humanReadable: 'online',
-        tag: 'date_online',
       }
     ],
   },
