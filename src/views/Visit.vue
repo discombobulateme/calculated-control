@@ -126,6 +126,7 @@
         Online
       </div>
       <div class="visit__section-right">
+        <router-link class="link link--arrow" to="/cc/s">{{ $t('home.symposium') }} </router-link><br>
         <router-link class="link link--arrow" to="/cc/j">{{ $t('home.journal') }} </router-link><br>
         <router-link class="link link--arrow" to="/cc/e">{{ $t('home.ausstellung') }} </router-link><br>
       </div>

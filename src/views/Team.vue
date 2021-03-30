@@ -11,13 +11,11 @@
       </div>
       <div class="team__section-centre">
         <template v-if="english">
-          <p>Zentrum für Netzkunst (center for net art) reconstructs, maintains and preserves net art and net culture. The initiative researches archiving and contextualization of net art.</p>
-          <p>The Center for Net Art has been a pioneer user in the House of Statistics since September 2019 and is funded by the Kulturamt Berlin Mitte for the exhibition “stick.t.me” (June 2020). Until the foundation of the association, the members of the Center for Network Art have realized exhibition and publication projects in various cooperations, such as: „En Plein Air. Ethnographies of the Digital“ (2019, funded by the Federal Cultural Foundation), „Zentrum für Netzkunst, then and now «(2018, funded by the Senate Department for Culture and Europe), and» warehouse. industries ”(2017, funded by the German Federal Cultural Foundation).</p>
+          <p>Zentrum für Netzkunst reconstructs, maintains, and preserves netart and net culture. The association researches archiving and contextualization of netart. Since September 2019, it has been working at Haus der Statistik Berlin, conducting research on its history.</p>
           <p>Members of the association are: <a class="link" target="_blank" rel="noopener" href="https://wwwwwwwwwwwwwwwwwwwwww.bitnik.org/">!Mediengruppe Bitnik</a>, Tereza Havlíková, <a class="link" target="_blank" rel="noopener" href="http://www.discombobulate.me/en/">Paloma Oliveira</a>, <a href="https://super-filme.org/" target="_blank" rel="noopener" class="link">Anneliese Ostertag</a>, <a class="link" target="_blank" rel="noopener" href="https://super-filme.org/">Tabea Rossol</a>, <a class="link" target="_blank" rel="noopener" href="http://www.curatingyoutube.net/">Sakrowski</a>, and <a class="link" target="_blank" rel="noopener" href="http://artwarez.org/">Cornelia Sollfrank</a>.</p>
         </template>
         <template v-else>
-          <p>Das Zentrum für Netzkunst rekonstruiert, erhält und bewahrt Netzkunst und Netzkultur. Die Initiative erforscht Möglichkeiten der Archivierung, und Kontextualisierung von Netzkunst.</p>
-          <p>Zentrum für Netzkunst ist seit September 2019 Pioniernutzerin im Haus der Statistik und wird für die Ausstellung »stick.t.me« (Juni 2020) vom Kulturamt Berlin Mitte gefördert. Bis zur Gründung des Vereins haben die Mitglieder des Zentrum für Netz­kunst in unterschiedlichen Kooperationen Ausstellungs- und Publikationsprojekte realisiert, wie: »En Plein Air. Ethnographies of the Digital« (2019, gefördert durch die Kulturstiftung des Bundes), »Zentrum der Netzkunst, damals und heute« (2018, gefördert durch die Senatsverwaltung für Kultur und Europa), und »warehouse. industries« (2017, gefördert durch durch die Kulturstiftung des Bundes).</p>
+          <p>Das Zentrum für Netzkunst rekonstruiert, erhält und bewahrt Netzkunst und Netzkultur. Der Verein erforscht Möglichkeiten der Archivierung und Kontextualisierung von Netzkunst. Seit September 2019 arbeitet er als Pioniernutzer am Haus der Statistik Berlin und forscht zu der Geschichte des Hauses.</p>
           <p>Mitglieder des Vereins sind: <a class="link" target="_blank" rel="noopener" href="https://wwwwwwwwwwwwwwwwwwwwww.bitnik.org/">!Mediengruppe Bitnik</a>, Tereza Havlíková, <a class="link" target="_blank" rel="noopener" href="http://www.discombobulate.me/en/">Paloma Oliveira</a>, <a href="https://super-filme.org/" target="_blank" rel="noopener" class="link">Anneliese Ostertag</a>, <a class="link" target="_blank" rel="noopener" href="https://super-filme.org/">Tabea Rossol</a>, <a class="link" target="_blank" rel="noopener" href="http://www.curatingyoutube.net/">Sakrowski</a>, und <a class="link" target="_blank" rel="noopener" href="http://artwarez.org/">Cornelia Sollfrank</a>.</p>
         </template>
         <img class="team__image" src="../assets/images/zfn.jpg" alt="Zentrum für Netzkunst Team" />
@@ -61,17 +59,13 @@
           <em>Colin Lang</em>
           </p>
           <p>
-          <p>
           <span>Symposium Assistance</span><br>
           <em>Noemi Garay</em>
           </p>
           <p>
           <span>Exhibition Architecture</span><br>
-          <em>Alexej Paryla</em>
-          </p>
-          <p>
-          <span>Technical Advisor</span><br>
-          <em>xx</em>
+          <em>Omer Polak</em><br>
+          <em>Cäcilia Verweyen</em>
           </p>
           <p>
           <span>Sound Recording</span><br>
@@ -109,12 +103,9 @@
           <em>Noemi Garay</em>
           </p>
           <p>
-          <span>Ausstellungsarchitektur</span><br>
-          <em>x</em>
-          </p>
-          <p>
-          <span>Technische Beratung</span><br>
-          <em>x</em>
+          <span>Ausstellungsgestaltung</span><br>
+          <em>Omer Polak</em><br>
+          <em>Cäcilia Verweyen</em>
           </p>
           <p>
           <span>Tonaufnahme</span><br>
