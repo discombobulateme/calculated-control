@@ -1,3 +1,3 @@
 module.exports = {
-  publicPath: process.env.NETLIFY ? '' : '/cc/',
+  publicPath: process.env.NETLIFY ? '/' : '/cc/',
 };
