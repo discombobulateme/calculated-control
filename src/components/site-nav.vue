@@ -34,16 +34,16 @@
           <router-link class="nav__link" :to="{ name: 'Archive' }">{{ $t('archive.title') }}</router-link>
         </li>
         <li class="blob blob--pink nav__item" style="--grid-area: b;">
-          <router-link class="nav__link" :to="{ path: '/cc/e' }"><span class="hash">#</span>{{ $t('home.ausstellung').toLowerCase() }}</router-link>
+          <router-link class="nav__link" :to="{ path: '/e' }"><span class="hash">#</span>{{ $t('home.ausstellung').toLowerCase() }}</router-link>
         </li>
         <li class="blob blob--pink nav__item" style="--grid-area: h;">
-          <router-link class="nav__link" :to="{ path: '/cc/j' }"><span class="hash">#</span>{{ $t('home.journal').toLowerCase() }}</router-link>
+          <router-link class="nav__link" :to="{ path: '/j' }"><span class="hash">#</span>{{ $t('home.journal').toLowerCase() }}</router-link>
         </li>
         <li class="blob blob--pink nav__item" style="--grid-area: g;">
-          <router-link class="nav__link" :to="{ path: '/cc/s' }"><span class="hash">#</span>{{ $t('home.symposium').toLowerCase() }}</router-link>
+          <router-link class="nav__link" :to="{ path: '/s' }"><span class="hash">#</span>{{ $t('home.symposium').toLowerCase() }}</router-link>
         </li>
         <li class="blob blob--pink nav__item" style="--grid-area: c;">
-          <router-link class="nav__link" :to="{ path: '/cc/u' }"><span class="hash">#</span>{{ $t('home.unconference').toLowerCase() }}</router-link>
+          <router-link class="nav__link" :to="{ path: '/u' }"><span class="hash">#</span>{{ $t('home.unconference').toLowerCase() }}</router-link>
         </li>
         <li class="blob nav__item nav__item--page" style="--grid-area: d;">
           <router-link class="nav__link" :to="{ name: 'Team' }">{{ $t('home.team') }}</router-link>
