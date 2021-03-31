@@ -60,7 +60,7 @@ export default {
       return primaryTags.includes(this.node);
     },
     isItem() {
-      return this.$route.path.startsWith('/cc/item');
+      return this.$route.path.startsWith('/item');
     },
   },
 }

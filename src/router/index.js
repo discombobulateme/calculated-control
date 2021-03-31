@@ -36,7 +36,7 @@ const archiveRouteConfigForNode = node => ({
 
 const routes = [
   {
-    path: '/cc/about',
+    path: '/about',
     name: 'About',
     component: About,
     props: {
@@ -44,7 +44,7 @@ const routes = [
     },
   },
   {
-    path: '/cc/team',
+    path: '/team',
     name: 'Team',
     component: Team,
     props: {
@@ -53,7 +53,7 @@ const routes = [
     },
   },
   {
-    path: '/cc/contact',
+    path: '/contact',
     name: 'Contact',
     component: Contact,
     props: {
@@ -62,7 +62,7 @@ const routes = [
     },
   },
   {
-    path: '/cc/visit',
+    path: '/visit',
     name: 'Visit',
     component: Visit,
     props: {
@@ -70,42 +70,42 @@ const routes = [
     },
   },
   {
-    path: '/cc/imprint',
+    path: '/imprint',
     name: 'Imprint',
     component: Imprint,
   },
   {
-    path: '/cc/archive/about',
+    path: '/archive/about',
     name: 'ArchiveAbout',
     component: ArchiveAbout,
   },
   {
-    path: '/cc/symposium/about',
+    path: '/symposium/about',
     name: 'SymposiumAbout',
     component: SymposiumAbout,
   },
   {
-    path: '/cc/unconference/about',
+    path: '/unconference/about',
     name: 'UnconferenceAbout',
     component: UnconferenceAbout,
   },
   {
-    path: '/cc/journal/about',
+    path: '/journal/about',
     name: 'JournalAbout',
     component: JournalAbout,
   },
   {
-    path: '/cc/ausstellung/hds',
+    path: '/ausstellung/hds',
     name: 'HDSExhibitionAbout',
     component: HDSExhibitionAbout,
   },
   {
-    path: '/cc/ausstellung/panke',
+    path: '/ausstellung/panke',
     name: 'PankeExhibitionAbout',
     component: PankeExhibitionAbout,
   },
   {
-    path: '/cc/archive',
+    path: '/archive',
     name: 'Archive',
     component: Archive,
     props: route => ({
@@ -114,7 +114,7 @@ const routes = [
     }),
   },
   {
-    path: '/cc/node/:node',
+    path: '/node/:node',
     name: 'Node',
     component: Archive,
     props: route => ({
@@ -124,38 +124,38 @@ const routes = [
     }),
   },
   {
-    path: '/cc/e',
+    path: '/e',
     ...archiveRouteConfigForNode('ausstellung'),
   },
   {
-    path: '/cc/j',
+    path: '/j',
     ...archiveRouteConfigForNode('journal'),
   },
   {
-    path: '/cc/s',
+    path: '/s',
     ...archiveRouteConfigForNode('symposium'),
   },
   {
-    path: '/cc/u',
+    path: '/u',
     ...archiveRouteConfigForNode('unconference'),
   },
   {
-    path: '/cc/item/:key',
+    path: '/item/:key',
     name: 'Item',
     ...itemRouteConfig,
   },
   {
-    path: '/cc/entry/:key',
+    path: '/entry/:key',
     name: 'Entry',
     ...itemRouteConfig,
   },
   {
-    path: '/cc/eintrag/:key',
+    path: '/eintrag/:key',
     name: 'Eintrag',
     ...itemRouteConfig,
   },
   {
-    path: '/cc',
+    path: '',
     name: 'Home',
     component: Home
   },
@@ -168,7 +168,7 @@ const routes = [
 
 const router = new VueRouter({
   mode: 'history',
-  base: process.env.BASE_URL,
+  base: '/cc/',
   routes
 });
 

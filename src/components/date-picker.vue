@@ -28,7 +28,7 @@
       <li v-if="exhibitionNav" class="date-picker__item">
         <a
           class="date-picker__button blob blob--shadow blob--pink"
-          href="https://netzkunst.berlin/cc/online-ausstellung"
+          href="https://netzkunst.berlin/online-ausstellung"
           target="_blank"
           rel="noopener"
         >
