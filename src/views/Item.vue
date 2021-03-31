@@ -59,7 +59,7 @@
         <CuratedItem
           :item="item"
           :image="image"
-          :second-link-text="$t('journal.readFull')"
+          :first-link-text="$t('journal.readFull')"
           :class="{ blurrable: true, 'blurred': showArchiveConnections }"
         />
       </template>
@@ -259,7 +259,7 @@ export default {
   background: var(--color-prime-light-grey);
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1200px) {
   .item {
     height: 100vh;
     overflow: hidden;

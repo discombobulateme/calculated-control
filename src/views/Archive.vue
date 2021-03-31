@@ -18,6 +18,7 @@
             </template>
             <DatePicker
               v-if="datePicker"
+              :exhibition-nav="node === 'ausstellung'"
               :dates="datePicker.dates"
               :default-option="datePicker.default"
               :reset="datePicker.reset"
@@ -31,6 +32,7 @@
             <TagsCloud class="archive__tags-cloud" v-if="searchTags" :tags="searchTags" deselectable @click="deselectTag" />
             <DatePicker
               v-if="datePicker"
+              :exhibition-nav="node === 'ausstellung'"
               :dates="datePicker.dates"
               :default-option="datePicker.default"
               :reset="datePicker.reset"
@@ -321,7 +323,7 @@ export default {
   padding: 5px;
 }
 
-@media screen and (min-width: 1260px) {
+@media screen and (min-width: 1550px) {
   .archive__date-picker-desktop {
     display: block;
   }

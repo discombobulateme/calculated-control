@@ -25,15 +25,41 @@
           {{ date.humanReadable }}
         </button>
       </li>
+      <li v-if="exhibitionNav" class="date-picker__item">
+        <a
+          class="date-picker__button blob blob--shadow blob--pink"
+          href="https://netzkunst.berlin/cc/online-ausstellung"
+          target="_blank"
+          rel="noopener"
+        >
+          online
+          <ExternalIcon />
+        </a>
+      </li>
+      <li v-if="exhibitionNav" class="date-picker__item">
+        <router-link
+          class="date-picker__button blob blob--shadow blob--pink"
+          :to="{ name: 'Visit' }"
+        >
+          {{ $t('home.visit') }}
+          <ArrowRight class="arrow-link" />
+        </router-link>
+      </li>
     </ul>
   </nav>
 </template>
 
 <script>
 import { getTagsFromRoute } from '@/utils';
+import ArrowRight from '@/components/icons/arrow-right';
+import ExternalIcon from '@/components/icons/external';
 
 export default {
   name: 'DatePicker',
+  components: {
+    ArrowRight,
+    ExternalIcon,
+  },
   props: {
     dates: {
       type: Array,
@@ -50,6 +76,10 @@ export default {
     defaultOption: {
       type: String,
       default: '',
+    },
+    exhibitionNav: {
+      type: Boolean,
+      default: false,
     },
   },
   computed: {
@@ -112,5 +142,9 @@ export default {
   font-family: inherit;
   padding: 9px 20px;
   white-space: nowrap;
+}
+
+.arrow-link {
+  height: 0.55em;
 }
 </style>
