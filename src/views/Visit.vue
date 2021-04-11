@@ -28,7 +28,7 @@
           Opening hours<br>
           13:00 &ndash; 19:00<br>
           <br>
-          If you want to visit the exhibition come by, or book a time slot in advance.
+          If you want to visit the exhibition come by, or <a href="https://calendly.com/zfnk/cc?month=2021-04" target="_blank" rel="noopener" class="link">book a time slot</a> in advance.
           <br><br>
           <router-link class="link link--arrow" to="/u">Unconference</router-link><br>
           21/05 &ndash; 23/05/2021<br>
@@ -50,7 +50,7 @@
           Öffnungszeiten<br>
           13:00 &ndash; 19:00<br>
           <br>
-          Sie können hier ein Zeitfenster für den Ausstellungsbesuch buchen oder direkt zur Ausstellung kommen.
+          Sie können hier ein <a href="https://calendly.com/zfnk/cc?month=2021-04" target="_blank" rel="noopener" class="link">Zeitfenster für den Ausstellungsbesuch buchen</a> oder direkt zur Ausstellung kommen.
           <br><br>
           <router-link class="link link--arrow" to="/u">Unconference</router-link><br>
           21/05 &ndash; 23/05/2021<br>

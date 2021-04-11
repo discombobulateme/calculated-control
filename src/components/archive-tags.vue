@@ -27,7 +27,7 @@
             :value="primaryTag"
             v-model="selectedTags"
           />
-          {{ $t(`tags.${primaryTag.toLowerCase()}`) }}
+          #{{ $t(`tags.${primaryTag.toLowerCase()}`) }}
           <Checkmark v-if="isSelected(primaryTag)" class="archive-tags__icon archive-tags__icon--select" role="presentation"/>
           <Deselect v-if="isSelected(primaryTag)" class="archive-tags__icon archive-tags__icon--deselect" role="presentation"/>
         </label>

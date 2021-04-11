@@ -5,10 +5,10 @@
     </template>
     <template #content>
       <template v-if="english">
-        Cybernetic control is achieved through accuracy, meticulousness, and a constant striving for perfection. Social processes are broken down into manageable parts, measured, and evaluated in order to regulate them by targeted readjustment. The authors of the online journal examine concrete practices, technologies, and materials of cybernetic control. The essays will be published on the project website from May to July.
+        Cybernetic control is achieved through accuracy, meticulousness, and a constant striving for perfection. Social processes are broken down into manageable parts, measured, and evaluated in order to regulate them by targeted readjustment. The authors of the online journal examine concrete practices, technologies, and materials of cybernetic control. The essays will be published from May to July 2021.
       </template>
       <template v-else>
-        Kybernetische Kontrolle wird durch Genauigkeit, Akribie und einem beständigen Streben nach Perfektion erlangt. Um gesellschaftliche Prozesse durch zielgerichtetes Nachjustieren zu regulieren, werden sie in überschaubare Einzelteile zerlegt, gemessen und bewertet. Die Autor*innen des online Journals untersuchen konkrete Praktiken, Technologien und Materialien der kybernetischen Kontrolle. Die Essays werden von Mai bis Juli auf der Projektwebsite veröffentlicht.
+        Kybernetische Kontrolle wird durch Genauigkeit, Akribie und einem beständigen Streben nach Perfektion erlangt. Um gesellschaftliche Prozesse durch zielgerichtetes Nachjustieren zu regulieren, werden sie in überschaubare Einzelteile zerlegt, gemessen und bewertet. Die Autor*innen des online Journals untersuchen konkrete Praktiken, Technologien und Materialien der kybernetischen Kontrolle. Die Essay werden von Mais bis Juli 2021 hier veröffentlicht.
       </template>
     </template>
   </Page>

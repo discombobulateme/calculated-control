@@ -2,7 +2,7 @@
   <div class="item">
     <ArchiveHeader class="item__header">
       <template #meta>
-        <div class="item__meta">{{ $t('archive.title' ) }}: {{ $t('item.entry' ) }} #{{ id }}</div>
+        <div class="item__meta">{{ $t('archive.title') }}: {{ $t('item.entry') }} #{{ id }}</div>
       </template>
     </ArchiveHeader>
     <div class="item__loading" v-if="loading">
@@ -13,9 +13,9 @@
         class="blob blob--shadow archive-button"
         :class="{
           blurrable: true,
-          'blurred': showArchiveConnections,
+          blurred: showArchiveConnections,
           'blob--green': !from,
-          'blob--pink': from
+          'blob--pink': from,
         }"
         @click.prevent="onBack"
       >
@@ -24,7 +24,7 @@
           {{ $t('item.back') }}
         </template>
         <template v-else>
-          {{ from ? $t(`home.${from}`) : $t('archive.title') }}
+          {{ from ? $t(`home.${from}`) : $t('item.back') }}
         </template>
       </a>
       <template v-if="isExhibition">
@@ -34,7 +34,7 @@
           :youtubeEmbed="youtubeEmbed"
           :first-link-text="$t('event.enterOnlineExhibition')"
           :second-link-text="$t('event.booking')"
-          :class="{ blurrable: true, 'blurred': showArchiveConnections }"
+          :class="{ blurrable: true, blurred: showArchiveConnections }"
         />
       </template>
       <template v-else-if="isSymposium">
@@ -43,7 +43,7 @@
           :image="image"
           :youtubeEmbed="youtubeEmbed"
           :first-link-text="$t('event.watchOnYoutube')"
-          :class="{ blurrable: true, 'blurred': showArchiveConnections }"
+          :class="{ blurrable: true, blurred: showArchiveConnections }"
         />
       </template>
       <template v-else-if="isUnconference">
@@ -52,7 +52,7 @@
           :image="image"
           :youtubeEmbed="youtubeEmbed"
           :first-link-text="$t('event.register')"
-          :class="{ blurrable: true, 'blurred': showArchiveConnections }"
+          :class="{ blurrable: true, blurred: showArchiveConnections }"
         />
       </template>
       <template v-else-if="isJournal">
@@ -60,7 +60,7 @@
           :item="item"
           :image="image"
           :first-link-text="$t('journal.readFull')"
-          :class="{ blurrable: true, 'blurred': showArchiveConnections }"
+          :class="{ blurrable: true, blurred: showArchiveConnections }"
         />
       </template>
       <template v-else>
@@ -68,11 +68,11 @@
           :item="item"
           :youtube-embed="youtubeEmbed"
           :image="image"
-          :class="{ blurrable: true, 'blurred': showArchiveConnections }"
+          :class="{ blurrable: true, blurred: showArchiveConnections }"
         />
         <ItemGenericRight
           :item="item"
-          :class="{ blurrable: true, 'blurred': showArchiveConnections }"
+          :class="{ blurrable: true, blurred: showArchiveConnections }"
           :note="isPerson"
           :image="image"
           :title-author-type="titleAuthorTypeRight"
@@ -152,22 +152,22 @@ export default {
       return this.$route.query.fromRelated;
     },
     isJournal() {
-      return this.itemTags.some(tag => tag.toLowerCase() === 'journal');
+      return this.itemTags.some((tag) => tag.toLowerCase() === 'journal');
     },
     isExhibition() {
-      return this.itemTags.some(tag => tag.toLowerCase() === 'ausstellung');
+      return this.itemTags.some((tag) => tag.toLowerCase() === 'ausstellung');
     },
     isUnconference() {
-      return this.itemTags.some(tag => tag.toLowerCase() === 'unconference');
+      return this.itemTags.some((tag) => tag.toLowerCase() === 'unconference');
     },
     isSymposium() {
-      return this.itemTags.some(tag => tag.toLowerCase() === 'symposium');
+      return this.itemTags.some((tag) => tag.toLowerCase() === 'symposium');
     },
     titleAuthorTypeRight() {
       return Boolean(this.image || this.youtubeEmbed || this.item.itemType === 'note' || this.item.abstractNote);
     },
     itemTags() {
-      return this.item.tags.map(({ tag }) => tag).filter(tag => !tag.startsWith('id_') && !tag.startsWith('date_'));
+      return this.item.tags.map(({ tag }) => tag).filter((tag) => !tag.startsWith('id_') && !tag.startsWith('date_'));
     },
     youtubeEmbed() {
       if (!this.item || !this.item.url) return;
@@ -185,14 +185,14 @@ export default {
 
       try {
         new URL(this.item.rights);
-      } catch(err) {
+      } catch (err) {
         return null;
       }
 
       return this.item && this.item.rights;
     },
     isPerson() {
-      return this.itemTags.some(tag => tag.toLowerCase() === 'person');
+      return this.itemTags.some((tag) => tag.toLowerCase() === 'person');
     },
     isStartLocation() {
       return this.$route.path === this.$router.history._startLocation;
@@ -224,7 +224,7 @@ export default {
       const relations = this.item.relations['dc:relation'];
       if (!relations) return;
 
-      const keys = (Array.isArray(relations) ? relations : [relations]).map(relation => {
+      const keys = (Array.isArray(relations) ? relations : [relations]).map((relation) => {
         const url = new URL(relation);
         return url.pathname.split('/').pop();
       });
@@ -236,7 +236,7 @@ export default {
         query: {
           tags: [tag],
         },
-      })
+      });
     },
     onBack() {
       if (this.isStartLocation) {
@@ -249,7 +249,7 @@ export default {
       } else {
         this.$router.go(-1);
       }
-    }
+    },
   },
 };
 </script>

@@ -37,6 +37,17 @@
         </a>
       </li>
       <li v-if="exhibitionNav" class="date-picker__item">
+        <a
+          class="date-picker__button blob blob--shadow blob--pink"
+          href="https://calendly.com/zfnk/cc?month=2021-04"
+          target="_blank"
+          rel="noopener"
+        >
+          book time
+          <ExternalIcon />
+        </a>
+      </li>
+      <li v-if="exhibitionNav" class="date-picker__item">
         <router-link
           class="date-picker__button blob blob--shadow blob--pink"
           :to="{ name: 'Visit' }"

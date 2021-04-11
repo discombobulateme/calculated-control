@@ -141,7 +141,7 @@ export default {
 }
 
 .field:last-of-type {
-  border-bottom: solid 2px black;
+  border-bottom: solid 1px black;
 }
 
 .field__label {
