@@ -11,11 +11,11 @@
       </div>
       <div class="team__section-centre">
         <template v-if="english">
-          <p>Zentrum für Netzkunst reconstructs, maintains, and preserves netart and net culture. The association researches archiving and contextualization of netart. Since September 2019, it has been working at Haus der Statistik Berlin, conducting research on its history.</p>
+          <p>Zentrum für Netzkunst reconstructs, maintains, and preserves netart and net culture. The association researches archiving and contextualization of netart. Since 2019, we are based at the Haus der Statisik, where we are conducting research on the history of the building and its former functions.</p>
           <p>Members of the association are: <a class="link" target="_blank" rel="noopener" href="https://wwwwwwwwwwwwwwwwwwwwww.bitnik.org/">!Mediengruppe Bitnik</a>, Tereza Havlíková, <a class="link" target="_blank" rel="noopener" href="http://www.discombobulate.me/en/">Paloma Oliveira</a>, <a href="https://super-filme.org/" target="_blank" rel="noopener" class="link">Anneliese Ostertag</a>, <a class="link" target="_blank" rel="noopener" href="https://super-filme.org/">Tabea Rossol</a>, <a class="link" target="_blank" rel="noopener" href="http://www.curatingyoutube.net/">Sakrowski</a>, and <a class="link" target="_blank" rel="noopener" href="http://artwarez.org/">Cornelia Sollfrank</a>.</p>
         </template>
         <template v-else>
-          <p>Das Zentrum für Netzkunst rekonstruiert, erhält und bewahrt Netzkunst und Netzkultur. Der Verein erforscht Möglichkeiten der Archivierung und Kontextualisierung von Netzkunst. Seit September 2019 arbeitet er als Pioniernutzer am Haus der Statistik Berlin und forscht zu der Geschichte des Hauses.</p>
+          <p>Das Zentrum für Netzkunst rekonstruiert, erhält und bewahrt Netzkunst und Netzkultur. Der Verein erforscht Möglichkeiten der Archivierung und Kontextualisierung von Netzkunst. Seit September 2019 arbeiten wir als Pioniernutzer*innen am Haus der Statistik Berlin und forschen zu der Geschichte des Hauses.</p>
           <p>Mitglieder des Vereins sind: <a class="link" target="_blank" rel="noopener" href="https://wwwwwwwwwwwwwwwwwwwwww.bitnik.org/">!Mediengruppe Bitnik</a>, Tereza Havlíková, <a class="link" target="_blank" rel="noopener" href="http://www.discombobulate.me/en/">Paloma Oliveira</a>, <a href="https://super-filme.org/" target="_blank" rel="noopener" class="link">Anneliese Ostertag</a>, <a class="link" target="_blank" rel="noopener" href="https://super-filme.org/">Tabea Rossol</a>, <a class="link" target="_blank" rel="noopener" href="http://www.curatingyoutube.net/">Sakrowski</a>, und <a class="link" target="_blank" rel="noopener" href="http://artwarez.org/">Cornelia Sollfrank</a>.</p>
         </template>
         <img class="team__image" src="../assets/images/zfn.jpg" alt="Zentrum für Netzkunst Team" />
@@ -52,7 +52,7 @@
           </p>
           <p>
           <span>Press and Public Relations</span><br>
-          <em>Igor Štromajer</em>
+          <em><a class="link" target="_blank" rel="noopener" href="https://intima.org">Igor Štromajer</a></em>
           </p>
           <p>
           <span>Editing and Translation</span><br>
@@ -92,7 +92,7 @@
           </p>
           <p>
           <span>Presse und Öffentlichkeitsarbeit</span><br>
-          <em>Igor Štromajer</em>
+          <em><a class="link" target="_blank" rel="noopener" href="https://intima.org">Igor Štromajer</a></em>
           </p>
           <p>
           <span>Lektorat und Übersetzung</span><br>

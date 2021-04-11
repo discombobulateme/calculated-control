@@ -76,7 +76,7 @@ export default {
     exhibition: 'Ausstellung',
     symposium: 'Symposium',
     journal: 'Journal',
-    unconference: 'unConference',
+    unconference: 'unconference',
     person: 'Person',
     kybernetik: 'Kybernetik',
     ddr: 'DDR',
