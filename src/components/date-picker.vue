@@ -32,7 +32,7 @@
           target="_blank"
           rel="noopener"
         >
-          online
+          online 01/05 - 03/10
           <ExternalIcon />
         </a>
       </li>
