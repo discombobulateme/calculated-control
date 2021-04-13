@@ -18,7 +18,6 @@
           Commercial ID: VR 30390 b
         </p>
         <p>
-          LOGOS<br>
           Zentrum für Netzkunst<br>
           Haus der Statistik<br>
           Hauptstadtkulturfond<br>
