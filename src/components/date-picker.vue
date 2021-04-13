@@ -47,28 +47,17 @@
           <ExternalIcon />
         </a>
       </li>
-      <li v-if="exhibitionNav" class="date-picker__item">
-        <router-link
-          class="date-picker__button blob blob--shadow blob--pink"
-          :to="{ name: 'Visit' }"
-        >
-          {{ $t('home.visit') }}
-          <ArrowRight class="arrow-link" />
-        </router-link>
-      </li>
     </ul>
   </nav>
 </template>
 
 <script>
 import { getTagsFromRoute } from '@/utils';
-import ArrowRight from '@/components/icons/arrow-right';
 import ExternalIcon from '@/components/icons/external';
 
 export default {
   name: 'DatePicker',
   components: {
-    ArrowRight,
     ExternalIcon,
   },
   props: {
