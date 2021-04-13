@@ -32,6 +32,9 @@
         </ul>
 
         <ul class="site-footer__list">
+            <a href="https://hauptstadtkulturfonds.berlin.de/" target="_blank" rel="noopener">
+              <img class="site-sponsor__logo" src="../assets/images/HKF_logo_white.svg" alt="Hauptstadt Kultur Fonds logo" />
+            </a>
           <li><router-link class="site-footer__link" :to="{ name: 'Imprint' }">{{ $t('home.imprint') }}</router-link></li>
           <li>
             <LanguageSwitch />
@@ -122,5 +125,11 @@ export default {
 
 .site-footer__logo {
   width: 80%;
+}
+
+.site-sponsor__logo{
+  display: inline-block;
+  width: 60%;
+  vertical-align: -0.125em;
 }
 </style>
