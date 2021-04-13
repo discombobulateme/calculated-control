@@ -38,12 +38,12 @@
       </li>
       <li v-if="exhibitionNav" class="date-picker__item">
         <a
-          class="date-picker__button blob blob--shadow blob--pink"
+          class="date-picker__button blob blob--shadow blob--green"
           href="https://calendly.com/zfnk/cc?month=2021-04"
           target="_blank"
           rel="noopener"
         >
-          book time
+          book time slot
           <ExternalIcon />
         </a>
       </li>
