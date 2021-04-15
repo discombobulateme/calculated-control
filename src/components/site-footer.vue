@@ -130,6 +130,7 @@ export default {
 .site-sponsor__logo{
   display: inline-block;
   width: 60%;
+  margin-left: 80%;
   vertical-align: -0.125em;
 }
 </style>

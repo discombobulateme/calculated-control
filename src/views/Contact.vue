@@ -18,8 +18,8 @@
         <div class="contact__panel">
           <a class="link" href="mailto:info@netart.berlin">info@netart.berlin</a>
           <br><br>
-          <template v-if="english">Press</template>
-          <template v-else>Presse</template>
+          <template v-if="english">Social Media</template>
+          <template v-else>Soziale Medien</template>
           <br>Igor Štromajer<br>
           <a class="link" href="mailto:press@netzkunst.berlin">press@netzkunst.berlin</a>
         </div>
