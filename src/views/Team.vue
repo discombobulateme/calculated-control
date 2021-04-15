@@ -51,7 +51,7 @@
           <em><a class="link" target="_blank" rel="noopener" href="https://fiala.space">Jakub Fiala</a></em>
           </p>
           <p>
-          <span>Press and Public Relations</span><br>
+          <span>Social Medial</span><br>
           <em><a class="link" target="_blank" rel="noopener" href="https://intima.org">Igor Štromajer</a></em>
           </p>
           <p>
@@ -91,7 +91,7 @@
           <em><a class="link" target="_blank" rel="noopener" href="https://fiala.space">Jakub Fiala</a></em>
           </p>
           <p>
-          <span>Presse und Öffentlichkeitsarbeit</span><br>
+          <span>Soziale Medien</span><br>
           <em><a class="link" target="_blank" rel="noopener" href="https://intima.org">Igor Štromajer</a></em>
           </p>
           <p>
