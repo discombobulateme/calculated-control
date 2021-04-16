@@ -94,6 +94,7 @@ export default {
 
 .items-list__about {
   padding: 5px;
+  height: 100%;
 }
 
 .items-list__about-link {
