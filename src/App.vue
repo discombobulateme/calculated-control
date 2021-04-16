@@ -92,7 +92,8 @@ h1, h2, h3, h4, h5 {
   border-radius: var(--border-radius);
   color: var(--color-prime-olive);
   font-size: var(--font-size-xs);
-  filter: drop-shadow(2px 2px 12px rgba(0, 0, 0, 0));
+  box-shadow: (2px 2px 12px rgba(0, 0, 0, 0));
+  /* filter: drop-shadow(2px 2px 12px rgba(0, 0, 0, 0)); */
   text-align: center;
   overflow: hidden;
   transition: background-color var(--transition-time), filter var(--transition-time);
@@ -111,11 +112,13 @@ h1, h2, h3, h4, h5 {
 }
 
 .blob--shadow {
-  filter: drop-shadow(2px 2px 12px rgba(0, 0, 0, 0.25));
+  /* filter: drop-shadow(2px 2px 12px rgba(0, 0, 0, 0.25)); */
+  box-shadow: (2px 2px 12px rgba(0, 0, 0, 0.25));
 }
 
 .blob--shadow:hover {
-  filter: drop-shadow(2px 2px 25px rgba(0, 0, 0, 0.3));
+  /* filter: drop-shadow(2px 2px 25px rgba(0, 0, 0, 0.3)); */
+  box-shadow: (2px 2px 25px rgba(0, 0, 0, 0.3));
 }
 
 .blob--green {
