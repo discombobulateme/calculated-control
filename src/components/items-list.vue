@@ -102,6 +102,7 @@ export default {
   align-items: center;
   width: 100%;
   min-height: 100px;
+  height: 100%;
   text-decoration: none;
 }
 
