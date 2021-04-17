@@ -72,6 +72,10 @@ export default {
   .items-list__item:last-child:nth-of-type(2n - 1) {
     grid-column: span 2;
   }
+  
+  .items-list__about-link {
+    padding: 50px;
+  }
 }
 
 @media screen and (min-width: 1200px) {
@@ -93,7 +97,7 @@ export default {
 }
 
 .items-list__about {
-  padding: 2px;
+  padding: 5px;
 }
 
 .items-list__about-link {
