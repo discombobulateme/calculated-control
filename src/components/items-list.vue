@@ -64,7 +64,12 @@ export default {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .items-list__about {
+    min-height: calc(100vh - 80px);
+  }
+
   .items-list__item {
+    /* min-height: calc(100vh - 80px); */
     min-height: 288px;
     height: 100%;
   }
@@ -94,7 +99,6 @@ export default {
 
 .items-list__about {
   padding: 5px;
-  height: 100%;
 }
 
 .items-list__about-link {
