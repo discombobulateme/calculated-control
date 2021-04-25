@@ -8,12 +8,12 @@
     <section class="visit__notice">
       <template v-if="english">
         COVID-19<br>
-        Please note that due to the current pandemic, there is the possibility of last-minute changes to events.<br>
+        Due to the nationwide lockdown, the exhibition will remain close. Proxy Tours will be available for those who book a time slot. Tours are in either English or German, and will take approximately 30 minutes.<br>
         For the most up-to-date information, please check our <a href="https://t.me/ZentrumderNetzkunst" class="link">Telegram Channel</a>.
       </template>
       <template v-else>
         COVID-19<br>
-        Aufgrund der aktuellen Pandemie kann es zu kurzfristigen Programmänderungen kommen.<br>
+        Wegen der bundesweiten Notbremse wird die Ausstellung vor Ort im Haus Der Statistik geschlossen bleiben. Es können Zeitfenster für Proxy Tours gebucht werden. Die online Touren finden auf Englisch oder Deutsch statt und dauern circa 30 Minuten.<br>
         Für mehr Informationen siehe <a href="https://t.me/ZentrumderNetzkunst" class="link">Telegram Kanal</a>.
       </template>
     </section>

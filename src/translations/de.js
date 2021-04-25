@@ -13,7 +13,7 @@ export default {
     symposium: 'Symposium',
     unconference: 'Unconference',
     imprint: 'Impressum',
-    subtitle: 'Netz(Kunst) und Kybernetik',
+    subtitle: '(Netz)Kunst und Kybernetik',
   },
   archive: {
     title: "Archiv",
