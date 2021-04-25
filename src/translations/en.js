@@ -13,7 +13,7 @@ export default {
     symposium: 'Symposium',
     unconference: 'Unconference',
     imprint: 'Imprint',
-    subtitle: 'Net(Art) and Cybernetics',
+    subtitle: '(Net)Art and Cybernetics',
   },
   archive: {
     title: 'Archive',
