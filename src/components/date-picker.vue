@@ -48,23 +48,10 @@
         </a>
       </li>
     </ul>
-    <ul>
-      <section v-if="exhibitionNav" class="visit__notice">
-        <template v-if="english">
-          COVID-19<br>
-          Due to the nationwide lockdown, the exhibition in Haus Der Statistik will remain closed. Proxy Tours will be available for those who book a time slot. Tours are in either English or German, and will take approximately 30 minutes.<br>
-        </template>
-        <template v-else>
-          COVID-19<br>
-          Wegen der bundesweiten Notbremse wird die Ausstellung vor Ort im Haus Der Statistik geschlossen bleiben. Es können Zeitfenster für Proxy Tours gebucht werden. Die online Touren finden auf Englisch oder Deutsch statt und dauern circa 30 Minuten.<br>
-        </template>
-      </section>
-    </ul>
   </nav>
 </template>
 
 <script>
-import { getCurrentLocale } from '@/locale';
 import { getTagsFromRoute } from '@/utils';
 import ExternalIcon from '@/components/icons/external';
 
@@ -101,9 +88,6 @@ export default {
       const dateTag = tags.find(tag => tag.startsWith('date_'));
       return dateTag || this.defaultOption;
     },
-    english() {
-      return getCurrentLocale() === 'en';
-    },
   },
   methods: {
     pickDate(date) {
@@ -134,14 +118,6 @@ export default {
   margin: 0;
   align-items: center;
   height: 100%;
-}
-
-.visit__notice {
-  background: var(--color-prime-green);
-  border: solid 1px black;
-  font-size: var(--font-size-xs);
-  text-align: center;
-  padding: 15px 0;
 }
 
 @media screen and (min-width: 768px) {
