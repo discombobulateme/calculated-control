@@ -9,7 +9,7 @@
           @close="filtersOpen = false"
         />
       </section>
-      <div :class="{ blurrable: true, 'blurred': filtersOpen }">
+      <div :class="{ blurrable: true, blurred: filtersOpen }">
         <section class="section content">
           <ArchiveHeader class="archive__header" :node="node">
             <template #meta>
@@ -29,7 +29,13 @@
             <Loader v-if="loading" />
           </div>
           <div v-else class="archive__results">
-            <TagsCloud class="archive__tags-cloud" v-if="searchTags" :tags="searchTags" deselectable @click="deselectTag" />
+            <TagsCloud
+              class="archive__tags-cloud"
+              v-if="searchTags"
+              :tags="searchTags"
+              deselectable
+              @click="deselectTag"
+            />
             <DatePicker
               v-if="datePicker"
               :exhibition-nav="node === 'ausstellung'"
@@ -39,6 +45,20 @@
               class="archive__date-picker-mobile"
               :centered="false"
             />
+            <section v-if="this.node === 'ausstellung'" class="visit__notice">
+              <template v-if="english">
+                COVID-19<br />
+                Due to the nationwide lockdown, the exhibition in Haus Der Statistik will remain closed. Proxy Tours
+                will be available for those who book a time slot. Tours are in either English or German, and will take
+                approximately 30 minutes.<br />
+              </template>
+              <template v-else>
+                COVID-19<br />
+                Wegen der bundesweiten Notbremse wird die Ausstellung vor Ort im Haus Der Statistik geschlossen bleiben.
+                Es können Zeitfenster für Proxy Tours gebucht werden. Die online Touren finden auf Englisch oder Deutsch
+                statt und dauern circa 30 Minuten.<br />
+              </template>
+            </section>
             <ItemsList
               ref="items"
               class="archive__items"
@@ -71,7 +91,7 @@
         </section>
       </div>
     </main>
-    <SiteFooter :class="{ blurrable: true, 'blurred': filtersOpen }" />
+    <SiteFooter :class="{ blurrable: true, blurred: filtersOpen }" />
   </div>
 </template>
 
@@ -81,6 +101,7 @@ import { mapMutations, mapState } from 'vuex';
 import { searchItems, getTagsForItemTags } from '@/api';
 import { getTagsFromRoute, routesEqual } from '@/utils';
 import { getAboutConfig, datePickerConfig } from '@/archive-config';
+import { getCurrentLocale } from '@/locale';
 import ArchiveHeader from '@/components/archive-header';
 import ArchiveTags from '@/components/archive-tags';
 import DatePicker from '@/components/date-picker';
@@ -147,7 +168,10 @@ export default {
     },
     datePicker() {
       return datePickerConfig[this.node];
-    }
+    },
+    english() {
+      return getCurrentLocale() === 'en';
+    },
   },
   methods: {
     ...mapMutations(['setArchiveItems', 'setLastArchiveSearch']),
@@ -167,7 +191,7 @@ export default {
       const { q } = this.$route.query;
       const selectedTags = getTagsFromRoute(this.$route);
 
-      if (this.node === 'ausstellung' && !selectedTags.some(tag => tag.startsWith('date_'))) {
+      if (this.node === 'ausstellung' && !selectedTags.some((tag) => tag.startsWith('date_'))) {
         selectedTags.push(this.datePicker.default);
       }
       const { items: newItems, totalResults } = await searchItems({
@@ -199,7 +223,7 @@ export default {
       this.$router.push({
         query: {
           q: this.$route.query.q,
-          tags: tags.filter(t => t !== tag),
+          tags: tags.filter((t) => t !== tag),
         },
       });
     },
@@ -251,6 +275,14 @@ export default {
 
 .archive__filters-text {
   display: none;
+}
+
+.visit__notice {
+  background: var(--color-prime-green);
+  border: solid 1px black;
+  font-size: var(--font-size-xs);
+  text-align: center;
+  padding: 15px 0;
 }
 
 @media screen and (min-width: 768px) {
