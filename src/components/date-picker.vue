@@ -28,7 +28,7 @@
       <li v-if="exhibitionNav" class="date-picker__item">
         <a
           class="date-picker__button blob blob--shadow blob--pink"
-          href=""
+          href="https://cc.common.garden/"
           target="_blank"
           rel="noopener"
         >
