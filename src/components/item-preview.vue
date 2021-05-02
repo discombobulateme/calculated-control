@@ -16,7 +16,7 @@
 import { highlightTags } from '@/tags';
 import { getMainTag, getItemAuthor } from '@/utils';
 
-const NOTE_SLICE_LENGTH = 60;
+const NOTE_SLICE_LENGTH = 300;
 
 export default {
   name: 'ItemPreview',
