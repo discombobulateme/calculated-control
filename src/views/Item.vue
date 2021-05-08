@@ -1,6 +1,6 @@
 <template>
   <div class="item">
-    <ArchiveHeader ref="header" class="item__header">
+    <ArchiveHeader class="item__header">
       <template #meta>
         <div class="item__meta">{{ $t('archive.title') }}: {{ $t('item.entry') }} #{{ id }}</div>
       </template>
@@ -80,7 +80,7 @@
       </template>
     </main>
     <div v-else>Not Found</div>
-    <div v-if="item" v-show="showArchiveConnections" class="archive-connections">
+    <div v-if="item" v-show="showArchiveConnections" class="archive-connections" ref="connections">
       <div v-if="relations" class="relations">
         <ul class="relations__list">
           <li v-for="relation in relations" :key="relation.key" class="relations__item">
@@ -219,12 +219,6 @@ export default {
     },
     async toggleArchiveConnections() {
       this.showArchiveConnections = !this.showArchiveConnections;
-
-      this.$nextTick().then(() => {
-        if (this.showArchiveConnections && this.$refs.header) {
-          this.$refs.header.$el.scrollIntoView({ behavior: 'smooth' });
-        }
-      });
       if (this.relations !== null) return;
 
       const relations = this.item.relations['dc:relation'];
@@ -235,6 +229,13 @@ export default {
         return url.pathname.split('/').pop();
       });
       this.relations = await getRelatedItems({ keys });
+
+      this.$nextTick().then(() => {
+        console.log('thic');
+        if (this.showArchiveConnections && this.$refs.connections) {
+          this.$refs.connections.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
     },
     selectTag(tag) {
       this.$router.push({
@@ -316,13 +317,12 @@ export default {
 
 .archive-connections {
   background: rgba(255, 255, 255, 0.3);
-  border-top: solid 2px black;
   border-bottom: solid 2px black;
   display: flex;
   flex-grow: 1;
   flex-direction: column;
   position: absolute;
-  top: 80px;
+  top: 0;
   left: 0;
   width: 100%;
   z-index: 2;
