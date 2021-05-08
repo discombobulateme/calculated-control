@@ -101,7 +101,7 @@ export default {
 .curated-item__header {
   display: flex;
   flex-direction: column;
-  border: solid 1px black;
+  border-bottom: solid 2px black;
 }
 
 @media screen and (min-width: 768px) {
@@ -130,17 +130,30 @@ export default {
 @media screen and (min-width: 768px) {
   .curated-item__info {
     display: grid;
+    min-height: calc(100vh - 320px);
   }
 }
 
 .curated-item__info-section {
-  border: solid 1px black;
+  border-bottom: solid 2px black;
   border-top: none;
+}
+
+.curated-item__info-section:empty {
+  border-bottom: none;
 }
 
 @media screen and (min-width: 768px) {
   .curated-item__info-section {
     padding-bottom: 300px;
+  }
+
+  .curated-item__info-section:empty {
+    border-bottom: solid 2px black;
+  }
+
+  .curated-item__info-section + .curated-item__info-section {
+    border-left: solid 2px black;
   }
 }
 

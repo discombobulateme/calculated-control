@@ -24,7 +24,7 @@
           {{ $t('item.back') }}
         </template>
         <template v-else>
-          {{ from ? $t(`home.${from}`) : $t('item.back') }}
+          {{ $t('item.back') }}
         </template>
       </a>
       <template v-if="isExhibition">
@@ -247,12 +247,12 @@ export default {
     },
     onBack() {
       if (this.isStartLocation) {
-        if (this.from) {
-          const name = this.from[0].toUpperCase() + this.from.slice(1);
-          this.$router.push({ name });
-        } else {
-          this.$router.push({ name: 'Archive' });
-        }
+        // if (this.from) {
+        //   const name = this.from[0].toUpperCase() + this.from.slice(1);
+        //   this.$router.push({ name });
+        // } else {
+        this.$router.push({ name: 'Archive' });
+        // }
       } else {
         this.$router.go(-1);
       }

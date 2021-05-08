@@ -31,8 +31,8 @@
           <div v-else class="archive__results">
             <TagsCloud
               class="archive__tags-cloud"
-              v-if="searchTags"
-              :tags="searchTags"
+              v-if="cloudTags"
+              :tags="cloudTags"
               deselectable
               @click="deselectTag"
             />
@@ -174,6 +174,9 @@ export default {
     },
     english() {
       return getCurrentLocale() === 'en';
+    },
+    cloudTags() {
+      return this.searchTags.filter((tag) => tag !== this.node);
     },
   },
   methods: {
