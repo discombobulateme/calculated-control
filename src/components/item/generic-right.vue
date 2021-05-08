@@ -164,4 +164,8 @@ export default {
     overflow: auto;
   }
 }
+
+.item__bio {
+  padding-bottom: 100px;
+}
 </style>

@@ -72,13 +72,19 @@ export default {
   font-size: var(--font-size-large);
   display: block;
   height: 100%;
-  padding: 7px 12px;
+  padding: 7px 12px 75px;
   text-decoration: inherit;
   width: 100%;
   word-wrap: anywhere;
   overflow: hidden;
   position: relative;
   transition: background-color var(--transition-time);
+}
+
+@media screen and (min-width: 768px) {
+  .item-preview-link {
+    padding: 7px 12px
+  }
 }
 
 .item-preview-link:hover {
