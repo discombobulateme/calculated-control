@@ -166,6 +166,6 @@ export default {
 }
 
 .item__bio {
-  padding-bottom: 100px;
+  padding-bottom: 300px;
 }
 </style>
