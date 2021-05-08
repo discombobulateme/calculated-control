@@ -321,6 +321,7 @@ export default {
   top: 80px;
   left: 0;
   width: 100%;
+  z-index: 2;
 }
 
 .archive-connections__show {
