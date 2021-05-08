@@ -39,6 +39,12 @@ export default {
   padding: 10px 15px;
 }
 
+.page__close {
+  position: sticky;
+  top: 15px;
+  padding-bottom: 15px;
+}
+
 @media screen and (min-width: 768px) {
   .page {
     display: grid;
@@ -58,9 +64,6 @@ export default {
 
   .page__close {
     grid-area: close;
-    position: sticky;
-    top: 15px;
-    padding-bottom: 15px;
   }
 }
 

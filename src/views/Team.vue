@@ -155,11 +155,11 @@ export default {
 }
 
 .team__header {
-  border: solid 1px black;
+  border-bottom: solid 2px black;
 }
 
 .team__section {
-  border: solid 1px black;
+  border-bottom: solid 2px black;
   min-height: 60vh;
 }
 
