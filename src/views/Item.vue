@@ -1,6 +1,6 @@
 <template>
   <div class="item">
-    <ArchiveHeader class="item__header">
+    <ArchiveHeader ref="header" class="item__header">
       <template #meta>
         <div class="item__meta">{{ $t('archive.title') }}: {{ $t('item.entry') }} #{{ id }}</div>
       </template>
@@ -219,6 +219,12 @@ export default {
     },
     async toggleArchiveConnections() {
       this.showArchiveConnections = !this.showArchiveConnections;
+
+      this.$nextTick().then(() => {
+        if (this.showArchiveConnections && this.$refs.header) {
+          this.$refs.header.$el.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
       if (this.relations !== null) return;
 
       const relations = this.item.relations['dc:relation'];
