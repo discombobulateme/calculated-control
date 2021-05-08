@@ -58,10 +58,13 @@ export default {
 
   .page__close {
     grid-area: close;
+    position: sticky;
+    top: 15px;
+    padding-bottom: 15px;
   }
 }
 
 .page__close-button {
-  float: right;
+  margin-left: auto;
 }
 </style>

@@ -91,6 +91,13 @@ export default {
   white-space: pre-wrap;
 }
 
+@media screen and (min-width: 768px) {
+  .note {
+    font-size: var(--font-size-large);
+    padding: 15px 15px 450px;
+  }
+}
+
 .curated-item__header {
   display: flex;
   flex-direction: column;
