@@ -19,6 +19,13 @@ const i18n = new VueI18n({
   messages: translations,
 })
 
+if (process.env.NODE_ENV === 'development') {
+  const VueAxe = require('vue-axe').default;
+  Vue.use(VueAxe, {
+    auto: true, // Enable auto check.
+  });
+}
+
 new Vue({
   i18n,
   router,
