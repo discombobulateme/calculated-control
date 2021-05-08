@@ -143,6 +143,9 @@ export default {
     async $route() {
       await this.loadResultsIfNeeded();
     },
+    filtersOpen(value) {
+      document.body.classList.toggle('noscroll', value);
+    },
   },
   data: () => ({
     availableTags: null,

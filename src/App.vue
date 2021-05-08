@@ -174,4 +174,8 @@ button {
   font-family: inherit;
   letter-spacing: inherit;
 }
+
+.noscroll {
+  overflow: hidden;
+}
 </style>

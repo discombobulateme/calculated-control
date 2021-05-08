@@ -273,10 +273,14 @@ export default {
 }
 
 .item__header {
+  background: var(--color-prime-light-grey);
+  border-bottom: solid 2px black;
   font-size: var(--font-size-large);
   height: 80px;
   padding: 5px 15px;
-  position: relative;
+  position: sticky;
+  top: 0;
+  z-index: 2;
 }
 
 .item__page-title {
@@ -295,7 +299,6 @@ export default {
 }
 
 .main {
-  border: solid 1px black;
   overflow: hidden;
   min-height: calc(100vh - 80px);
   position: relative;
@@ -313,7 +316,8 @@ export default {
 
 .archive-connections {
   background: rgba(255, 255, 255, 0.3);
-  border: solid 1px black;
+  border-top: solid 2px black;
+  border-bottom: solid 2px black;
   display: flex;
   flex-grow: 1;
   flex-direction: column;
@@ -351,8 +355,6 @@ export default {
 }
 
 .relations__list {
-  border-top: solid 1px black;
-  border-bottom: solid 1px black;
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -378,9 +380,12 @@ export default {
 }
 
 .relations__item {
-  border-bottom: solid 1px black;
-  border-top: solid 1px black;
-  height: 200px;
+  border-bottom: solid 2px black;
+  min-height: 200px;
+}
+
+.relations__item:last-of-type {
+  border-bottom: none;
 }
 
 .archive-button {

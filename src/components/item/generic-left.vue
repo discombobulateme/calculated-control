@@ -52,9 +52,16 @@ export default {
 
 <style scoped>
 .section {
-  border: solid 1px black;
+  border-bottom: solid 2px black;
   height: 100%;
   overflow: auto;
+}
+
+@media screen and (min-width: 768px) {
+  .section {
+    border-right: solid 2px black;
+    border-bottom: none;
+  }
 }
 
 .note {

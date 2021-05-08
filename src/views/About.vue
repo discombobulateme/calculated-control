@@ -1,6 +1,6 @@
 <template>
-  <main>
-    <SiteNav :blurred="true"/>
+  <main class="about">
+    <SiteNav :blurred="true" class="about__site-nav"/>
     <section class="about__content">
       <div class="about__back">
         <router-link :to="{ name: 'Home' }" class="blob blob--green about__back-link">
@@ -57,6 +57,16 @@ export default {
 </script>
 
 <style scoped>
+.about {
+  overflow: scroll;
+  height: 100vh;
+}
+
+.about__site-nav {
+  overflow: hidden;
+  height: 100vh;
+}
+
 .about__back.about__back {
   display: flex;
   justify-content: center;

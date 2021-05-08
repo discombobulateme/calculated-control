@@ -9,6 +9,21 @@ export const getMainTag = (itemData, translator = x => x) => {
   return tagKey ? translator(`tags.${tagKey.toLowerCase()}`).toLowerCase() : itemType;
 };
 
+const getTagsForPath = (path) => {
+  switch (path) {
+    case '/u':
+      return ['unconference'];
+    case '/e':
+      return ['ausstellung'];
+    case '/j':
+      return ['journal'];
+    case '/s':
+      return ['symposium'];
+    default:
+      return [];
+  }
+};
+
 export const getTagsFromRoute = route => {
   if (Array.isArray(route.query.tags)) {
     return route.query.tags;
@@ -16,7 +31,8 @@ export const getTagsFromRoute = route => {
   if (typeof route.query.tags === 'string') {
     return [route.query.tags];
   }
-  return [];
+
+  return [].concat(getTagsForPath(route.path));
 };
 
 export const getItemAuthor = item => {
