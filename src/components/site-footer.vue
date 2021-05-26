@@ -39,7 +39,7 @@
         </ul>
 
         <a class="site-sponsor__link" href="https://hauptstadtkulturfonds.berlin.de/" target="_blank" rel="noopener">
-          <img class="site-sponsor__logo" src="../assets/images/HKF_logo_white.svg" alt="Hauptstadt Kultur Fonds logo" />
+          <img class="site-sponsor__logo" src="../assets/images/HKF-Logo-W.svg" alt="Hauptstadt Kultur Fonds logo" />
         </a>
       </nav>
     </section>
