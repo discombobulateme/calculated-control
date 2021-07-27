@@ -5,7 +5,7 @@ export default {
     language: 'Sprache wechseln',
   },
   home: {
-    visit: "Besuch",
+    visit: 'Besuch',
     team: 'Team',
     contact: 'Kontakt',
     ausstellung: 'Ausstellung',
@@ -16,13 +16,13 @@ export default {
     subtitle: '(Netz)Kunst und Kybernetik',
   },
   archive: {
-    title: "Archiv",
-    about: "Über das Archiv",
-    filter: "nach Schlagwort filtern",
+    title: 'Archiv',
+    about: 'Über das Archiv',
+    filter: 'nach Schlagwort filtern',
     tags: {
-      reset: "Schlagwörter zurücksetzen",
-      result: "Eintrag",
-      results: "Einträge",
+      reset: 'Schlagwörter zurücksetzen',
+      result: 'Eintrag',
+      results: 'Einträge',
     },
     loadMore: 'Mehr Einträge laden',
     search: 'Suchen',
@@ -66,7 +66,7 @@ export default {
   },
   journal: {
     about: 'Über das Journal',
-    readFull: 'Den Ganzen Beitrag lesen',
+    readFull: 'Den ganzen Beitrag lesen',
   },
   tags: {
     live: 'live',
@@ -83,7 +83,7 @@ export default {
     'haus der statistik': 'Haus der Statistik',
     'kunst am bau': 'Kunst am Bau',
     netzkunst: 'Netzkunst',
-    'datenverarbeitung': 'Datenverarbeitung',
+    datenverarbeitung: 'Datenverarbeitung',
     kunst: 'Kunst',
     datenvisualisierung: 'Datenvisualisierung',
     architektur: 'Architektur',
