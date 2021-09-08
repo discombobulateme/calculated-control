@@ -58,8 +58,8 @@ export const datePickerConfig = {
         tag: 'date_2021_04_30',
       },
       {
-        humanReadable: 'panke.gallery 18/09 – 03/10',
-        tag: 'date_2021_09_18',
+        humanReadable: 'panke.gallery 19/09 – 03/10',
+        tag: 'date_2021_09_19',
       },
     ],
   },
