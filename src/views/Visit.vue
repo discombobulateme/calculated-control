@@ -7,14 +7,18 @@
     </ArchiveHeader>
     <section class="visit__notice">
       <template v-if="english">
-        COVID-19<br>
-        Due to the nationwide lockdown, the exhibition will remain close. Proxy Tours will be available for those who book a time slot. Tours are in either English or German, and will take approximately 30 minutes.<br>
-        For the most up-to-date information, please check our <a href="https://t.me/ZentrumderNetzkunst" class="link">Telegram Channel</a>.
+        COVID-19<br />
+        For the most up-to-date information, please check our
+        <a href="https://t.me/ZentrumderNetzkunst" class="link"
+          >Telegram Channel</a
+        >.
       </template>
       <template v-else>
-        COVID-19<br>
-        Wegen der bundesweiten Notbremse wird die Ausstellung vor Ort im Haus Der Statistik geschlossen bleiben. Es können Zeitfenster für Proxy Tours gebucht werden. Die online Touren finden auf Englisch oder Deutsch statt und dauern circa 30 Minuten.<br>
-        Für mehr Informationen siehe <a href="https://t.me/ZentrumderNetzkunst" class="link">Telegram Kanal</a>.
+        COVID-19<br />
+        Für mehr Informationen siehe
+        <a href="https://t.me/ZentrumderNetzkunst" class="link"
+          >Telegram Kanal</a
+        >.
       </template>
     </section>
     <section class="visit__section">
@@ -23,40 +27,76 @@
       </div>
       <div class="visit__section-right">
         <template v-if="english">
-          <router-link class="link link--arrow" to="/e?tags=date_2021_04_30">Exhibition</router-link><br>
-          30/04 &ndash; 09/05/2021<br>
-          <br>
-          <router-link class="link link--arrow" to="/u">Unconference</router-link><br>
-          21/05 &ndash; 23/05/2021<br>
-          <br>
+          <router-link class="link link--arrow" to="/e?tags=date_2021_04_30"
+            >Exhibition</router-link
+          ><br />
+          30/04 &ndash; 09/05/2021<br />
+          <br />
+          <router-link class="link link--arrow" to="/u"
+            >Unconference</router-link
+          ><br />
+          21/05 &ndash; 23/05/2021<br />
+          <br />
           <address>
-          Haus der Statistik<br>
-          Haus A<br>
-          Karl-Marx-Allee 1<br>
-          10178 Berlin<br>
-          </address><br>
-          <br>
-          <a class="link" href="https://classic-maps.openrouteservice.org/directions?n1=52.522324&n2=13.415195&n3=18&a=52.521985,13.412772,52.5222,13.418084&b=2&c=0&k1=en-US&k2=km">
-          Directions</a><br>
-          <iframe class="visit__map" width="425" height="450" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=13.416007161140444%2C52.52126414320506%2C13.419547677040102%2C52.5227917019113&amp;layer=mapnik&amp;marker=52.52202792919787%2C13.417777419090271"></iframe>
+            Haus der Statistik<br />
+            Haus A<br />
+            Karl-Marx-Allee 1<br />
+            10178 Berlin<br />
+          </address>
+          <br />
+          <br />
+          <a
+            class="link"
+            href="https://classic-maps.openrouteservice.org/directions?n1=52.522324&n2=13.415195&n3=18&a=52.521985,13.412772,52.5222,13.418084&b=2&c=0&k1=en-US&k2=km"
+          >
+            Directions</a
+          ><br />
+          <iframe
+            class="visit__map"
+            width="425"
+            height="450"
+            frameborder="0"
+            scrolling="no"
+            marginheight="0"
+            marginwidth="0"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=13.416007161140444%2C52.52126414320506%2C13.419547677040102%2C52.5227917019113&amp;layer=mapnik&amp;marker=52.52202792919787%2C13.417777419090271"
+          ></iframe>
         </template>
         <template v-else>
-          <router-link class="link link--arrow" to="/e?tags=date_2021_04_30">Ausstellung</router-link><br>
-          30/04 &ndash; 09/05/2021<br>
-          <br>
-          <router-link class="link link--arrow" to="/u">Unconference</router-link><br>
-          21/05 &ndash; 23/05/2021<br>
-          <br>
+          <router-link class="link link--arrow" to="/e?tags=date_2021_04_30"
+            >Ausstellung</router-link
+          ><br />
+          30/04 &ndash; 09/05/2021<br />
+          <br />
+          <router-link class="link link--arrow" to="/u"
+            >Unconference</router-link
+          ><br />
+          21/05 &ndash; 23/05/2021<br />
+          <br />
           <address>
-          Haus der Statistik<br>
-          Haus A<br>
-          Karl-Marx-Allee 1<br>
-          10178 Berlin<br>
-          </address><br>
-          <br>
-          <a class="link" href="https://classic-maps.openrouteservice.org/directions?n1=52.522324&n2=13.415195&n3=18&a=52.521985,13.412772,52.5222,13.418084&b=2&c=0&k1=en-US&k2=km">
-          Anfahrt</a><br>
-          <iframe class="visit__map" width="425" height="450" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=13.416007161140444%2C52.52126414320506%2C13.419547677040102%2C52.5227917019113&amp;layer=mapnik&amp;marker=52.52202792919787%2C13.417777419090271"></iframe>
+            Haus der Statistik<br />
+            Haus A<br />
+            Karl-Marx-Allee 1<br />
+            10178 Berlin<br />
+          </address>
+          <br />
+          <br />
+          <a
+            class="link"
+            href="https://classic-maps.openrouteservice.org/directions?n1=52.522324&n2=13.415195&n3=18&a=52.521985,13.412772,52.5222,13.418084&b=2&c=0&k1=en-US&k2=km"
+          >
+            Anfahrt</a
+          ><br />
+          <iframe
+            class="visit__map"
+            width="425"
+            height="450"
+            frameborder="0"
+            scrolling="no"
+            marginheight="0"
+            marginwidth="0"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=13.416007161140444%2C52.52126414320506%2C13.419547677040102%2C52.5227917019113&amp;layer=mapnik&amp;marker=52.52202792919787%2C13.417777419090271"
+          ></iframe>
         </template>
       </div>
     </section>
@@ -66,50 +106,80 @@
       </div>
       <div class="visit__section-right">
         <template v-if="english">
-          <router-link class="link link--arrow" to="/e?tags=date_2021_09_18">Exhibition</router-link><br>
-          <br>
+          <router-link class="link link--arrow" to="/e?tags=date_2021_09_18"
+            >Exhibition</router-link
+          ><br />
+          <br />
           <address>
-            Gerichtstraße 23<br>
-            Hof 5<br>
-            13347 Berlin<br>
+            Gerichtstraße 23<br />
+            Hof 5<br />
+            13347 Berlin<br />
           </address>
-          <br>
-          18/09 &ndash; 03/10/2021<br>
-          Mittwoch &ndash; Samstag<br>
-          Opening hours<br>
-          15:00 - 19:00<br>
-          <br>
-          Vernissage<br>
-          18/09/2021<br>
-          Finissage<br>
-          03/10/2021<br><br>
-          <a class="link" href="https://www.openstreetmap.org/directions?engine=fossgis_osrm_foot&route=52.54388%2C13.36949%3B52.54510%2C13.37424#map=18/52.54427/13.37324">
-          Directions</a>
+          <br />
+          19/09 &ndash; 03/10/2021<br />
+          Mittwoch &ndash; Samstag<br />
+          Opening hours<br />
+          15:00 - 19:00<br />
+          <br />
+          Vernissage<br />
+          19/09/2021<br />
+          Finissage<br />
+          03/10/2021<br /><br />
+          <a
+            class="link"
+            href="https://www.openstreetmap.org/directions?engine=fossgis_osrm_foot&route=52.54388%2C13.36949%3B52.54510%2C13.37424#map=18/52.54427/13.37324"
+          >
+            Directions</a
+          >
 
-          <iframe class="visit__map" width="425" height="450" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=13.36715340614319%2C52.542048093392786%2C13.381315469741823%2C52.54815511835757&layer=mapnik&marker=52.545101712087344%2C13.374234437942505"></iframe>
+          <iframe
+            class="visit__map"
+            width="425"
+            height="450"
+            frameborder="0"
+            scrolling="no"
+            marginheight="0"
+            marginwidth="0"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=13.36715340614319%2C52.542048093392786%2C13.381315469741823%2C52.54815511835757&layer=mapnik&marker=52.545101712087344%2C13.374234437942505"
+          ></iframe>
         </template>
         <template v-else>
-          <router-link class="link link--arrow" to="/e?tags=date_2021_09_18">Ausstellung</router-link><br>
-          <br>
+          <router-link class="link link--arrow" to="/e?tags=date_2021_09_18"
+            >Ausstellung</router-link
+          ><br />
+          <br />
           <address>
-            Gerichtstraße 23<br>
-            Hof 5<br>
-            13347 Berlin<br>
+            Gerichtstraße 23<br />
+            Hof 5<br />
+            13347 Berlin<br />
           </address>
-          <br>
-          18/09 &ndash; 03/10/2021<br>
-          Mittwoch &ndash; Samstag<br>
-          Öffnungszeiten<br>
-          15:00 - 19:00<br>
-          <br>
-          Vernissage<br>
-          18/09/2021<br>
-          Finissage<br>
-          03/10/2021<br><br>
-          <a class="link" href="https://www.openstreetmap.org/directions?engine=fossgis_osrm_foot&route=52.54388%2C13.36949%3B52.54510%2C13.37424#map=18/52.54427/13.37324">
-          Anfahrt</a>
+          <br />
+          19/09 &ndash; 03/10/2021<br />
+          Mittwoch &ndash; Samstag<br />
+          Öffnungszeiten<br />
+          15:00 - 19:00<br />
+          <br />
+          Vernissage<br />
+          19/09/2021<br />
+          Finissage<br />
+          03/10/2021<br /><br />
+          <a
+            class="link"
+            href="https://www.openstreetmap.org/directions?engine=fossgis_osrm_foot&route=52.54388%2C13.36949%3B52.54510%2C13.37424#map=18/52.54427/13.37324"
+          >
+            Anfahrt</a
+          >
 
-          <iframe class="visit__map" width="425" height="450" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=13.36715340614319%2C52.542048093392786%2C13.381315469741823%2C52.54815511835757&layer=mapnik&marker=52.545101712087344%2C13.374234437942505"></iframe>
+          <iframe
+            class="visit__map"
+            width="425"
+            height="450"
+            frameborder="0"
+            scrolling="no"
+            marginheight="0"
+            marginwidth="0"
+            src="https://www.openstreetmap.org/export/embed.html?bbox=13.36715340614319%2C52.542048093392786%2C13.381315469741823%2C52.54815511835757&layer=mapnik&marker=52.545101712087344%2C13.374234437942505"
+          ></iframe>
         </template>
       </div>
     </section>
@@ -118,9 +188,15 @@
         Online
       </div>
       <div class="visit__section-right">
-        <router-link class="link link--arrow" to="/s">{{ $t('home.symposium') }} </router-link><br>
-        <router-link class="link link--arrow" to="/j">{{ $t('home.journal') }} </router-link><br>
-        <router-link class="link link--arrow" to="/e">{{ $t('home.ausstellung') }} </router-link><br>
+        <router-link class="link link--arrow" to="/s"
+          >{{ $t('home.symposium') }} </router-link
+        ><br />
+        <router-link class="link link--arrow" to="/j"
+          >{{ $t('home.journal') }} </router-link
+        ><br />
+        <router-link class="link link--arrow" to="/e"
+          >{{ $t('home.ausstellung') }} </router-link
+        ><br />
       </div>
     </section>
     <SiteFooter />

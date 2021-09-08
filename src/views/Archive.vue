@@ -45,20 +45,6 @@
               class="archive__date-picker-mobile"
               :centered="false"
             />
-            <section v-if="this.node === 'ausstellung'" class="visit__notice">
-              <template v-if="english">
-                COVID-19<br />
-                Due to the nationwide lockdown, the exhibition in Haus Der Statistik will remain closed. Proxy Tours
-                will be available. Tours are in either English or German, and will take
-                approximately 30 minutes.<br />
-              </template>
-              <template v-else>
-                COVID-19<br />
-                Wegen der bundesweiten Notbremse wird die Ausstellung vor Ort im Haus Der Statistik geschlossen bleiben.
-                Es können Zeitfenster für Proxy Tours werden. Die online Touren finden auf Englisch oder Deutsch
-                statt und dauern circa 30 Minuten.<br />
-              </template>
-            </section>
             <ItemsList
               ref="items"
               class="archive__items"
